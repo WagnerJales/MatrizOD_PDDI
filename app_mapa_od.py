@@ -3,8 +3,9 @@ import pandas as pd
 import folium
 from folium import PolyLine, Marker
 from streamlit_folium import st_folium
+import plotly.express as px
 
-# Título
+st.set_page_config(layout="wide")
 st.title("Mapa Origem-Destino - RMGSL")
 
 # Carregar os dados
@@ -25,27 +26,32 @@ municipios_coords = {
     "FORA DA RMGSL": [-3.0, -44.5]
 }
 
-# Filtros
-col1, col2 = st.columns(2)
-with col1:
-    motivo = st.selectbox("Motivo da Viagem:", ["Todos"] + sorted(df["motivo_ajustado"].dropna().unique().tolist()))
-with col2:
-    frequencia = st.selectbox("Frequência:", ["Todas"] + sorted(df["Com que frequência você faz essa viagem?"].dropna().unique().tolist()))
+st.sidebar.header("Filtros")
+origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM 2"].dropna().unique()), default=[])
+destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO 2"].dropna().unique()), default=[])
+motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["motivo_ajustado"].dropna().unique()), default=[])
+frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Com que frequência você faz essa viagem?"].dropna().unique()), default=[])
+periodo = st.sidebar.multiselect("Período do dia:", sorted(df["A viagem foi realizada em qual período do dia?"].dropna().unique()), default=[])
 
 # Aplicar filtros
 df_filtrado = df.copy()
-if motivo != "Todos":
-    df_filtrado = df_filtrado[df_filtrado["motivo_ajustado"] == motivo]
-if frequencia != "Todas":
-    df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"] == frequencia]
+if origens:
+    df_filtrado = df_filtrado[df_filtrado["ORIGEM 2"].isin(origens)]
+if destinos:
+    df_filtrado = df_filtrado[df_filtrado["DESTINO 2"].isin(destinos)]
+if motivo:
+    df_filtrado = df_filtrado[df_filtrado["motivo_ajustado"].isin(motivo)]
+if frequencia:
+    df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"].isin(frequencia)]
+if periodo:
+    df_filtrado = df_filtrado[df_filtrado["A viagem foi realizada em qual período do dia?"].isin(periodo)]
 
-# Agrupar os dados
+# Agrupar OD
 df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
 
-# Criar mapa
+# Mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
 
-# Desenhar linhas
 for _, row in df_agrupado.iterrows():
     origem = row["ORIGEM 2"]
     destino = row["DESTINO 2"]
@@ -59,9 +65,21 @@ for _, row in df_agrupado.iterrows():
             tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
-# Marcadores
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Mostrar no Streamlit
-st_folium(mapa, width=800, height=600)
+# Layout com mapa + gráficos
+col1, col2 = st.columns([2, 1])
+with col1:
+    st_folium(mapa, width=1200, height=700)
+
+with col2:
+    st.subheader("Total de Viagens por Motivo")
+    motivo_pizza = df_filtrado["motivo_ajustado"].value_counts().reset_index()
+    motivo_pizza.columns = ["Motivo", "Total"]
+    st.plotly_chart(px.pie(motivo_pizza, names="Motivo", values="Total", hole=0.4), use_container_width=True)
+
+    st.subheader("Matriz OD (Gráfico Térmico)")
+    matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
+
