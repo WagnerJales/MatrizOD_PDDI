@@ -70,7 +70,7 @@ for _, row in df_agrupado.iterrows():
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
             coords,
-            color="purple",
+            color="red",
             weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
             tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
