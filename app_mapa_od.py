@@ -6,7 +6,7 @@ from folium import PolyLine, Marker
 from streamlit_folium import st_folium
 import plotly.express as px
 
-st.set_page_config(layout="wide")  # ✅ PRIMEIRA CHAMADA STREAMLIT
+st.set_page_config(layout="wide")
 
 # 🔽 Remover o espaço acima do título
 st.markdown("""
@@ -19,10 +19,14 @@ st.markdown("""
 
 st.title("Mapa Origem-Destino - RMGSL")
 
-# Carregar os dados
-df = pd.read_csv("dados_filtrados.csv")
+# ✅ Carregar os dados com cache
+@st.cache_data
+def carregar_dados():
+    return pd.read_csv("dados_filtrados.csv")
 
-# Coordenadas aproximadas dos municípios (incluindo Rosário)
+df = carregar_dados()
+
+# Coordenadas dos municípios (incluindo Rosário)
 municipios_coords = {
     "São Luís": [-2.53, -44.3],
     "São José de Ribamar": [-2.56, -44.05],
@@ -60,10 +64,11 @@ if periodo:
 # Agrupar OD
 df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
 
-# Mapa
+# Criar mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10)
 
-for _, row in df_agrupado.iterrows():
+# 🚀 Desenhar até 100 fluxos no mapa (evita lentidão extrema)
+for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
     origem = row["ORIGEM 2"]
     destino = row["DESTINO 2"]
     if origem in municipios_coords and destino in municipios_coords:
@@ -76,10 +81,11 @@ for _, row in df_agrupado.iterrows():
             tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
+# Marcadores
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Layout com mapa + gráfico da matriz OD
+# Layout com mapa + gráfico de calor da matriz OD
 col1, col2 = st.columns([2, 1])
 with col1:
     st_folium(mapa, width=1600, height=700)
