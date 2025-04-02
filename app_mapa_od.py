@@ -1,7 +1,12 @@
 
 import streamlit as st
+import pandas as pd
+import folium
+from folium import PolyLine, Marker
+from streamlit_folium import st_folium
+import plotly.express as px
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")  # ✅ PRIMEIRA CHAMADA STREAMLIT
 
 # 🔽 Remover o espaço acima do título
 st.markdown("""
@@ -12,13 +17,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-import pandas as pd
-import folium
-from folium import PolyLine, Marker
-from streamlit_folium import st_folium
-import plotly.express as px
-
-st.set_page_config(layout="wide")
 st.title("Mapa Origem-Destino - RMGSL")
 
 # Carregar os dados
