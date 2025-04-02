@@ -1,6 +1,8 @@
 
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
 # 🔽 Remover o espaço acima do título
 st.markdown("""
     <style>
