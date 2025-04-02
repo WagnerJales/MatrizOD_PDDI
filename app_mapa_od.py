@@ -1,5 +1,15 @@
 
 import streamlit as st
+
+# 🔽 Remover o espaço acima do título
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 import pandas as pd
 import folium
 from folium import PolyLine, Marker
