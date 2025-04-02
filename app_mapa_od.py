@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import folium
@@ -68,18 +69,12 @@ for _, row in df_agrupado.iterrows():
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Layout com mapa + gráficos
+# Layout com mapa + gráfico da matriz OD
 col1, col2 = st.columns([2, 1])
 with col1:
     st_folium(mapa, width=1200, height=700)
 
 with col2:
-    st.subheader("Total de Viagens por Motivo")
-    motivo_pizza = df_filtrado["motivo_ajustado"].value_counts().reset_index()
-    motivo_pizza.columns = ["Motivo", "Total"]
-    st.plotly_chart(px.pie(motivo_pizza, names="Motivo", values="Total", hole=0.4), use_container_width=True)
-
     st.subheader("Matriz OD (Gráfico Térmico)")
     matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
-
