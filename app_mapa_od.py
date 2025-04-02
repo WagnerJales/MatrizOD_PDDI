@@ -61,7 +61,7 @@ if periodo:
 df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
 
 # Mapa
-mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
+mapa = folium.Map(location=[-2.53, -44.3], zoom_start=11)
 
 for _, row in df_agrupado.iterrows():
     origem = row["ORIGEM 2"]
