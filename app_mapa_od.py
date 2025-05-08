@@ -1,166 +1,75 @@
 # Carregar bibliotecas
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
-import json
-from shapely.geometry import shape
 import plotly.express as px
 
 # Configurar layout da página
 st.set_page_config(layout="wide")
 
-# Carregar dados geojson e csv
+# --- Passo 1: Carregar o CSV corretamente ---
 @st.cache_data
 def load_data():
-    with open("zonas_OD.geojson", "r", encoding="utf-8") as f:
-        geojson_data = json.load(f)
-    df_coletivo = pd.read_csv("matriz_od_coletivo.csv")
-    df_individual = pd.read_csv("matriz_od_individual.csv")
-    df_pesquisa = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv")
-    return geojson_data, df_coletivo, df_individual, df_pesquisa
-
-# Funções para processar os modos
-@st.cache_data
-def process_modo(df_od, zone_centroids):
-    total_geracao = df_od.groupby("origem")["volume"].sum().to_dict()
-    total_atracao = df_od.groupby("destino")["volume"].sum().to_dict()
-    for feature in geojson_data["features"]:
-        zone_id = int(feature["properties"]["id"])
-        geom = shape(feature["geometry"])
-        centroid = geom.centroid
-        zone_centroids[zone_id] = (centroid.y, centroid.x)
-        geracao = total_geracao.get(zone_id, 0)
-        atracao = total_atracao.get(zone_id, 0)
-        feature["properties"]["geracao"] = geracao
-        feature["properties"]["atracao"] = atracao
-        feature["properties"]["total"] = geracao + atracao
-    return zone_centroids, geojson_data
-
-@st.cache_data
-def compute_coordinates(df, zone_centroids):
-    df = df.copy()
-    df["orig_lat"], df["orig_lon"] = zip(*df["origem"].map(lambda x: zone_centroids.get(x, (None, None))))
-    df["dest_lat"], df["dest_lon"] = zip(*df["destino"].map(lambda x: zone_centroids.get(x, (None, None))))
+    df = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv", encoding='latin1', sep=';', on_bad_lines='skip')
     return df
 
-# Inicializar dados
-geojson_data, df_coletivo, df_individual, df_pesquisa = load_data()
-modo = st.sidebar.radio("Modo de transporte", ["Transporte Coletivo", "Transporte Individual", "Total dos Dois"])
+# Carregar dados
+st.title("Visualizador da Pesquisa OD - RMGSL")
+df = load_data()
 
-# Visualizar dados da pesquisa OD
-st.sidebar.markdown("## Visualizar Dados da Pesquisa OD")
-st.dataframe(df_pesquisa)
+# Exibir dados
+st.subheader("Visualização dos Dados Brutos (OD)")
+st.dataframe(df)
 
-# Seleção de dados
-if modo == "Transporte Coletivo":
-    df_od = df_coletivo.copy()
-elif modo == "Transporte Individual":
-    df_od = df_individual.copy()
-else:
-    df_coletivo["modo"] = "Coletivo"
-    df_individual["modo"] = "Individual"
-    df_od = pd.concat([df_coletivo, df_individual])
-    df_od = df_od.groupby(["origem", "destino", "modo"]).sum().reset_index()
+# --- Passo 2: Filtros para explorar os dados ---
 
-# Processar centroides e propriedades
-zone_centroids = {}
-zone_centroids, geojson_data = process_modo(df_od, zone_centroids)
-df_od = compute_coordinates(df_od, zone_centroids)
+st.sidebar.header("Filtros")
 
-# Filtros interativos
-with st.sidebar:
-    st.markdown("## Filtros")
-    todas_origens = sorted(df_od["origem"].unique().tolist())
-    todas_destinos = sorted(df_od["destino"].unique().tolist())
-    origem_sel = st.multiselect("Origem", ["Todos"] + todas_origens, default=["Todos"])
-    destino_sel = st.multiselect("Destino", ["Todos"] + todas_destinos, default=["Todos"])
-    vol_range = st.slider("Volume", 0, int(df_od["volume"].max()), (0, int(df_od["volume"].max())))
-    st.markdown("### Tipo de Visualização")
-    tipo_dado = st.radio("Exibir no 2º mapa:", ["total", "geracao", "atracao"], index=0)
+# Filtro por Motivo Agrupado
+motivos = ["Todos"] + sorted(df["Motivo Agrupado"].dropna().unique().tolist())
+motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
 
-if "Todos" in origem_sel:
-    origem_sel = todas_origens
-if "Todos" in destino_sel:
-    destino_sel = todas_destinos
+# Filtro por Renda
+rendas = ["Todos"] + sorted(df["Qual sua renda familiar mensal?"].dropna().unique().tolist())
+renda_sel = st.sidebar.multiselect("Renda Familiar", rendas, default=["Todos"])
 
-max_valor = max([f["properties"][tipo_dado] for f in geojson_data["features"]]) or 1
+# Filtro por Tipo de Viagem
+tipos_viagem = ["Todos"] + sorted(df["A sua última viagem intermunicipal (entre municípios) foi:"].dropna().unique().tolist())
+tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos_viagem, default=["Todos"])
 
-# Aplicar filtros
-df_filtrado = df_od.copy()
-df_filtrado = df_filtrado[df_filtrado["origem"].isin(origem_sel)]
-df_filtrado = df_filtrado[df_filtrado["destino"].isin(destino_sel)]
-df_filtrado = df_filtrado[(df_filtrado["volume"] >= vol_range[0]) & (df_filtrado["volume"] <= vol_range[1])]
-df_limitado = df_filtrado.head(500)
+# --- Passo 3: Aplicar filtros ---
 
-od_lines = [
-    {
-        "from_lat": row.orig_lat, "from_lon": row.orig_lon,
-        "to_lat": row.dest_lat, "to_lon": row.dest_lon,
-        "volume": row.volume
-    }
-    for _, row in df_limitado.iterrows()
-    if pd.notnull(row.orig_lat) and pd.notnull(row.dest_lat)
-]
+df_filtrado = df.copy()
 
-geo_layer = pdk.Layer(
-    "GeoJsonLayer",
-    geojson_data,
-    stroked=True,
-    filled=True,
-    get_fill_color=[200, 200, 200, 50],
-    get_line_color=[0, 0, 0, 255],
-    line_width_min_pixels=1,
-    pickable=True
-)
+if "Todos" not in motivo_sel:
+    df_filtrado = df_filtrado[df_filtrado["Motivo Agrupado"].isin(motivo_sel)]
 
-line_layer = pdk.Layer(
-    "LineLayer",
-    od_lines,
-    get_source_position=["from_lon", "from_lat"],
-    get_target_position=["to_lon", "to_lat"],
-    get_width="volume",
-    get_color="[255, 0, 0, 128]",  # 50% de transparência
-    pickable=True
-)
+if "Todos" not in renda_sel:
+    df_filtrado = df_filtrado[df_filtrado["Qual sua renda familiar mensal?"].isin(renda_sel)]
 
-choropleth_layer = pdk.Layer(
-    "GeoJsonLayer",
-    geojson_data,
-    get_fill_color=f"[255 * properties.{tipo_dado} / {max_valor}, 100, 100, 180]",
-    get_line_color=[90, 90, 90, 120],
-    pickable=True,
-    filled=True,
-    stroked=True,
-    auto_highlight=True
-)
+if "Todos" not in tipo_sel:
+    df_filtrado = df_filtrado[df_filtrado["A sua última viagem intermunicipal (entre municípios) foi:"].isin(tipo_sel)]
 
-view_state = pdk.ViewState(
-    latitude=sum(c[0] for c in zone_centroids.values()) / len(zone_centroids),
-    longitude=sum(c[1] for c in zone_centroids.values()) / len(zone_centroids),
-    zoom=11
-)
+st.subheader("Total de Registros Filtrados")
+st.metric(label="Quantidade", value=len(df_filtrado))
 
-# Título principal
+# --- Passo 4: Visualização gráfica ---
+
+st.subheader("Distribuição das Viagens por Motivo")
+fig_motivo = px.histogram(df_filtrado, x="Motivo Agrupado", color="Motivo Agrupado", text_auto=True)
+st.plotly_chart(fig_motivo, use_container_width=True)
+
+st.subheader("Distribuição das Viagens por Renda")
+fig_renda = px.histogram(df_filtrado, x="Qual sua renda familiar mensal?", color="Qual sua renda familiar mensal?", text_auto=True)
+st.plotly_chart(fig_renda, use_container_width=True)
+
+st.subheader("Distribuição das Viagens por Tipo de Viagem")
+fig_tipo = px.histogram(df_filtrado, x="A sua última viagem intermunicipal (entre municípios) foi:", color="A sua última viagem intermunicipal (entre municípios) foi:", text_auto=True)
+st.plotly_chart(fig_tipo, use_container_width=True)
+
+# --- Passo 5: Nota de rodapé ---
 st.markdown("""
-    <div style='text-align:center'>
-        <h1 style='margin-bottom: 10px;'>Matriz Origem/Destino da Ilha de São Luís</h1>
-    </div>
-""", unsafe_allow_html=True)
-
-# Dispor mapas
-col1, col2 = st.columns([1, 1], gap="small")
-
-with col1:
-    st.markdown("<h4 style='text-align:center;'>Matriz OD</h4>", unsafe_allow_html=True)
-    st.pydeck_chart(pdk.Deck(layers=[geo_layer, line_layer], initial_view_state=view_state, map_style="mapbox://styles/mapbox/dark-v10"))
-
-with col2:
-    st.markdown("<h4 style='text-align:center;'>Geração e Atração de Viagens</h4>", unsafe_allow_html=True)
-    st.pydeck_chart(pdk.Deck(layers=[choropleth_layer], initial_view_state=view_state, map_style="mapbox://styles/mapbox/light-v9"))
-
-# Fonte dos dados
-st.markdown("""
-<div style='font-size:18px; font-weight:bold; text-align:center; padding: 20px;'>
-    Fonte: Pesquisa OD RMGSL - Dados consolidados<br>Desenvolvido por Wagner Jales - <a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>LinkedIn</a>
+<div style='text-align: center; font-size: 14px;'>
+Fonte: Pesquisa OD RMGSL Agrupada | Desenvolvido por Wagner Jales - <a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>LinkedIn</a>
 </div>
+""", unsafe_allow_html=True)
 """, unsafe_allow_html=True)
