@@ -1,63 +1,73 @@
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
 
 # Configurar layout da página
 st.set_page_config(layout="wide")
 
-# Carregar dados CSV
-@st.cache_data
+st.title("Análise OD - Região Metropolitana de São Luís")
 
+# Carregar os dados CSV
+@st.cache_data
 def load_data():
     df = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv")
-    # Normalizar colunas: remover espaços e transformar em minúsculas
-    df.columns = df.columns.str.strip().str.lower()
+    # Normalizar nomes de colunas para evitar KeyError
+    df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
     return df
 
 df = load_data()
 
-# Obter listas únicas para filtros
-motivos = ["Todos"] + sorted(df["motivo agrupado"].dropna().unique().tolist())
-rendas = ["Todos"] + sorted(df["qual sua renda familiar mensal?"].dropna().unique().tolist())
-tipos_viagem = ["Todos"] + sorted(df["a sua última viagem intermunicipal (entre municípios) foi:"].dropna().unique().tolist())
+# Verificar as colunas disponíveis
+st.write("Colunas disponíveis:", list(df.columns))
 
 # Filtros
 st.sidebar.header("Filtros")
 
-motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
-renda_sel = st.sidebar.multiselect("Renda Familiar", rendas, default=["Todos"])
-tipo_sel = st.sidebar.multiselect("Tipo de Viagem", tipos_viagem, default=["Todos"])
+# Motivo Agrupado
+motivo_col = "motivo_agrupado"
+if motivo_col in df.columns:
+    motivos = ["Todos"] + sorted(df[motivo_col].dropna().unique().tolist())
+    motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
+else:
+    motivo_sel = ["Todos"]
+
+# Renda Familiar
+renda_col = "qual_sua_renda_familiar_mensal"
+if renda_col in df.columns:
+    rendas = ["Todos"] + sorted(df[renda_col].dropna().unique().tolist())
+    renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
+else:
+    renda_sel = ["Todos"]
+
+# Tipo de Viagem
+tipo_col = "a_sua_ultima_viagem_intermunicipal_(entre_municipios)_foi"
+if tipo_col in df.columns:
+    tipos = ["Todos"] + sorted(df[tipo_col].dropna().unique().tolist())
+    tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
+else:
+    tipo_sel = ["Todos"]
 
 # Aplicar filtros
 df_filtrado = df.copy()
 
 if "Todos" not in motivo_sel:
-    df_filtrado = df_filtrado[df_filtrado["motivo agrupado"].isin(motivo_sel)]
+    df_filtrado = df_filtrado[df_filtrado[motivo_col].isin(motivo_sel)]
 
 if "Todos" not in renda_sel:
-    df_filtrado = df_filtrado[df_filtrado["qual sua renda familiar mensal?"].isin(renda_sel)]
+    df_filtrado = df_filtrado[df_filtrado[renda_col].isin(renda_sel)]
 
 if "Todos" not in tipo_sel:
-    df_filtrado = df_filtrado[df_filtrado["a sua última viagem intermunicipal (entre municípios) foi:"].isin(tipo_sel)]
+    df_filtrado = df_filtrado[df_filtrado[tipo_col].isin(tipo_sel)]
 
-# Mostrar dados filtrados
-st.header("Dados Filtrados da Pesquisa OD")
-st.dataframe(df_filtrado)
+# Exibir total filtrado
+st.markdown(f"## Total de registros filtrados: **{len(df_filtrado)}**")
 
-# Mostrar resumo
-st.header("Resumo")
-st.write(f"Total de viagens filtradas: {len(df_filtrado)}")
+# Exibir tabela
+st.dataframe(df_filtrado, use_container_width=True)
 
+# Rodapé com crédito
 st.markdown("""
-<small>Fonte: Pesquisa OD RMGSL - Desenvolvido por Wagner Jales (<a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>LinkedIn</a>)</small>
+<hr>
+<p style='text-align:center; font-size:18px;'>
+Desenvolvido por <a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>Wagner Jales</a>
+</p>
 """, unsafe_allow_html=True)
-
-# Exemplo de mapa básico (opcional)
-if st.checkbox("Mostrar Mapa de Origem/Destino?"):
-    if "qual o município de origem" in df_filtrado.columns and "qual o município de destino" in df_filtrado.columns:
-        st.map(df_filtrado.rename(columns={
-            "qual o município de origem": "lat",
-            "qual o município de destino": "lon"
-        }))
-    else:
-        st.write("Colunas de origem e destino não disponíveis para mapa.")
