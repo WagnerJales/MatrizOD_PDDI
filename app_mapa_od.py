@@ -1,86 +1,90 @@
+
 import streamlit as st
 import pandas as pd
-from streamlit_folium import st_folium
 import folium
+from folium import PolyLine, Marker
+from streamlit_folium import st_folium
+import plotly.express as px
 
-# Configurar layout da página
-st.set_page_config(layout="wide")
-st.title("Análise OD - Região Metropolitana de São Luís")
+st.set_page_config(layout="wide")  # ✅ PRIMEIRA CHAMADA STREAMLIT
 
-# Função para carregar CSV com normalização das colunas
-@st.cache_data
-def load_data():
-    df = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv")
-    df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
-    return df
+# 🔽 Remover o espaço acima do título
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-df = load_data()
+st.title("Mapa Origem-Destino - RMGSL")
 
-# Mostrar colunas para conferência
-st.write("Colunas disponíveis:", list(df.columns))
+# Carregar os dados
+df = pd.read_csv("dados_filtrados.csv")
+
+# Coordenadas aproximadas dos municípios (incluindo Rosário)
+municipios_coords = {
+    "São Luís": [-2.53, -44.3],
+    "São José de Ribamar": [-2.56, -44.05],
+    "Paço do Lumiar": [-2.52, -44.1],
+    "Raposa": [-2.43, -44.1],
+    "Rosário": [-2.9344, -44.2511],
+    "Alcântara": [-2.41, -44.41],
+    "Icatu": [-2.77, -44.05],
+    "Morros": [-2.86, -44.04],
+    "Bacabeira": [-2.96, -44.31],
+    "AXIXÁ": [-3.48, -44.06],
+    "FORA DA RMGSL": [-3.0, -44.5]
+}
 
 st.sidebar.header("Filtros")
-
-# Função auxiliar para pegar colunas de forma segura
-def get_column(df, possible_names):
-    for col in df.columns:
-        if any(name in col for name in possible_names):
-            return col
-    return None
-
-# Buscar colunas relevantes
-motivo_col = get_column(df, ["motivo_agrupado"])
-renda_col = get_column(df, ["renda_familiar", "qual_sua_renda_familiar_mensal"])
-tipo_col = get_column(df, ["ultima_viagem", "foi"])
-
-# Filtro: Motivo da Viagem
-if motivo_col:
-    motivos = ["Todos"] + sorted(df[motivo_col].dropna().unique().tolist())
-    motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
-else:
-    motivo_sel = ["Todos"]
-
-# Filtro: Renda
-if renda_col:
-    rendas = ["Todos"] + sorted(df[renda_col].dropna().unique().tolist())
-    renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
-else:
-    renda_sel = ["Todos"]
-
-# Filtro: Tipo de Viagem
-if tipo_col:
-    tipos = ["Todos"] + sorted(df[tipo_col].dropna().unique().tolist())
-    tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
-else:
-    tipo_sel = ["Todos"]
+origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM 2"].dropna().unique()), default=[])
+destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO 2"].dropna().unique()), default=[])
+motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["motivo_ajustado"].dropna().unique()), default=[])
+frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Com que frequência você faz essa viagem?"].dropna().unique()), default=[])
+periodo = st.sidebar.multiselect("Período do dia:", sorted(df["A viagem foi realizada em qual período do dia?"].dropna().unique()), default=[])
 
 # Aplicar filtros
 df_filtrado = df.copy()
+if origens:
+    df_filtrado = df_filtrado[df_filtrado["ORIGEM 2"].isin(origens)]
+if destinos:
+    df_filtrado = df_filtrado[df_filtrado["DESTINO 2"].isin(destinos)]
+if motivo:
+    df_filtrado = df_filtrado[df_filtrado["motivo_ajustado"].isin(motivo)]
+if frequencia:
+    df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"].isin(frequencia)]
+if periodo:
+    df_filtrado = df_filtrado[df_filtrado["A viagem foi realizada em qual período do dia?"].isin(periodo)]
 
-if "Todos" not in motivo_sel and motivo_col:
-    df_filtrado = df_filtrado[df_filtrado[motivo_col].isin(motivo_sel)]
+# Agrupar OD
+df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
 
-if "Todos" not in renda_sel and renda_col:
-    df_filtrado = df_filtrado[df_filtrado[renda_col].isin(renda_sel)]
+# Mapa
+mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10)
 
-if "Todos" not in tipo_sel and tipo_col:
-    df_filtrado = df_filtrado[df_filtrado[tipo_col].isin(tipo_sel)]
+for _, row in df_agrupado.iterrows():
+    origem = row["ORIGEM 2"]
+    destino = row["DESTINO 2"]
+    if origem in municipios_coords and destino in municipios_coords:
+        coords = [municipios_coords[origem], municipios_coords[destino]]
+        folium.PolyLine(
+            coords,
+            color="purple",
+            weight=1 + (row["total"] / 30) * 5,
+            opacity=0.8,
+            tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
+        ).add_to(mapa)
 
-# Mostrar total
-st.markdown(f"## Total de registros filtrados: **{len(df_filtrado)}**")
+for cidade, coord in municipios_coords.items():
+    folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Mostrar tabela
-st.dataframe(df_filtrado, use_container_width=True)
+# Layout com mapa + gráfico da matriz OD
+col1, col2 = st.columns([2, 1])
+with col1:
+    st_folium(mapa, width=1200, height=700)
 
-# Visualização em mapa (folium simples)
-st.header("Mapa de Exemplo (Folium)")
-m = folium.Map(location=[-2.529722, -44.3028], zoom_start=10)
-st_folium(m, width=700, height=500)
-
-# Rodapé com crédito
-st.markdown("""
-<hr>
-<p style='text-align:center; font-size:18px;'>
-Desenvolvido por <a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>Wagner Jales</a>
-</p>
-""", unsafe_allow_html=True)
+with col2:
+    st.subheader("Matriz OD (Gráfico Térmico)")
+    matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
