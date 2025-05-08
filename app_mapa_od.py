@@ -68,7 +68,6 @@ df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(
 
 # Criar mapa
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
-
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
     origem = row["ORIGEM 2"]
     destino = row["DESTINO 2"]
@@ -89,7 +88,6 @@ for cidade, coord in municipios_coords.items():
 st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
-# -------------------------
 # Heatmaps adicionais em pares
 
 # Motivo x Frequência
