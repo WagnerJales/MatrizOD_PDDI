@@ -89,6 +89,51 @@ for cidade, coord in municipios_coords.items():
 st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
+# Mapas de atração e geração
+st.header("Mapa Termal - Geração e Atração de Viagens")
+# Geração
+st.subheader("Geração de Viagens (Origem)")
+geracao = df_filtrado.groupby("ORIGEM 2").size().reset_index(name="Total de Viagens Origem")
+mapa_geracao = folium.Map(location=[-2.53, -44.3], zoom_start=9, tiles="CartoDB positron")
+
+for _, row in geracao.iterrows():
+    municipio = row["ORIGEM 2"]
+    total = row["Total de Viagens Origem"]
+    if municipio in municipios_coords:
+        folium.CircleMarker(
+            location=municipios_coords[municipio],
+            radius=5 + total / 50,
+            color="red",
+            fill=True,
+            fill_color="red",
+            fill_opacity=0.7,
+            popup=f"{municipio}: {total} viagens"
+        ).add_to(mapa_geracao)
+
+st_folium(mapa_geracao, width=1600, height=600)
+
+# Atração
+st.subheader("Atração de Viagens (Destino)")
+atracao = df_filtrado.groupby("DESTINO 2").size().reset_index(name="Total de Viagens Destino")
+mapa_atracao = folium.Map(location=[-2.53, -44.3], zoom_start=9, tiles="CartoDB positron")
+
+for _, row in atracao.iterrows():
+    municipio = row["DESTINO 2"]
+    total = row["Total de Viagens Destino"]
+    if municipio in municipios_coords:
+        folium.CircleMarker(
+            location=municipios_coords[municipio],
+            radius=5 + total / 50,
+            color="blue",
+            fill=True,
+            fill_color="blue",
+            fill_opacity=0.7,
+            popup=f"{municipio}: {total} viagens"
+        ).add_to(mapa_atracao)
+
+st_folium(mapa_atracao, width=1600, height=600)
+
+
 # -------------------------
 # Heatmaps adicionais em pares
 
