@@ -1,66 +1,81 @@
 import streamlit as st
 import pandas as pd
+from streamlit_folium import st_folium
+import folium
 
 # Configurar layout da página
 st.set_page_config(layout="wide")
-
 st.title("Análise OD - Região Metropolitana de São Luís")
 
-# Carregar os dados CSV
+# Função para carregar CSV com normalização das colunas
 @st.cache_data
 def load_data():
     df = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv")
-    # Normalizar nomes de colunas para evitar KeyError
     df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
     return df
 
 df = load_data()
 
-# Verificar as colunas disponíveis
+# Mostrar colunas para conferência
 st.write("Colunas disponíveis:", list(df.columns))
 
-# Filtros
 st.sidebar.header("Filtros")
 
-# Função para obter valores únicos de uma coluna (com verificação se existe)
-def get_unique_values(df, column_name):
-    if column_name in df.columns:
-        return ["Todos"] + sorted(df[column_name].dropna().unique().tolist())
-    else:
-        return ["Todos"]
+# Função auxiliar para pegar colunas de forma segura
+def get_column(df, possible_names):
+    for col in df.columns:
+        if any(name in col for name in possible_names):
+            return col
+    return None
 
-# Motivo Agrupado
-motivo_col = "motivo_agrupado"
-motivos = get_unique_values(df, motivo_col)
-motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
+# Buscar colunas relevantes
+motivo_col = get_column(df, ["motivo_agrupado"])
+renda_col = get_column(df, ["renda_familiar", "qual_sua_renda_familiar_mensal"])
+tipo_col = get_column(df, ["ultima_viagem", "foi"])
 
-# Renda Familiar
-renda_col = "qual_sua_renda_familiar_mensal"
-rendas = get_unique_values(df, renda_col)
-renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
+# Filtro: Motivo da Viagem
+if motivo_col:
+    motivos = ["Todos"] + sorted(df[motivo_col].dropna().unique().tolist())
+    motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
+else:
+    motivo_sel = ["Todos"]
 
-# Tipo de Viagem
-tipo_col = "a_sua_ultima_viagem_intermunicipal_(entre_municipios)_foi"
-tipos = get_unique_values(df, tipo_col)
-tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
+# Filtro: Renda
+if renda_col:
+    rendas = ["Todos"] + sorted(df[renda_col].dropna().unique().tolist())
+    renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
+else:
+    renda_sel = ["Todos"]
+
+# Filtro: Tipo de Viagem
+if tipo_col:
+    tipos = ["Todos"] + sorted(df[tipo_col].dropna().unique().tolist())
+    tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
+else:
+    tipo_sel = ["Todos"]
 
 # Aplicar filtros
 df_filtrado = df.copy()
 
-if "Todos" not in motivo_sel:
+if "Todos" not in motivo_sel and motivo_col:
     df_filtrado = df_filtrado[df_filtrado[motivo_col].isin(motivo_sel)]
 
-if "Todos" not in renda_sel:
+if "Todos" not in renda_sel and renda_col:
     df_filtrado = df_filtrado[df_filtrado[renda_col].isin(renda_sel)]
 
-if "Todos" not in tipo_sel:
+if "Todos" not in tipo_sel and tipo_col:
     df_filtrado = df_filtrado[df_filtrado[tipo_col].isin(tipo_sel)]
 
-# Exibir total filtrado
+# Mostrar total
 st.markdown(f"## Total de registros filtrados: **{len(df_filtrado)}**")
 
-# Exibir tabela
+# Mostrar tabela
 st.dataframe(df_filtrado, use_container_width=True)
+
+# Visualização em mapa (folium simples)
+st.header("Mapa de Exemplo (Folium)")
+m = folium.Map(location=[-2.529722, -44.3028], zoom_start=10)
+st_folium(m, width=700, height=500)
 
 # Rodapé com crédito
 st.markdown("""
