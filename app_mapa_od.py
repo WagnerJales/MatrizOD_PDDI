@@ -39,8 +39,8 @@ municipios_coords = {
     "Icatu": [-2.77, -44.05],
     "Morros": [-2.86, -44.04],
     "Bacabeira": [-2.96, -44.31],
-    "AXIXÁ": [-3.48, -44.06],
-    "FORA DA RMGSL": [-2.50, -44.03]
+    "Axixá": [-2.83, -44.05],
+    "FORA DA RMGSL": [-2.88, -44.53]
 }
 
 st.sidebar.header("Filtros")
