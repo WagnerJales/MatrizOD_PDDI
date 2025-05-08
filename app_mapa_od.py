@@ -22,29 +22,27 @@ st.write("Colunas disponíveis:", list(df.columns))
 # Filtros
 st.sidebar.header("Filtros")
 
+# Função para obter valores únicos de uma coluna (com verificação se existe)
+def get_unique_values(df, column_name):
+    if column_name in df.columns:
+        return ["Todos"] + sorted(df[column_name].dropna().unique().tolist())
+    else:
+        return ["Todos"]
+
 # Motivo Agrupado
 motivo_col = "motivo_agrupado"
-if motivo_col in df.columns:
-    motivos = ["Todos"] + sorted(df[motivo_col].dropna().unique().tolist())
-    motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
-else:
-    motivo_sel = ["Todos"]
+motivos = get_unique_values(df, motivo_col)
+motivo_sel = st.sidebar.multiselect("Motivo da Viagem", motivos, default=["Todos"])
 
 # Renda Familiar
 renda_col = "qual_sua_renda_familiar_mensal"
-if renda_col in df.columns:
-    rendas = ["Todos"] + sorted(df[renda_col].dropna().unique().tolist())
-    renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
-else:
-    renda_sel = ["Todos"]
+rendas = get_unique_values(df, renda_col)
+renda_sel = st.sidebar.multiselect("Renda Familiar Mensal", rendas, default=["Todos"])
 
 # Tipo de Viagem
 tipo_col = "a_sua_ultima_viagem_intermunicipal_(entre_municipios)_foi"
-if tipo_col in df.columns:
-    tipos = ["Todos"] + sorted(df[tipo_col].dropna().unique().tolist())
-    tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
-else:
-    tipo_sel = ["Todos"]
+tipos = get_unique_values(df, tipo_col)
+tipo_sel = st.sidebar.multiselect("Tipo da Viagem", tipos, default=["Todos"])
 
 # Aplicar filtros
 df_filtrado = df.copy()
