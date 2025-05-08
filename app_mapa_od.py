@@ -84,29 +84,35 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Layout com mapa + gráfico de calor da matriz OD
-col1, col2 = st.columns([2, 1])
-with col1:
-    st_folium(mapa, width=1600, height=700)
+# Mostrar mapa
+st.subheader("Mapa OD")
+st_folium(mapa, width=1600, height=700)
 
-with col2:
-    st.subheader("Matriz OD (Gráfico Térmico)")
-    matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
+# -------------------------
+# Heatmap 1: Matriz OD
+st.subheader("Matriz OD (Gráfico Térmico)")
+matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
+st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
 
-st.subheader("Outras Matrizes (Gráficos Térmicos)")
+# -------------------------
+# Heatmaps adicionais em pares
 
-# a) Motivo x Frequência
-st.write("Motivo x Frequência")
-heatmap_a = df_filtrado.groupby(["motivo_ajustado", "Com que frequência você faz essa viagem?"]).size().unstack(fill_value=0)
-st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
+# Motivo x Frequência
+col3, col4 = st.columns(2)
+with col3:
+    st.subheader("Motivo x Frequência")
+    heatmap_a = df_filtrado.groupby(["motivo_ajustado", "Com que frequência você faz essa viagem?"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
 
-# b) Motivo x Período do dia
-st.write("Motivo x Período do Dia")
-heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
-st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
+# Motivo x Período do Dia
+with col4:
+    st.subheader("Motivo x Período do Dia")
+    heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
 
-# c) Frequência x Período do dia
-st.write("Frequência x Período do Dia")
-heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
-st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
+# Frequência x Período do Dia
+col5, col6 = st.columns(2)
+with col5:
+    st.subheader("Frequência x Período do Dia")
+    heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
