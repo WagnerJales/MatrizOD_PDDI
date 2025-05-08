@@ -1,102 +1,166 @@
+# Carregar bibliotecas
 import streamlit as st
 import pandas as pd
-import folium
-from folium import PolyLine, Marker
-from streamlit_folium import st_folium
+import pydeck as pdk
+import json
+from shapely.geometry import shape
 import plotly.express as px
 
+# Configurar layout da página
 st.set_page_config(layout="wide")
 
-# Ajuste de espaçamento
-st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
-""", unsafe_allow_html=True)
+# Carregar dados geojson e csv
+@st.cache_data
+def load_data():
+    with open("zonas_OD.geojson", "r", encoding="utf-8") as f:
+        geojson_data = json.load(f)
+    df_coletivo = pd.read_csv("matriz_od_coletivo.csv")
+    df_individual = pd.read_csv("matriz_od_individual.csv")
+    df_pesquisa = pd.read_csv("Pesquisa_OD_RMGSL_Agrupada.csv")
+    return geojson_data, df_coletivo, df_individual, df_pesquisa
 
-st.title("Mapa Origem-Destino - RMGSL")
+# Funções para processar os modos
+@st.cache_data
+def process_modo(df_od, zone_centroids):
+    total_geracao = df_od.groupby("origem")["volume"].sum().to_dict()
+    total_atracao = df_od.groupby("destino")["volume"].sum().to_dict()
+    for feature in geojson_data["features"]:
+        zone_id = int(feature["properties"]["id"])
+        geom = shape(feature["geometry"])
+        centroid = geom.centroid
+        zone_centroids[zone_id] = (centroid.y, centroid.x)
+        geracao = total_geracao.get(zone_id, 0)
+        atracao = total_atracao.get(zone_id, 0)
+        feature["properties"]["geracao"] = geracao
+        feature["properties"]["atracao"] = atracao
+        feature["properties"]["total"] = geracao + atracao
+    return zone_centroids, geojson_data
 
-# Carregar os dados
-df = pd.read_excel("Pesquisa_OD_RMGSL_Agrupada.xlsx")
+@st.cache_data
+def compute_coordinates(df, zone_centroids):
+    df = df.copy()
+    df["orig_lat"], df["orig_lon"] = zip(*df["origem"].map(lambda x: zone_centroids.get(x, (None, None))))
+    df["dest_lat"], df["dest_lon"] = zip(*df["destino"].map(lambda x: zone_centroids.get(x, (None, None))))
+    return df
 
-# Coordenadas aproximadas dos municípios
-municipios_coords = {
-    "São Luís": [-2.53, -44.3],
-    "São José de Ribamar": [-2.56, -44.05],
-    "Paço do Lumiar": [-2.52, -44.1],
-    "Raposa": [-2.43, -44.1],
-    "Rosário": [-2.9344, -44.2511],
-    "Alcântara": [-2.41, -44.41],
-    "Icatu": [-2.77, -44.05],
-    "Morros": [-2.86, -44.04],
-    "Bacabeira": [-2.96, -44.31],
-    "AXIXÁ": [-3.48, -44.06],
-    "FORA DA RMGSL": [-3.0, -44.5]
-}
+# Inicializar dados
+geojson_data, df_coletivo, df_individual, df_pesquisa = load_data()
+modo = st.sidebar.radio("Modo de transporte", ["Transporte Coletivo", "Transporte Individual", "Total dos Dois"])
 
-st.sidebar.header("Filtros")
-origens = st.sidebar.multiselect("Origem:", sorted(df["Qual o município de ORIGEM"].dropna().unique()), default=[])
-destinos = st.sidebar.multiselect("Destino:", sorted(df["Qual o município de DESTINO"].dropna().unique()), default=[])
-motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo Agrupado"].dropna().unique()), default=[])
-frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Com que frequência você faz essa viagem?"].dropna().unique()), default=[])
-periodo = st.sidebar.multiselect("Período do dia:", sorted(df["A viagem foi realizada em qual período do dia?"].dropna().unique()), default=[])
+# Visualizar dados da pesquisa OD
+st.sidebar.markdown("## Visualizar Dados da Pesquisa OD")
+st.dataframe(df_pesquisa)
+
+# Seleção de dados
+if modo == "Transporte Coletivo":
+    df_od = df_coletivo.copy()
+elif modo == "Transporte Individual":
+    df_od = df_individual.copy()
+else:
+    df_coletivo["modo"] = "Coletivo"
+    df_individual["modo"] = "Individual"
+    df_od = pd.concat([df_coletivo, df_individual])
+    df_od = df_od.groupby(["origem", "destino", "modo"]).sum().reset_index()
+
+# Processar centroides e propriedades
+zone_centroids = {}
+zone_centroids, geojson_data = process_modo(df_od, zone_centroids)
+df_od = compute_coordinates(df_od, zone_centroids)
+
+# Filtros interativos
+with st.sidebar:
+    st.markdown("## Filtros")
+    todas_origens = sorted(df_od["origem"].unique().tolist())
+    todas_destinos = sorted(df_od["destino"].unique().tolist())
+    origem_sel = st.multiselect("Origem", ["Todos"] + todas_origens, default=["Todos"])
+    destino_sel = st.multiselect("Destino", ["Todos"] + todas_destinos, default=["Todos"])
+    vol_range = st.slider("Volume", 0, int(df_od["volume"].max()), (0, int(df_od["volume"].max())))
+    st.markdown("### Tipo de Visualização")
+    tipo_dado = st.radio("Exibir no 2º mapa:", ["total", "geracao", "atracao"], index=0)
+
+if "Todos" in origem_sel:
+    origem_sel = todas_origens
+if "Todos" in destino_sel:
+    destino_sel = todas_destinos
+
+max_valor = max([f["properties"][tipo_dado] for f in geojson_data["features"]]) or 1
 
 # Aplicar filtros
-df_filtrado = df.copy()
-if origens:
-    df_filtrado = df_filtrado[df_filtrado["Qual o município de ORIGEM"].isin(origens)]
-if destinos:
-    df_filtrado = df_filtrado[df_filtrado["Qual o município de DESTINO"].isin(destinos)]
-if motivo:
-    df_filtrado = df_filtrado[df_filtrado["Motivo Agrupado"].isin(motivo)]
-if frequencia:
-    df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"].isin(frequencia)]
-if periodo:
-    df_filtrado = df_filtrado[df_filtrado["A viagem foi realizada em qual período do dia?"].isin(periodo)]
+df_filtrado = df_od.copy()
+df_filtrado = df_filtrado[df_filtrado["origem"].isin(origem_sel)]
+df_filtrado = df_filtrado[df_filtrado["destino"].isin(destino_sel)]
+df_filtrado = df_filtrado[(df_filtrado["volume"] >= vol_range[0]) & (df_filtrado["volume"] <= vol_range[1])]
+df_limitado = df_filtrado.head(500)
 
-# Agrupar OD
-df_agrupado = df_filtrado.groupby(["Qual o município de ORIGEM", "Qual o município de DESTINO"]).size().reset_index(name="total")
+od_lines = [
+    {
+        "from_lat": row.orig_lat, "from_lon": row.orig_lon,
+        "to_lat": row.dest_lat, "to_lon": row.dest_lon,
+        "volume": row.volume
+    }
+    for _, row in df_limitado.iterrows()
+    if pd.notnull(row.orig_lat) and pd.notnull(row.dest_lat)
+]
 
-# Mapa
-mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10)
+geo_layer = pdk.Layer(
+    "GeoJsonLayer",
+    geojson_data,
+    stroked=True,
+    filled=True,
+    get_fill_color=[200, 200, 200, 50],
+    get_line_color=[0, 0, 0, 255],
+    line_width_min_pixels=1,
+    pickable=True
+)
 
-for _, row in df_agrupado.iterrows():
-    origem = row["Qual o município de ORIGEM"]
-    destino = row["Qual o município de DESTINO"]
-    if origem in municipios_coords and destino in municipios_coords:
-        coords = [municipios_coords[origem], municipios_coords[destino]]
-        folium.PolyLine(
-            coords,
-            color="purple",
-            weight=1 + (row["total"] / 30) * 5,
-            opacity=0.8,
-            tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
-        ).add_to(mapa)
+line_layer = pdk.Layer(
+    "LineLayer",
+    od_lines,
+    get_source_position=["from_lon", "from_lat"],
+    get_target_position=["to_lon", "to_lat"],
+    get_width="volume",
+    get_color="[255, 0, 0, 128]",  # 50% de transparência
+    pickable=True
+)
 
-for cidade, coord in municipios_coords.items():
-    folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
+choropleth_layer = pdk.Layer(
+    "GeoJsonLayer",
+    geojson_data,
+    get_fill_color=f"[255 * properties.{tipo_dado} / {max_valor}, 100, 100, 180]",
+    get_line_color=[90, 90, 90, 120],
+    pickable=True,
+    filled=True,
+    stroked=True,
+    auto_highlight=True
+)
 
-# Layout com mapa + gráfico
-col1, col2 = st.columns([2, 1])
+view_state = pdk.ViewState(
+    latitude=sum(c[0] for c in zone_centroids.values()) / len(zone_centroids),
+    longitude=sum(c[1] for c in zone_centroids.values()) / len(zone_centroids),
+    zoom=11
+)
+
+# Título principal
+st.markdown("""
+    <div style='text-align:center'>
+        <h1 style='margin-bottom: 10px;'>Matriz Origem/Destino da Ilha de São Luís</h1>
+    </div>
+""", unsafe_allow_html=True)
+
+# Dispor mapas
+col1, col2 = st.columns([1, 1], gap="small")
 
 with col1:
-    st_folium(mapa, width=1200, height=700)
+    st.markdown("<h4 style='text-align:center;'>Matriz OD</h4>", unsafe_allow_html=True)
+    st.pydeck_chart(pdk.Deck(layers=[geo_layer, line_layer], initial_view_state=view_state, map_style="mapbox://styles/mapbox/dark-v10"))
 
 with col2:
-    st.subheader("Matriz OD (Gráfico Térmico)")
-    matriz = df_filtrado.groupby(["Qual o município de ORIGEM", "Qual o município de DESTINO"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
+    st.markdown("<h4 style='text-align:center;'>Geração e Atração de Viagens</h4>", unsafe_allow_html=True)
+    st.pydeck_chart(pdk.Deck(layers=[choropleth_layer], initial_view_state=view_state, map_style="mapbox://styles/mapbox/light-v9"))
 
-# ✅ NOVO: Visualizar tabela OD filtrada
-st.header("Visualização dos dados da OD (Filtrados)")
-st.dataframe(df_filtrado)
-
-# ✅ (Opcional) Baixar o Excel filtrado
-st.download_button(
-    label="Baixar dados filtrados em Excel",
-    data=df_filtrado.to_excel(index=False, engine='openpyxl'),
-    file_name="dados_OD_filtrados.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-)
+# Fonte dos dados
+st.markdown("""
+<div style='font-size:18px; font-weight:bold; text-align:center; padding: 20px;'>
+    Fonte: Pesquisa OD RMGSL - Dados consolidados<br>Desenvolvido por Wagner Jales - <a href='https://www.linkedin.com/in/wagner-jales-663b4831/' target='_blank'>LinkedIn</a>
+</div>
+""", unsafe_allow_html=True)
