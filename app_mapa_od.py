@@ -5,6 +5,7 @@ import folium
 from folium import PolyLine, Marker
 from streamlit_folium import st_folium
 import plotly.express as px
+import io
 
 st.set_page_config(layout="wide")
 
@@ -89,12 +90,6 @@ st.subheader("Mapa OD")
 st_folium(mapa, width=1600, height=700)
 
 # -------------------------
-# Heatmap 1: Matriz OD
-st.subheader("Matriz OD (Gráfico Térmico)")
-matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
-st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
-
-# -------------------------
 # Heatmaps adicionais em pares
 
 # Motivo x Frequência
@@ -110,9 +105,34 @@ with col4:
     heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
 
-# Frequência x Período do Dia
+# -------------------------
+# Matriz OD + Frequência x Período do Dia lado a lado
 col5, col6 = st.columns(2)
+
 with col5:
+    st.subheader("Matriz OD (Gráfico Térmico)")
+    matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
+
+with col6:
     st.subheader("Frequência x Período do Dia")
     heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
+
+# Exportação
+st.header("Exportar Matrizes")
+
+def exportar_csv(df, nome_arquivo):
+    buffer = io.BytesIO()
+    df.to_csv(buffer, index=True)
+    st.download_button(
+        label=f"📥 Baixar {nome_arquivo}",
+        data=buffer.getvalue(),
+        file_name=f"{nome_arquivo}.csv",
+        mime="text/csv"
+    )
+
+exportar_csv(matriz, "Matriz_OD")
+exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
+exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
+exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
