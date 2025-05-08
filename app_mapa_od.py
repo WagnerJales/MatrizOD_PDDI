@@ -8,7 +8,6 @@ import plotly.express as px
 
 st.set_page_config(layout="wide")
 
-# 🔽 Remover o espaço acima do título
 st.markdown("""
     <style>
         .block-container {
@@ -19,19 +18,16 @@ st.markdown("""
 
 st.title("Mapa Origem-Destino - RMGSL")
 
-# ✅ Carregar os dados com cache
 @st.cache_data
 def carregar_dados():
     return pd.read_csv("dados_filtrados.csv")
 
-# Adiciona verificação do carregamento do CSV
 try:
     df = carregar_dados()
 except Exception as e:
     st.error(f"Erro ao carregar o CSV: {e}")
     st.stop()
 
-# Coordenadas dos municípios (incluindo Rosário)
 municipios_coords = {
     "São Luís": [-2.53, -44.3],
     "São José de Ribamar": [-2.56, -44.05],
@@ -43,7 +39,7 @@ municipios_coords = {
     "Morros": [-2.86, -44.04],
     "Bacabeira": [-2.96, -44.31],
     "AXIXÁ": [-3.48, -44.06],
-    "FORA DA RMGSL": [-3.0, -44.5]
+    "FORA DA RMGSL": [-2.9533, -44.7966]
 }
 
 st.sidebar.header("Filtros")
@@ -72,7 +68,6 @@ df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(
 # Criar mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10)
 
-# 🚀 Desenhar até 100 fluxos no mapa (evita lentidão extrema)
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
     origem = row["ORIGEM 2"]
     destino = row["DESTINO 2"]
@@ -86,7 +81,6 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
             tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
-# Marcadores
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
@@ -99,3 +93,20 @@ with col2:
     st.subheader("Matriz OD (Gráfico Térmico)")
     matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
+
+st.subheader("Outras Matrizes (Gráficos Térmicos)")
+
+# a) Motivo x Frequência
+st.write("Motivo x Frequência")
+heatmap_a = df_filtrado.groupby(["motivo_ajustado", "Com que frequência você faz essa viagem?"]).size().unstack(fill_value=0)
+st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
+
+# b) Motivo x Período do dia
+st.write("Motivo x Período do Dia")
+heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
+
+# c) Frequência x Período do dia
+st.write("Frequência x Período do Dia")
+heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
