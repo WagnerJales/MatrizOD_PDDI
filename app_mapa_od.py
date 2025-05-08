@@ -40,7 +40,7 @@ municipios_coords = {
     "Morros": [-2.86, -44.04],
     "Bacabeira": [-2.96, -44.31],
     "AXIXÁ": [-3.48, -44.06],
-    "FORA DA RMGSL": [-2.9533, -44.7966]
+    "FORA DA RMGSL": [-2.50, -44.03]
 }
 
 st.sidebar.header("Filtros")
