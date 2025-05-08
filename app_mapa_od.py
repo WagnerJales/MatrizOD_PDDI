@@ -67,7 +67,7 @@ if periodo:
 df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
 
 # Criar mapa
-mapa = folium.Map(location=[-2.53, -44.7], zoom_start=10, tiles="CartoDB positron")
+mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10)
 
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
     origem = row["ORIGEM 2"]
@@ -110,7 +110,7 @@ with col4:
 col5, col6 = st.columns(2)
 
 with col5:
-    st.subheader("Matriz OD")
+    st.subheader("Matriz OD (Gráfico Térmico)")
     matriz = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"), use_container_width=True)
 
@@ -136,3 +136,8 @@ exportar_csv(matriz, "Matriz_OD")
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
 exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
+
+
+# Rodapé com crédito
+st.markdown("---")
+st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
