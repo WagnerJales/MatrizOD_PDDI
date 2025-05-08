@@ -17,7 +17,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("Mapa Origem-Destino - RMGSL")
+st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
@@ -86,7 +86,7 @@ for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
 # Mostrar mapa
-st.subheader("Mapa OD")
+st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
 # -------------------------
