@@ -34,12 +34,15 @@ municipios_coords = {
     "São José de Ribamar": [-2.56, -44.05],
     "Paço do Lumiar": [-2.52, -44.1],
     "Raposa": [-2.43, -44.1],
+    "Cachoeira Grande": [-2.93, -44.05],
+    "Presidente Juscelino": [-2.925, -44.06],
     "Rosário": [-2.9344, -44.2511],
     "Alcântara": [-2.41, -44.41],
     "Icatu": [-2.77, -44.05],
     "Morros": [-2.86, -44.04],
     "Bacabeira": [-2.96, -44.31],
     "Axixá": [-2.83, -44.05],
+    "Santa Rita": [-3.139, -44.325],
     "FORA DA RMGSL": [-2.88, -44.53]
 }
 
