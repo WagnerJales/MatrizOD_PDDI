@@ -20,7 +20,7 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("dados_filtrados_com_modal.csv")
+    return pd.read_csv("dados_filtrados_com_modal.csv")  # Arquivo atualizado com 'Modal Agrupado'
 
 try:
     df = carregar_dados()
@@ -93,29 +93,24 @@ for cidade, coord in municipios_coords.items():
 st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
-# Heatmaps adicionais
+# Heatmaps adicionais em pares
 col3, col4 = st.columns(2)
 
+# Motivo x Frequência
 with col3:
     st.subheader("Motivo x Frequência")
-    heatmap_a = df_filtrado.groupby(["motivo_ajustado", "Com que frequência você faz essa viagem?"]).size().unstack(fill_value=0)
+    heatmap_a = df_filtrado.groupby(
+        ["motivo_ajustado", "Com que frequência você faz essa viagem?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
 
+# Motivo x Período do Dia
 with col4:
     st.subheader("Motivo x Período do Dia")
-    heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    heatmap_b = df_filtrado.groupby(
+        ["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
-
-# Novo Heatmap: Motivo x Modal Agrupado
-st.subheader("Motivo x Modal Agrupado")
-if "Modal Agrupado" in df_filtrado.columns:
-    heatmap_d = df_filtrado.groupby(["motivo_ajustado", "Modal Agrupado"]).size().unstack(fill_value=0)
-    st.plotly_chart(
-        px.imshow(heatmap_d, text_auto=True, color_continuous_scale="YlGnBu", title="Motivo x Modal Agrupado"),
-        use_container_width=True
-    )
-else:
-    st.warning("Coluna 'Modal Agrupado' não disponível.")
 
 # Matriz OD + Frequência x Período do Dia lado a lado
 col5, col6 = st.columns(2)
@@ -127,8 +122,22 @@ with col5:
 
 with col6:
     st.subheader("Frequência x Período do Dia")
-    heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    heatmap_c = df_filtrado.groupby(
+        ["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
+
+# ---------------------------------------
+# Novo Heatmap: Motivo x Modal Agrupado
+st.subheader("Motivo x Modal Agrupado")
+if "Modal Agrupado" in df_filtrado.columns:
+    heatmap_d = df_filtrado.groupby(["motivo_ajustado", "Modal Agrupado"]).size().unstack(fill_value=0)
+    st.plotly_chart(
+        px.imshow(heatmap_d, text_auto=True, color_continuous_scale="YlGnBu", title="Motivo x Modal Agrupado"),
+        use_container_width=True
+    )
+else:
+    st.warning("Coluna 'Modal Agrupado' não disponível.")
 
 # Exportação
 st.header("Exportar Matrizes")
