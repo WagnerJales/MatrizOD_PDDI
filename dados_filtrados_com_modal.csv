@@ -1,410 +1,230 @@
-ORIGEM 2,DESTINO 2,motivo_ajustado,Com que frequ√™ncia voc√™ faz essa viagem?,A viagem foi realizada em qual per√≠odo do dia?,Modal Agrupado
-S√£o Lu√≠s,Alc√¢ntara,Visita a amigos/familiares,Muito raramente,Madrugada (00h - 5h),Moto pr√≥pria
-S√£o Lu√≠s,Alc√¢ntara,Lazer,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-S√£o Lu√≠s,Alc√¢ntara,Lazer,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-S√£o Lu√≠s,Alc√¢ntara,Lazer,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-S√£o Lu√≠s,Alc√¢ntara,Lazer,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Axix√°,Axix√°,Estudo,3 a 5 vezes por semana,Noite (18h - 00h),Transporte Alternativo
-S√£o Lu√≠s,Axix√°,Visita a amigos/familiares,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Axix√°,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),
-Ros√°rio,Bacabeira,Estudo,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte Aquavi√°rio
-S√£o Lu√≠s,Bacabeira,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Bacabeira,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-Cachoeira Grande,FORA DA RMGSL,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-S√£o Jos√© de Ribamar,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",Todos os dias,Madrugada (00h - 5h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-Cachoeira Grande,FORA DA RMGSL,Compras e servi√ßos,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-Cachoeira Grande,Cachoeira Grande,Estudo,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-Cachoeira Grande,Cachoeira Grande,Estudo,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Cachoeira Grande,Cachoeira Grande,Estudo,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-Cachoeira Grande,Cachoeira Grande,Estudo,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,Cachoeira Grande,Trabalho,Todos os dias,Madrugada (00h - 5h),Transporte Alternativo
-S√£o Lu√≠s,Cachoeira Grande,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL ,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Transporte por Aplicativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),√înibus
-Cachoeira Grande,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Compras e servi√ßos,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-Raposa,Icatu,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Icatu,"Sa√∫de (consultas m√©dicas, exames)",3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Icatu,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,Icatu,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Icatu,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Icatu,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Icatu,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Icatu,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Icatu,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,Icatu,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Icatu,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Icatu,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Transporte por Aplicativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Estudo,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-Cachoeira Grande,Morros,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),√înibus
-Raposa,Morros,Lazer,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Lu√≠s,Morros,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,Morros,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Morros,Lazer,Muito raramente,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,Morros,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,"Sa√∫de (consultas m√©dicas, exames)",Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Morros,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Morros,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,Pa√ßo do Lumiar,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,Pa√ßo do Lumiar,Compras e servi√ßos,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Estudo,1 a 3 vezes por m√™s,Madrugada (00h - 5h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Pa√ßo do Lumiar,Trabalho,Todos os dias,Noite (18h - 00h),Transporte Alternativo
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Pa√ßo do Lumiar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Pa√ßo do Lumiar,Estudo,Todos os dias,Noite (18h - 00h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL ,Trabalho,Todos os dias,Manh√£ (5h - 12h),
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Madrugada (00h - 5h),Transporte por Aplicativo
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Madrugada (00h - 5h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Todos os dias,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-Cachoeira Grande,Presidente Juscelino ,Compras e servi√ßos,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Raposa,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Raposa,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,Raposa,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Raposa,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Lu√≠s,Raposa,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Raposa,Lazer,Muito raramente,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,Raposa,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Raposa,Trabalho,1 a 3 vezes por m√™s,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,Raposa,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Raposa,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-Bacabeira,Ros√°rio,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-Cachoeira Grande,Ros√°rio,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-Cachoeira Grande,Ros√°rio,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-Morros,Ros√°rio,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-Pa√ßo do Lumiar,Ros√°rio,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-Presidente Juscelino,Ros√°rio,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-Presidente Juscelino,Ros√°rio,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte por Aplicativo
-Santa Rita,Ros√°rio,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-Santa Rita,Ros√°rio,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,Ros√°rio,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,Ros√°rio,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Compras e servi√ßos,1 a 2 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,Ros√°rio,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),Transporte Aquavi√°rio
-S√£o Lu√≠s,Ros√°rio,Visita a amigos/familiares,Muito raramente,Madrugada (00h - 5h),√înibus
-S√£o Lu√≠s,Ros√°rio,Compras e servi√ßos,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,Santa In√™s ,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,Santa In√™s ,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte por Aplicativo
-Cachoeira Grande,Santa Rita,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,Santa Rita,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carona com algu√©m
-FORA DA RMGSL,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Tarde (12h - 18h),√înibus
-S√£o Jos√© de Ribamar,FORA DA RMGSL,Lazer,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Jos√© de Ribamar,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Jos√© de Ribamar,Lazer,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,"Sa√∫de (consultas m√©dicas, exames)",Muito raramente,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Estudo,3 a 5 vezes por semana,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Madrugada (00h - 5h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Madrugada (00h - 5h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Madrugada (00h - 5h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Madrugada (00h - 5h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Lazer,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,"Sa√∫de (consultas m√©dicas, exames)",Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Lazer,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Aquavi√°rio
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Jos√© de Ribamar,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-Alc√¢ntara,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-FORA DA RMGSL,S√£o Lu√≠s,Trabalho,Muito raramente,Madrugada (00h - 5h),Transporte Alternativo
-FORA DA RMGSL,S√£o Lu√≠s,Trabalho,Muito raramente,Madrugada (00h - 5h),Carona com algu√©m
-Cachoeira Grande,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Trabalho,Muito raramente,Manh√£ (5h - 12h),Viatura
-Cachoeira Grande,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),√înibus
-Cachoeira Grande,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),√înibus
-Cachoeira Grande,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-Cachoeira Grande,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-FORA DA RMGSL,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Icatu,S√£o Lu√≠s,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-Icatu,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-FORA DA RMGSL,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Noite (18h - 00h),Carro pr√≥prio
-Morros,S√£o Lu√≠s,Lazer,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Transporte por Aplicativo
-Pa√ßo do Lumiar,S√£o Lu√≠s,Visita a amigos/familiares,1 a 3 vezes por m√™s,Noite (18h - 00h),√înibus
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Madrugada (00h - 5h),Transporte por Aplicativo
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Transporte por Aplicativo
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,"Sa√∫de (consultas m√©dicas, exames)",3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Transporte por Aplicativo
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),√înibus
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,1 a 2 vezes por semana,Manh√£ (5h - 12h),√înibus
-Pa√ßo do Lumiar,S√£o Lu√≠s,Trabalho,Todos os dias,Noite (18h - 00h),Carro pr√≥prio
-Pa√ßo do Lumiar,S√£o Lu√≠s,Visita a amigos/familiares,1 a 3 vezes por m√™s,Madrugada (00h - 5h),√înibus
-Presidente Juscelino,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Madrugada (00h - 5h),Carro pr√≥prio
-Raposa,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Transporte Alternativo
-Raposa,S√£o Lu√≠s,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-Raposa,S√£o Lu√≠s,Estudo,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-Ros√°rio,S√£o Lu√≠s,Compras e servi√ßos,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte Alternativo
-Ros√°rio,S√£o Lu√≠s,Lazer,Muito raramente,Madrugada (00h - 5h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Trem
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Aquavi√°rio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Madrugada (00h - 5h),Transporte Alternativo
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Aquavi√°rio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,1 a 2 vezes por semana,Tarde (12h - 18h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Todos os dias,Tarde (12h - 18h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Moto pr√≥pria
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,Todos os dias,Noite (18h - 00h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Muito raramente,Noite (18h - 00h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,Todos os dias,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,Muito raramente,Manh√£ (5h - 12h),Transporte por Aplicativo
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Lazer,Muito raramente,Madrugada (00h - 5h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Trem
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Estudo,3 a 5 vezes por semana,Manh√£ (5h - 12h),√înibus
-S√£o Jos√© de Ribamar,S√£o Lu√≠s,Compras e servi√ßos,1 a 2 vezes por semana,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Lu√≠s,Compras e servi√ßos,1 a 2 vezes por semana,Tarde (12h - 18h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Lu√≠s,Lazer,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Lu√≠s,Lazer,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,S√£o Lu√≠s,"Sa√∫de (consultas m√©dicas, exames)",Muito raramente,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Lu√≠s,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Lu√≠s,Trabalho,1 a 3 vezes por m√™s,Tarde (12h - 18h),Moto pr√≥pria
-S√£o Lu√≠s,S√£o Lu√≠s,Trabalho,3 a 5 vezes por semana,Tarde (12h - 18h),Carro pr√≥prio
-S√£o Lu√≠s,S√£o Lu√≠s,Compras e servi√ßos,Muito raramente,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,S√£o Lu√≠s,Lazer,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Lu√≠s,Lazer,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),√înibus
-S√£o Lu√≠s,S√£o Lu√≠s,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,S√£o Lu√≠s,Trabalho,Todos os dias,Manh√£ (5h - 12h),Moto pr√≥pria
-FORA DA RMGSL,S√£o Lu√≠s,Trabalho,1 a 3 vezes por m√™s,Madrugada (00h - 5h),Transporte Alternativo
-FORA DA RMGSL,S√£o Lu√≠s,Estudo,Todos os dias,Tarde (12h - 18h),Carona com algu√©m
-FORA DA RMGSL,S√£o Lu√≠s,Trabalho,Muito raramente,Madrugada (00h - 5h),Transporte Alternativo
-FORA DA RMGSL,S√£o Lu√≠s,Trabalho,Muito raramente,Madrugada (00h - 5h),Carona com algu√©m
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Tarde (12h - 18h),√înibus
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Tarde (12h - 18h),Carona com algu√©m
-Cachoeira Grande,FORA DA RMGSL,Trabalho,1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,"Sa√∫de (consultas m√©dicas, exames)",1 a 3 vezes por m√™s,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Trabalho,Muito raramente,Manh√£ (5h - 12h),Carona com algu√©m
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Madrugada (00h - 5h),Transporte por Aplicativo
-S√£o Lu√≠s,FORA DA RMGSL,Lazer,Muito raramente,Madrugada (00h - 5h),Transporte Alternativo
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Carro pr√≥prio
-S√£o Lu√≠s,FORA DA RMGSL,Visita a amigos/familiares,Muito raramente,Manh√£ (5h - 12h),Transporte Alternativo
+ORIGEM 2;DESTINO 2;Motivo Agrupado;Com que frequÍncia vocÍ faz essa viagem?;A viagem foi realizada em qual perÌodo do dia?;Modal Agrupado
+Alc‚ntara;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Axix·;Axix·;Estudo;3 a 5 vezes por semana;Noite (18h - 00h);Transporte Alternativo
+Bacabeira;Ros·rio;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+Cachoeira Grande;Cachoeira Grande;Estudo;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+Cachoeira Grande;Cachoeira Grande;Estudo;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+Cachoeira Grande;FORA DA RMGSL;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
+Cachoeira Grande;FORA DA RMGSL;Compras e serviÁos;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+Cachoeira Grande;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Cachoeira Grande;FORA DA RMGSL;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
+Cachoeira Grande;Morros;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
+Cachoeira Grande;Presidente Juscelino ;Compras e serviÁos;Muito raramente;Tarde (12h - 18h);‘nibus
+Cachoeira Grande;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+Cachoeira Grande;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+Cachoeira Grande;Santa Rita;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
+Cachoeira Grande;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Cachoeira Grande;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Viatura
+Cachoeira Grande;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Cachoeira Grande;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);‘nibus
+Cachoeira Grande;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);Carro prÛprio
+Cachoeira Grande;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+FORA DA RMGSL;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
+FORA DA RMGSL;S„o LuÌs;Trabalho;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
+FORA DA RMGSL;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+FORA DA RMGSL;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);Carro prÛprio
+FORA DA RMGSL;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Transporte Alternativo
+FORA DA RMGSL;S„o LuÌs;Estudo;Todos os dias;Tarde (12h - 18h);Carona com alguÈm
+FORA DA RMGSL;S„o LuÌs;Trabalho;Muito raramente;Madrugada (00h - 5h);Carona com alguÈm
+Icatu;S„o LuÌs;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+Icatu;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Morros;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+Morros;S„o LuÌs;Lazer;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;Cachoeira Grande;Trabalho;Todos os dias;Madrugada (00h - 5h);Transporte Alternativo
+PaÁo do Lumiar;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+PaÁo do Lumiar;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o JosÈ de Ribamar;Lazer;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Noite (18h - 00h);‘nibus
+PaÁo do Lumiar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte por Aplicativo
+PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Sa˙de (consultas mÈdicas, exames);3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Transporte por Aplicativo
+PaÁo do Lumiar;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
+PaÁo do Lumiar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);‘nibus
+PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Noite (18h - 00h);Carro prÛprio
+PaÁo do Lumiar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);‘nibus
+Presidente Juscelino;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+Presidente Juscelino;Ros·rio;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte por Aplicativo
+Presidente Juscelino;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
+Raposa;Icatu;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+Raposa;Morros;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
+Raposa;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
+Raposa;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+Raposa;S„o LuÌs;Estudo;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+Ros·rio;Bacabeira;Estudo;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Aquavi·rio
+Ros·rio;S„o LuÌs;Compras e serviÁos;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
+Ros·rio;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
+Santa Rita;Ros·rio;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+Santa Rita;Ros·rio;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);Todos os dias;Madrugada (00h - 5h);Transporte Alternativo
+S„o JosÈ de Ribamar;FORA DA RMGSL;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
+S„o JosÈ de Ribamar;PaÁo do Lumiar;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;PaÁo do Lumiar;Compras e serviÁos;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
+S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Sa˙de (consultas mÈdicas, exames);Muito raramente;Tarde (12h - 18h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Moto prÛpria
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Trem
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Aquavi·rio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Tarde (12h - 18h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Todos os dias;Noite (18h - 00h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Noite (18h - 00h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Muito raramente;Manh„ (5h - 12h);Transporte por Aplicativo
+S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o JosÈ de Ribamar;S„o LuÌs;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o JosÈ de Ribamar;S„o LuÌs;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);‘nibus
+S„o LuÌs;Alc‚ntara;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Moto prÛpria
+S„o LuÌs;Alc‚ntara;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
+S„o LuÌs;Alc‚ntara;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
+S„o LuÌs;Axix·;Visita a amigos/familiares;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Axix·;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o LuÌs;Bacabal;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
+S„o LuÌs;Bacabeira;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Bacabeira;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Cachoeira Grande;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte por Aplicativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o LuÌs;FORA DA RMGSL;Estudo;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte por Aplicativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;FORA DA RMGSL;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
+S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;Icatu;Sa˙de (consultas mÈdicas, exames);3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Icatu;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;Icatu;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;Icatu;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Icatu;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Icatu;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
+S„o LuÌs;Icatu;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;Morros;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Morros;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;Morros;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Morros;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Morros;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Morros;Lazer;Muito raramente;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;Morros;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Morros;Sa˙de (consultas mÈdicas, exames);Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;Morros;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Morros;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o LuÌs;PaÁo do Lumiar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;PaÁo do Lumiar;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;PaÁo do Lumiar;Estudo;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Carona com alguÈm
+S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;PaÁo do Lumiar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
+S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Noite (18h - 00h);Transporte Alternativo
+S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;PaÁo do Lumiar;Estudo;Todos os dias;Noite (18h - 00h);‘nibus
+S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;Raposa;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Raposa;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
+S„o LuÌs;Raposa;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Raposa;Lazer;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;Raposa;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Raposa;Trabalho;1 a 3 vezes por mÍs;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;Raposa;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Raposa;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Ros·rio;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;Ros·rio;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Ros·rio;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;Ros·rio;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Ros·rio;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Transporte Aquavi·rio
+S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);‘nibus
+S„o LuÌs;Ros·rio;Compras e serviÁos;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;Santa InÍs ;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;Santa InÍs ;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte por Aplicativo
+S„o LuÌs;Santa Rita;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Estudo;3 a 5 vezes por semana;Tarde (12h - 18h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Lazer;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Aquavi·rio
+S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);‘nibus
+S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);‘nibus
+S„o LuÌs;S„o LuÌs;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
+S„o LuÌs;S„o LuÌs;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
+S„o LuÌs;S„o LuÌs;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
+S„o LuÌs;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Tarde (12h - 18h);Moto prÛpria
+S„o LuÌs;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
+S„o LuÌs;S„o LuÌs;Compras e serviÁos;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
+S„o LuÌs;S„o LuÌs;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
+S„o LuÌs;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
+S„o LuÌs;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
