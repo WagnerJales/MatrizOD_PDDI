@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import folium
@@ -21,7 +20,7 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("dados_filtrados.csv")
+    return pd.read_csv("dados_filtrados_com_modal.csv")  # Arquivo atualizado com 'Modal Agrupado'
 
 try:
     df = carregar_dados()
@@ -52,6 +51,7 @@ destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO 2"].dropna().un
 motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["motivo_ajustado"].dropna().unique()), default=[])
 frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Com que frequência você faz essa viagem?"].dropna().unique()), default=[])
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["A viagem foi realizada em qual período do dia?"].dropna().unique()), default=[])
+modal = st.sidebar.multiselect("Modal Agrupado:", sorted(df["Modal Agrupado"].dropna().unique()), default=[])
 
 # Aplicar filtros
 df_filtrado = df.copy()
@@ -65,6 +65,8 @@ if frequencia:
     df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"].isin(frequencia)]
 if periodo:
     df_filtrado = df_filtrado[df_filtrado["A viagem foi realizada em qual período do dia?"].isin(periodo)]
+if modal:
+    df_filtrado = df_filtrado[df_filtrado["Modal Agrupado"].isin(modal)]
 
 # Agrupar OD
 df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
@@ -92,21 +94,24 @@ st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
 # Heatmaps adicionais em pares
+col3, col4 = st.columns(2)
 
 # Motivo x Frequência
-col3, col4 = st.columns(2)
 with col3:
     st.subheader("Motivo x Frequência")
-    heatmap_a = df_filtrado.groupby(["motivo_ajustado", "Com que frequência você faz essa viagem?"]).size().unstack(fill_value=0)
+    heatmap_a = df_filtrado.groupby(
+        ["motivo_ajustado", "Com que frequência você faz essa viagem?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
 
 # Motivo x Período do Dia
 with col4:
     st.subheader("Motivo x Período do Dia")
-    heatmap_b = df_filtrado.groupby(["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    heatmap_b = df_filtrado.groupby(
+        ["motivo_ajustado", "A viagem foi realizada em qual período do dia?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
 
-# -------------------------
 # Matriz OD + Frequência x Período do Dia lado a lado
 col5, col6 = st.columns(2)
 
@@ -117,8 +122,22 @@ with col5:
 
 with col6:
     st.subheader("Frequência x Período do Dia")
-    heatmap_c = df_filtrado.groupby(["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]).size().unstack(fill_value=0)
+    heatmap_c = df_filtrado.groupby(
+        ["Com que frequência você faz essa viagem?", "A viagem foi realizada em qual período do dia?"]
+    ).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
+
+# ---------------------------------------
+# Novo Heatmap: Motivo x Modal Agrupado
+st.subheader("Motivo x Modal Agrupado")
+if "Modal Agrupado" in df_filtrado.columns:
+    heatmap_d = df_filtrado.groupby(["motivo_ajustado", "Modal Agrupado"]).size().unstack(fill_value=0)
+    st.plotly_chart(
+        px.imshow(heatmap_d, text_auto=True, color_continuous_scale="YlGnBu", title="Motivo x Modal Agrupado"),
+        use_container_width=True
+    )
+else:
+    st.warning("Coluna 'Modal Agrupado' não disponível.")
 
 # Exportação
 st.header("Exportar Matrizes")
@@ -136,9 +155,10 @@ def exportar_csv(df, nome_arquivo):
 exportar_csv(matriz, "Matriz_OD")
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
-exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
-
+exportar_csv(heatmap_c, "Matriz_Frequência_x_Periodo")
+exportar_csv(heatmap_d, "Matriz_Motivo_x_Modal")
 
 # Rodapé com crédito
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
+
