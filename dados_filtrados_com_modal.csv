@@ -1,230 +1,237 @@
-ORIGEM 2;DESTINO 2;Motivo Agrupado;Com que frequÍncia vocÍ faz essa viagem?;A viagem foi realizada em qual perÌodo do dia?;Modal Agrupado
-Alc‚ntara;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Axix·;Axix·;Estudo;3 a 5 vezes por semana;Noite (18h - 00h);Transporte Alternativo
-Bacabeira;Ros·rio;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-Cachoeira Grande;Cachoeira Grande;Estudo;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-Cachoeira Grande;Cachoeira Grande;Estudo;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-Cachoeira Grande;FORA DA RMGSL;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
-Cachoeira Grande;FORA DA RMGSL;Compras e serviÁos;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-Cachoeira Grande;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Cachoeira Grande;FORA DA RMGSL;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
-Cachoeira Grande;Morros;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
-Cachoeira Grande;Presidente Juscelino ;Compras e serviÁos;Muito raramente;Tarde (12h - 18h);‘nibus
-Cachoeira Grande;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-Cachoeira Grande;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-Cachoeira Grande;Santa Rita;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
-Cachoeira Grande;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Cachoeira Grande;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Viatura
-Cachoeira Grande;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Cachoeira Grande;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);‘nibus
-Cachoeira Grande;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);Carro prÛprio
-Cachoeira Grande;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-FORA DA RMGSL;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
-FORA DA RMGSL;S„o LuÌs;Trabalho;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
-FORA DA RMGSL;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-FORA DA RMGSL;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);Carro prÛprio
-FORA DA RMGSL;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Transporte Alternativo
-FORA DA RMGSL;S„o LuÌs;Estudo;Todos os dias;Tarde (12h - 18h);Carona com alguÈm
-FORA DA RMGSL;S„o LuÌs;Trabalho;Muito raramente;Madrugada (00h - 5h);Carona com alguÈm
-Icatu;S„o LuÌs;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-Icatu;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Morros;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-Morros;S„o LuÌs;Lazer;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;Cachoeira Grande;Trabalho;Todos os dias;Madrugada (00h - 5h);Transporte Alternativo
-PaÁo do Lumiar;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-PaÁo do Lumiar;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o JosÈ de Ribamar;Lazer;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Noite (18h - 00h);‘nibus
-PaÁo do Lumiar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte por Aplicativo
-PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Sa˙de (consultas mÈdicas, exames);3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Transporte por Aplicativo
-PaÁo do Lumiar;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
-PaÁo do Lumiar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);‘nibus
-PaÁo do Lumiar;S„o LuÌs;Trabalho;Todos os dias;Noite (18h - 00h);Carro prÛprio
-PaÁo do Lumiar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);‘nibus
-Presidente Juscelino;Ros·rio;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-Presidente Juscelino;Ros·rio;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte por Aplicativo
-Presidente Juscelino;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
-Raposa;Icatu;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-Raposa;Morros;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
-Raposa;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
-Raposa;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-Raposa;S„o LuÌs;Estudo;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-Ros·rio;Bacabeira;Estudo;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Aquavi·rio
-Ros·rio;S„o LuÌs;Compras e serviÁos;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
-Ros·rio;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
-Santa Rita;Ros·rio;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-Santa Rita;Ros·rio;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);Todos os dias;Madrugada (00h - 5h);Transporte Alternativo
-S„o JosÈ de Ribamar;FORA DA RMGSL;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
-S„o JosÈ de Ribamar;PaÁo do Lumiar;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;PaÁo do Lumiar;Compras e serviÁos;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
-S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Sa˙de (consultas mÈdicas, exames);Muito raramente;Tarde (12h - 18h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Moto prÛpria
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Trem
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Aquavi·rio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Todos os dias;Tarde (12h - 18h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Todos os dias;Noite (18h - 00h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Noite (18h - 00h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Estudo;Muito raramente;Manh„ (5h - 12h);Transporte por Aplicativo
-S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Lazer;Muito raramente;Madrugada (00h - 5h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o JosÈ de Ribamar;S„o LuÌs;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o JosÈ de Ribamar;S„o LuÌs;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);‘nibus
-S„o LuÌs;Alc‚ntara;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);Moto prÛpria
-S„o LuÌs;Alc‚ntara;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
-S„o LuÌs;Alc‚ntara;Lazer;Muito raramente;Noite (18h - 00h);Carro prÛprio
-S„o LuÌs;Axix·;Visita a amigos/familiares;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Axix·;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o LuÌs;Bacabal;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
-S„o LuÌs;Bacabeira;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Bacabeira;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Cachoeira Grande;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte por Aplicativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o LuÌs;FORA DA RMGSL;Estudo;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte por Aplicativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;FORA DA RMGSL;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;FORA DA RMGSL;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;FORA DA RMGSL;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;FORA DA RMGSL;Lazer;Muito raramente;Madrugada (00h - 5h);Transporte Alternativo
-S„o LuÌs;FORA DA RMGSL;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;Icatu;Sa˙de (consultas mÈdicas, exames);3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Icatu;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;Icatu;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;Icatu;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Icatu;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Icatu;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
-S„o LuÌs;Icatu;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;Morros;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Morros;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;Morros;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Morros;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Morros;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Morros;Lazer;Muito raramente;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;Morros;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Morros;Sa˙de (consultas mÈdicas, exames);Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;Morros;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Morros;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o LuÌs;PaÁo do Lumiar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;PaÁo do Lumiar;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;PaÁo do Lumiar;Estudo;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Carona com alguÈm
-S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;PaÁo do Lumiar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Tarde (12h - 18h);‘nibus
-S„o LuÌs;PaÁo do Lumiar;Trabalho;Todos os dias;Noite (18h - 00h);Transporte Alternativo
-S„o LuÌs;PaÁo do Lumiar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;PaÁo do Lumiar;Estudo;Todos os dias;Noite (18h - 00h);‘nibus
-S„o LuÌs;FORA DA RMGSL;Trabalho;Todos os dias;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;Raposa;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Raposa;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
-S„o LuÌs;Raposa;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Raposa;Lazer;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;Raposa;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Raposa;Trabalho;1 a 3 vezes por mÍs;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;Raposa;Estudo;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Raposa;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Ros·rio;Estudo;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;Ros·rio;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;Ros·rio;Trabalho;Todos os dias;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Ros·rio;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;Ros·rio;Lazer;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Ros·rio;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Transporte Aquavi·rio
-S„o LuÌs;Ros·rio;Visita a amigos/familiares;Muito raramente;Madrugada (00h - 5h);‘nibus
-S„o LuÌs;Ros·rio;Compras e serviÁos;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;Santa InÍs ;Sa˙de (consultas mÈdicas, exames);1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;Santa InÍs ;Trabalho;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Transporte por Aplicativo
-S„o LuÌs;Santa Rita;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Estudo;3 a 5 vezes por semana;Tarde (12h - 18h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Madrugada (00h - 5h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Lazer;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;1 a 3 vezes por mÍs;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Todos os dias;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Lazer;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;3 a 5 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Aquavi·rio
-S„o LuÌs;S„o JosÈ de Ribamar;Visita a amigos/familiares;Muito raramente;Noite (18h - 00h);‘nibus
-S„o LuÌs;S„o JosÈ de Ribamar;Trabalho;1 a 2 vezes por semana;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);‘nibus
-S„o LuÌs;S„o LuÌs;Compras e serviÁos;1 a 2 vezes por semana;Tarde (12h - 18h);Transporte Alternativo
-S„o LuÌs;S„o LuÌs;Lazer;Muito raramente;Tarde (12h - 18h);Carona com alguÈm
-S„o LuÌs;S„o LuÌs;Sa˙de (consultas mÈdicas, exames);Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;S„o LuÌs;Trabalho;Muito raramente;Manh„ (5h - 12h);Carro prÛprio
-S„o LuÌs;S„o LuÌs;Trabalho;1 a 3 vezes por mÍs;Tarde (12h - 18h);Moto prÛpria
-S„o LuÌs;S„o LuÌs;Trabalho;3 a 5 vezes por semana;Tarde (12h - 18h);Carro prÛprio
-S„o LuÌs;S„o LuÌs;Compras e serviÁos;Muito raramente;Manh„ (5h - 12h);Transporte Alternativo
-S„o LuÌs;S„o LuÌs;Lazer;Muito raramente;Tarde (12h - 18h);‘nibus
-S„o LuÌs;S„o LuÌs;Visita a amigos/familiares;Muito raramente;Manh„ (5h - 12h);Carona com alguÈm
-S„o LuÌs;S„o LuÌs;Trabalho;Todos os dias;Manh„ (5h - 12h);Moto prÛpria
+ORIGEM,DESTINO,Faixa Et√°ria,Escolaridade,Renda Familiar,Ultima viagem?,Periodo do dia,Motivo,Principal Modal,Fez Integra√ß√£o?,"Se sim, qual modal?",Tempo de Viagem,Frequ√™ncia
+S√£o Lu√≠s,Morros,18 a 24 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Madrugada (00h - 5h),Lazer,Moto,NAO,Moto pr√≥pria,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Pa√ßo do Lumiar,25 a 34 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,Carro pr√≥prio,NAO,"Transporte por aplicativo (Uber, 99)",Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,Icatu,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,Carro pr√≥prio,SIM,Carro pr√≥prio,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Morros,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,SIM,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+FORA DA RMGSL,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Noite (18h - 00h),Estudo,Van Alternativo,NAO,A p√©,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior incompleto,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,SIM,√înibus,Mais de 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Lazer,√înibus,NAO,√înibus,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Bacabeira,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,NAO,,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Lu√≠s,Alc√¢ntara,18 a 24 anos,Ensino M√©dio completo,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,Ferriboat,SIM,T√°xi,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,,Mais de 2 horas,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,,Menos de 15 minutos,3 a 5 vezes por semana
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Moto,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,35 a 44 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Tarde (12h - 18h),Trabalho,Van Alternativo,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Trabalho,Van Alternativo,NAO,A p√©,Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Jos√© de Ribamar,Pa√ßo do Lumiar,45 a 59 anos,Ensino Fundamental completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),"Sa√∫de (consultas m√©dicas, exames)",Van Alternativo,NAO,A p√©,Entre 30 e 60 minutos,Todos os dias
+Pa√ßo do Lumiar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,√înibus,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Pa√ßo do Lumiar,35 a 44 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Van Alternativo,NAO,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,1 a 2 vezes por semana
+Pa√ßo do Lumiar,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Compras e servi√ßos,Van Alternativo,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,Van Alternativo,NAO,,Entre 30 e 60 minutos,Todos os dias
+Pa√ßo do Lumiar,S√£o Jos√© de Ribamar,25 a 34 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Trabalho,Van Alternativo,NAO,A p√©,Menos de 15 minutos,Todos os dias
+Pa√ßo do Lumiar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Raposa,25 a 34 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Transporte por Aplicativo,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,60 anos ou mais,Ensino Superior completo ou mais,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,Pa√ßo do Lumiar,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,35 a 44 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Van Alternativo,NAO,Carro pr√≥prio,Entre 30 e 60 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Lazer,Van Alternativo,NAO,Transporte alternativo - Van,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,Transporte alternativo - Van,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Van Alternativo,SIM,"Transporte por aplicativo (Uber, 99)",Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Tarde (12h - 18h),Compras e servi√ßos,Van Alternativo,NAO,Transporte alternativo - Van,Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,Raposa,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",√înibus,SIM,Transporte alternativo - Van,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Pa√ßo do Lumiar,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 1 e 2 horas,Todos os dias
+S√£o Lu√≠s,Morros,60 anos ou mais,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Lu√≠s,Bacabeira,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,SIM,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,SIM,Carona com algu√©m,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Estudo,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Lu√≠s,Pa√ßo do Lumiar,18 a 24 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,SIM,√înibus;A p√©,Entre 30 e 60 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,35 a 44 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Van Alternativo,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Pa√ßo do Lumiar,45 a 59 anos,Ensino M√©dio incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",√înibus,SIM,√înibus,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Lu√≠s,Ros√°rio,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,√înibus,Entre 1 e 2 horas,Todos os dias
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Van Alternativo,NAO,,Mais de 2 horas,Muito raramente
+Pa√ßo do Lumiar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,√înibus,Mais de 2 horas,Todos os dias
+Pa√ßo do Lumiar,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,√înibus;A p√©,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 15 e 30 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,18 a 24 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Van Alternativo,NAO,"√înibus;Transporte por aplicativo (Uber, 99);Transporte alternativo - Van;Transporte alternativo - Carro",Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,A p√©,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,√înibus,Mais de 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,60 anos ou mais,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Compras e servi√ßos,Carro pr√≥prio,SIM,Carona com algu√©m,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,18 a 24 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,SIM,√înibus,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Icatu,45 a 59 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,Pa√ßo do Lumiar,60 anos ou mais,Ensino Fundamental incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,Icatu,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio incompleto,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 1 e 2 horas,Todos os dias
+FORA DA RMGSL,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Madrugada (00h - 5h),Estudo,Carro pr√≥prio,SIM,"Transporte por aplicativo (Uber, 99)",Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,√înibus,NAO,,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Moto-t√°xi,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Pa√ßo do Lumiar,45 a 59 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,,Tarde (12h - 18h),Lazer,√înibus,SIM,√înibus,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Fundamental incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Noite (18h - 00h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Raposa,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,Pa√ßo do Lumiar,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Noite (18h - 00h),Estudo,√înibus,NAO,,Mais de 2 horas,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,60 anos ou mais,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Madrugada (00h - 5h),Lazer,Transporte por Aplicativo,NAO,√înibus,Entre 30 e 60 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior incompleto,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,Ros√°rio,45 a 59 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,Carro pr√≥prio,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Compras e servi√ßos,√înibus,SIM,√înibus,Entre 30 e 60 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Moto,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,60 anos ou mais,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino M√©dio incompleto,Prefiro n√£o dizer,Espor√°dica,Tarde (12h - 18h),Lazer,Van Alternativo,NAO,Transporte alternativo - Van,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Icatu,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,1 a 2 vezes por semana
+Ros√°rio,S√£o Lu√≠s,Menos de 18 anos,Ensino M√©dio incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Tarde (12h - 18h),Trabalho,Van Alternativo,NAO,,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+Santa Rita,Ros√°rio,Menos de 18 anos,Ensino M√©dio incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,√înibus,Entre 15 e 30 minutos,3 a 5 vezes por semana
+Santa Rita,Ros√°rio,Menos de 18 anos,Ensino M√©dio incompleto,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 15 e 30 minutos,Todos os dias
+Pa√ßo do Lumiar,Ros√°rio,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+Presidente Juscelino,Ros√°rio,Menos de 18 anos,Ensino M√©dio incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,18 a 24 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,√înibus,Entre 1 e 2 horas,3 a 5 vezes por semana
+Presidente Juscelino,Ros√°rio,Menos de 18 anos,Ensino M√©dio incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,Transporte alternativo - Carro,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,Carro pr√≥prio,Entre 1 e 2 horas,3 a 5 vezes por semana
+Bacabeira,Ros√°rio,Menos de 18 anos,Ensino M√©dio incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,Carro pr√≥prio,Entre 15 e 30 minutos,3 a 5 vezes por semana
+Alc√¢ntara,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Transporte por Aplicativo,NAO,A p√©,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,60 anos ou mais,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,1 a 2 vezes por semana
+S√£o Lu√≠s,Morros,45 a 59 anos,Ensino Superior incompleto,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carro pr√≥prio,Mais de 2 horas,1 a 3 vezes por m√™s
+Ros√°rio,Bacabeira,Menos de 18 anos,Ensino Fundamental completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 30 e 60 minutos,Todos os dias
+Morros,Ros√°rio,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+Pa√ßo do Lumiar,Cachoeira Grande,35 a 44 anos,Ensino M√©dio incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Tarde (12h - 18h),Lazer,Van Alternativo,SIM,"Transporte por aplicativo (Uber, 99);Transporte alternativo - Van;Transporte alternativo - Carro",Mais de 2 horas,Muito raramente
+Raposa,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+Raposa,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Compras e servi√ßos,Carro pr√≥prio,NAO,A p√©,Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,Icatu,60 anos ou mais,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+Raposa,Morros,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Alc√¢ntara,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Transporte Aquavi√°rio,SIM,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,√înibus,NAO,,Mais de 2 horas,Muito raramente
+Raposa,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Compras e servi√ßos,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+Pa√ßo do Lumiar,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,SIM,"√înibus;Transporte por aplicativo (Uber, 99);Transporte alternativo - Van",Entre 30 e 60 minutos,3 a 5 vezes por semana
+FORA DA RMGSL,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Transporte por Aplicativo,NAO,,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,45 a 59 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,√înibus,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Pa√ßo do Lumiar,45 a 59 anos,Ensino M√©dio completo,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+FORA DA RMGSL,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),"Sa√∫de (consultas m√©dicas, exames)",√înibus,SIM,"Transporte por aplicativo (Uber, 99)",Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Jos√© de Ribamar,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Raposa,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,1 a 3 vezes por m√™s
+FORA DA RMGSL,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,"√înibus;Transporte por aplicativo (Uber, 99);T√°xi;A p√©;Transporte alternativo - Van;Transporte alternativo - Carro",Mais de 2 horas,Muito raramente
+FORA DA RMGSL,FORA DA RMGSL,60 anos ou mais,Ensino M√©dio completo,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,√înibus;Carro pr√≥prio,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Estudo,√înibus,SIM,√înibus,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Icatu,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,SIM,Transporte alternativo - Carro,Mais de 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,√înibus,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,Carona com algu√©m,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,60 anos ou mais,Ensino Superior completo ou mais,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,NAO,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Madrugada (00h - 5h),Lazer,√înibus,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Ros√°rio,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,"Transporte por aplicativo (Uber, 99);Transporte alternativo - Van",Entre 1 e 2 horas,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,√înibus,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Ros√°rio,25 a 34 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Raposa,45 a 59 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,√înibus,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Transporte Aquavi√°rio,SIM,Transporte alternativo - Van,Mais de 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,√înibus,SIM,√înibus,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Mais de 2 horas,1 a 2 vezes por semana
+Axix√°,Axix√°,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Madrugada (00h - 5h),Trabalho,Van Alternativo,SIM,Carona com algu√©m,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Viatura,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,√înibus,NAO,"Transporte por aplicativo (Uber, 99)",Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,"Transporte por aplicativo (Uber, 99)",Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+Pa√ßo do Lumiar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 1 e 2 horas,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,45 a 59 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 15 e 30 minutos,Todos os dias
+S√£o Lu√≠s,Raposa,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Lazer,√înibus,NAO,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Morros,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Transporte por Aplicativo,SIM,Transporte alternativo - Carro,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,Pa√ßo do Lumiar,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Todos os dias
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,Pa√ßo do Lumiar,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carro pr√≥prio,Menos de 15 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Transporte por Aplicativo,NAO,Carona com algu√©m,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,Morros,60 anos ou mais,Ensino M√©dio completo,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,Transporte alternativo - Carro,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,Morros,35 a 44 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,√înibus,SIM,,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,FORA DA RMGSL,45 a 59 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Van Alternativo,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Santa Rita,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,Morros,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Estudo,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+Ros√°rio,S√£o Lu√≠s,35 a 44 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Compras e servi√ßos,Van Alternativo,SIM,T√°xi,Mais de 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,Morros,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,Pa√ßo do Lumiar,25 a 34 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Todos os dias
+Raposa,Icatu,45 a 59 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Moto,NAO,√înibus,Entre 30 e 60 minutos,3 a 5 vezes por semana
+FORA DA RMGSL,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Trem,SIM,Carro pr√≥prio,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Alc√¢ntara,45 a 59 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Transporte Aquavi√°rio,NAO,,Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,25 a 34 anos,Ensino Superior completo ou mais,Acima de 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,"Transporte por aplicativo (Uber, 99);Carona com algu√©m",Entre 1 e 2 horas,Todos os dias
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,NAO,,Entre 30 e 60 minutos,Todos os dias
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Van Alternativo,NAO,,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Axix√°,45 a 59 anos,Ensino M√©dio completo,Entre 4 e 10 sal√°rios m√≠nimos,,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+Morros,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,√înibus,SIM,Carona com algu√©m,Entre 1 e 2 horas,1 a 2 vezes por semana
+S√£o Lu√≠s,Axix√°,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,SIM,√înibus;Transporte alternativo - Van;Transporte alternativo - Carro,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+S√£o Lu√≠s,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 2 e 4 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,NAO,,Entre 30 e 60 minutos,3 a 5 vezes por semana
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Trabalho,√înibus,NAO,,Mais de 2 horas,Muito raramente
+Pa√ßo do Lumiar,S√£o Lu√≠s,18 a 24 anos,Ensino Superior completo ou mais,At√© 1 sal√°rio m√≠nimo,Rotineira,Tarde (12h - 18h),Trabalho,√înibus,NAO,,Entre 1 e 2 horas,Todos os dias
+S√£o Lu√≠s,Raposa,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Trabalho,√înibus,SIM,"Transporte por aplicativo (Uber, 99)",Entre 1 e 2 horas,3 a 5 vezes por semana
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Prefiro n√£o dizer,Rotineira,Noite (18h - 00h),Estudo,√înibus,SIM,√înibus,Mais de 2 horas,Todos os dias
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior completo ou mais,Entre 2 e 4 sal√°rios m√≠nimos,Espor√°dica,Noite (18h - 00h),Trabalho,√înibus,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,SIM,√înibus,Mais de 2 horas,Todos os dias
+S√£o Lu√≠s,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,Transporte por Aplicativo,NAO,,Entre 15 e 30 minutos,Muito raramente
+S√£o Lu√≠s,Raposa,18 a 24 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,S√£o Lu√≠s,18 a 24 anos,Ensino Superior incompleto,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+S√£o Lu√≠s,Morros,18 a 24 anos,Ensino Superior incompleto,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,18 a 24 anos,Ensino Superior incompleto,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+S√£o Jos√© de Ribamar,S√£o Lu√≠s,35 a 44 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,√înibus,SIM,Carro pr√≥prio;Moto pr√≥pria,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,Icatu,25 a 34 anos,Ensino Superior completo ou mais,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+S√£o Lu√≠s,FORA DA RMGSL,25 a 34 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,,Mais de 2 horas,Muito raramente
+Pa√ßo do Lumiar,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Estudo,√înibus,NAO,,Entre 1 e 2 horas,3 a 5 vezes por semana
+Icatu,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Tarde (12h - 18h),Compras e servi√ßos,√înibus,SIM,√înibus,Entre 1 e 2 horas,1 a 2 vezes por semana
+Icatu,S√£o Lu√≠s,25 a 34 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,√înibus,SIM,Transporte alternativo - Van,Entre 30 e 60 minutos,Muito raramente
+Presidente Juscelino,S√£o Lu√≠s,25 a 34 anos,Ensino Superior incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Compras e servi√ßos,Van Alternativo,SIM,Transporte alternativo - Carro,Entre 1 e 2 horas,1 a 2 vezes por semana
+Cachoeira Grande,Cachoeira Grande,18 a 24 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Rotineira,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,Moto pr√≥pria,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,S√£o Lu√≠s,45 a 59 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Van Alternativo,NAO,√înibus;Moto-t√°xi,Entre 30 e 60 minutos,Muito raramente
+S√£o Lu√≠s,S√£o Jos√© de Ribamar,45 a 59 anos,Ensino Superior completo ou mais,Entre 4 e 10 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,Morros,35 a 44 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Tarde (12h - 18h),Trabalho,Moto,NAO,Moto pr√≥pria,Menos de 15 minutos,1 a 3 vezes por m√™s
+Cachoeira Grande,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Tarde (12h - 18h),Trabalho,Carro pr√≥prio,NAO,Moto pr√≥pria,Entre 1 e 2 horas,3 a 5 vezes por semana
+Cachoeira Grande,Ros√°rio,35 a 44 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Rotineira,Manh√£ (5h - 12h),Compras e servi√ßos,Van Alternativo,NAO,Moto pr√≥pria,Mais de 2 horas,Muito raramente
+Cachoeira Grande,FORA DA RMGSL,Menos de 18 anos,Ensino Fundamental completo,Prefiro n√£o dizer,Espor√°dica,Tarde (12h - 18h),Lazer,√înibus,NAO,Moto pr√≥pria,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,Cachoeira Grande,Menos de 18 anos,Ensino M√©dio incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,SIM,Carona com algu√©m,Mais de 2 horas,Muito raramente
+Cachoeira Grande,FORA DA RMGSL,45 a 59 anos,Ensino Fundamental incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Moto,SIM,Carona com algu√©m,Mais de 2 horas,Todos os dias
+Cachoeira Grande,Ros√°rio,35 a 44 anos,Ensino M√©dio incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Madrugada (00h - 5h),Trabalho,Van Alternativo,NAO,A p√©,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+Cachoeira Grande,Presidente Juscelino ,Menos de 18 anos,Ensino M√©dio incompleto,At√© 1 sal√°rio m√≠nimo,Rotineira,Tarde (12h - 18h),Estudo,Carro pr√≥prio,SIM,Moto-t√°xi,Menos de 15 minutos,Todos os dias
+Cachoeira Grande,S√£o Lu√≠s,35 a 44 anos,Ensino Fundamental incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Madrugada (00h - 5h),Trabalho,Carro pr√≥prio,NAO,√înibus,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,FORA DA RMGSL,35 a 44 anos,Ensino Fundamental incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Tarde (12h - 18h),Lazer,Carro pr√≥prio,NAO,Carona com algu√©m,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,S√£o Lu√≠s,25 a 34 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Carro,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+Cachoeira Grande,S√£o Lu√≠s,35 a 44 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carro pr√≥prio,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,S√£o Lu√≠s,60 anos ou mais,Ensino Fundamental incompleto,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),"Sa√∫de (consultas m√©dicas, exames)",Carro pr√≥prio,NAO,Carona com algu√©m,Entre 1 e 2 horas,1 a 3 vezes por m√™s
+Cachoeira Grande,FORA DA RMGSL,45 a 59 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Trabalho,Carro pr√≥prio,NAO,Carona com algu√©m,Mais de 2 horas,Muito raramente
+Cachoeira Grande,Santa Rita,Menos de 18 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Madrugada (00h - 5h),Lazer,Van Alternativo,NAO,Carona com algu√©m,Mais de 2 horas,Muito raramente
+S√£o Lu√≠s,Cachoeira Grande,25 a 34 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Espor√°dica,Manh√£ (5h - 12h),Lazer,Van Alternativo,NAO,Moto-t√°xi,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,Morros,35 a 44 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Compras e servi√ßos,Moto,NAO,Moto pr√≥pria,Entre 30 e 60 minutos,1 a 2 vezes por semana
+Cachoeira Grande,Morros,25 a 34 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Manh√£ (5h - 12h),Compras e servi√ßos,Moto,NAO,Moto pr√≥pria,Entre 30 e 60 minutos,1 a 2 vezes por semana
+Cachoeira Grande,Morros,Menos de 18 anos,Ensino Fundamental incompleto,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Moto,NAO,Moto pr√≥pria,Entre 30 e 60 minutos,Muito raramente
+Cachoeira Grande,Morros,Menos de 18 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Rotineira,Manh√£ (5h - 12h),Trabalho,Moto,NAO,Moto pr√≥pria,Menos de 15 minutos,1 a 2 vezes por semana
+Cachoeira Grande,Morros,35 a 44 anos,Ensino M√©dio completo,At√© 1 sal√°rio m√≠nimo,Espor√°dica,Manh√£ (5h - 12h),Compras e servi√ßos,Carro pr√≥prio,NAO,Carona com algu√©m,Entre 15 e 30 minutos,Muito raramente
+Cachoeira Grande,S√£o Lu√≠s,18 a 24 anos,Ensino M√©dio completo,Entre 1 e 2 sal√°rios m√≠nimos,Rotineira,Madrugada (00h - 5h),Trabalho,Van Alternativo,NAO,Transporte alternativo - Van,Entre 1 e 2 horas,Muito raramente
+Cachoeira Grande,Morros,18 a 24 anos,Ensino M√©dio completo,Prefiro n√£o dizer,Espor√°dica,Manh√£ (5h - 12h),Lazer,Carro pr√≥prio,NAO,Carona com algu√©m,Entre 15 e 30 minutos,Muito raramente
