@@ -20,7 +20,7 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("dados_filtrados_com_modal.csv")  # Arquivo atualizado com 'Modal Agrupado'
+    return pd.read_csv("Planilha_Tratada_Final.csv")  # arquivo final tratado
 
 try:
     df = carregar_dados()
@@ -45,37 +45,38 @@ municipios_coords = {
     "FORA DA RMGSL": [-2.88, -44.53]
 }
 
+# Filtros no sidebar
 st.sidebar.header("Filtros")
-origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM 2"].dropna().unique()), default=[])
-destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO 2"].dropna().unique()), default=[])
-motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["motivo_ajustado"].dropna().unique()), default=[])
-frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Com que frequência você faz essa viagem?"].dropna().unique()), default=[])
-periodo = st.sidebar.multiselect("Período do dia:", sorted(df["A viagem foi realizada em qual período do dia?"].dropna().unique()), default=[])
-modal = st.sidebar.multiselect("Modal Agrupado:", sorted(df["Modal Agrupado"].dropna().unique()), default=[])
+origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
+destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
+motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()), default=[])
+frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
+periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
+modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
 # Aplicar filtros
 df_filtrado = df.copy()
 if origens:
-    df_filtrado = df_filtrado[df_filtrado["ORIGEM 2"].isin(origens)]
+    df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
 if destinos:
-    df_filtrado = df_filtrado[df_filtrado["DESTINO 2"].isin(destinos)]
+    df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(destinos)]
 if motivo:
-    df_filtrado = df_filtrado[df_filtrado["motivo_ajustado"].isin(motivo)]
+    df_filtrado = df_filtrado[df_filtrado["Motivo"].isin(motivo)]
 if frequencia:
-    df_filtrado = df_filtrado[df_filtrado["Com que frequência você faz essa viagem?"].isin(frequencia)]
+    df_filtrado = df_filtrado[df_filtrado["Frequência"].isin(frequencia)]
 if periodo:
-    df_filtrado = df_filtrado[df_filtrado["A viagem foi realizada em qual período do dia?"].isin(periodo)]
+    df_filtrado = df_filtrado[df_filtrado["Periodo do dia"].isin(periodo)]
 if modal:
-    df_filtrado = df_filtrado[df_filtrado["Modal Agrupado"].isin(modal)]
+    df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
 # Agrupar OD
-df_agrupado = df_filtrado.groupby(["ORIGEM 2", "DESTINO 2"]).size().reset_index(name="total")
+df_agrupado = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
 # Criar mapa
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
-    origem = row["ORIGEM 2"]
-    destino = row["DESTINO 2"]
+    origem = row["ORIGEM"]
+    destino = row["DESTINO"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
@@ -92,7 +93,6 @@ for cidade, coord in municipios_coords.items():
 # Mostrar mapa
 st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
-
 
 # Heatmap principal: Matriz OD
 st.subheader("Matriz OD (Gráfico Térmico)")
@@ -133,4 +133,27 @@ with col5:
     st.subheader("Modal x Frequência")
     heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl", title="Principal Modal x Frequência"), use_container_width=True)
-ww.wagnerjales.com.br)")
+
+# Exportação
+st.header("Exportar Matrizes")
+
+def exportar_csv(df, nome_arquivo):
+    buffer = io.BytesIO()
+    df.to_csv(buffer, index=True)
+    st.download_button(
+        label=f"📥 Baixar {nome_arquivo}",
+        data=buffer.getvalue(),
+        file_name=f"{nome_arquivo}.csv",
+        mime="text/csv"
+    )
+
+exportar_csv(matriz, "Matriz_OD")
+exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
+exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
+exportar_csv(heatmap_c, "Matriz_Frequência_x_Periodo")
+exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
+exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
+
+# Rodapé com crédito
+st.markdown("---")
+st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
