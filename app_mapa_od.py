@@ -20,7 +20,7 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("Planilha_Tratada_Final.csv")  # arquivo final tratado
+    return pd.read_csv("Planilha_Tratada_Final.csv")
 
 try:
     df = carregar_dados()
@@ -45,7 +45,7 @@ municipios_coords = {
     "FORA DA RMGSL": [-2.88, -44.53]
 }
 
-# Filtros no sidebar
+# Filtros
 st.sidebar.header("Filtros")
 origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
 destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
@@ -54,7 +54,6 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
-# Aplicar filtros
 df_filtrado = df.copy()
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
@@ -69,11 +68,10 @@ if periodo:
 if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
-# Agrupar OD
+# Mapa
 df_agrupado = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
-
-# Criar mapa
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
+
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
     origem = row["ORIGEM"]
     destino = row["DESTINO"]
@@ -88,16 +86,15 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
         ).add_to(mapa)
 
 for cidade, coord in municipios_coords.items():
-    folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
+    folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
-# Mostrar mapa
 st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
-# Heatmap principal: Matriz OD
+# Matriz OD com altura ajustável
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
-altura = 50 * len(matriz)  # 50 pixels por linha
+altura = 50 * len(matriz)
 fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
 st.plotly_chart(fig, use_container_width=True)
 
@@ -153,6 +150,6 @@ exportar_csv(heatmap_c, "Matriz_Frequência_x_Periodo")
 exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
 exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
-# Rodapé com crédito
+# Rodapé
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
