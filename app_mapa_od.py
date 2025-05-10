@@ -97,9 +97,9 @@ st_folium(mapa, width=1600, height=700)
 # Heatmap principal: Matriz OD
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
-st.plotly_chart(
-    px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD"),
-    use_container_width=True
+altura = 50 * len(matriz)  # 50 pixels por linha
+fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD", height=altura)
+st.plotly_chart(fig, use_container_width=True)
 )
 
 # Heatmaps adicionais em pares
