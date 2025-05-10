@@ -79,7 +79,7 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
-st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
+st.subheader("236 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
 # Matriz OD com altura ajustável
