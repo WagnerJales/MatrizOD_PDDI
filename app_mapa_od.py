@@ -98,7 +98,7 @@ st_folium(mapa, width=1600, height=700)
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)  # 50 pixels por linha
-fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", title="Matriz OD", height=altura)
+fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
 st.plotly_chart(fig, use_container_width=True)
 )
 
@@ -108,31 +108,31 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("Motivo x Frequência")
     heatmap_a = df_filtrado.groupby(["Motivo", "Frequência"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues", title="Motivo x Frequência"), use_container_width=True)
+    st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues"), use_container_width=True)
 
 with col2:
     st.subheader("Motivo x Período do Dia")
     heatmap_b = df_filtrado.groupby(["Motivo", "Periodo do dia"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens", title="Motivo x Período do Dia"), use_container_width=True)
+    st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens"), use_container_width=True)
 
 col3, col4 = st.columns(2)
 
 with col3:
     st.subheader("Frequência x Período do Dia")
     heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges", title="Frequência x Período do Dia"), use_container_width=True)
+    st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
 
 with col4:
     st.subheader("Motivo x Modal (Principal Modal)")
     heatmap_e = df_filtrado.groupby(["Motivo", "Principal Modal"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_e, text_auto=True, color_continuous_scale="Teal", title="Motivo x Principal Modal"), use_container_width=True)
+    st.plotly_chart(px.imshow(heatmap_e, text_auto=True, color_continuous_scale="Teal"), use_container_width=True)
 
 col5, col6 = st.columns(2)
 
 with col5:
     st.subheader("Modal x Frequência")
     heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl", title="Principal Modal x Frequência"), use_container_width=True)
+    st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
 # Exportação
 st.header("Exportar Matrizes")
