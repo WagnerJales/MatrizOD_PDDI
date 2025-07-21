@@ -14,17 +14,29 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("Planilha_Tratada_Final.csv")
+    try:
+        df = pd.read_csv(
+            "Planilha_Tratada_Final.csv",
+            sep=None,
+            engine="python",
+            on_bad_lines="skip"
+        )
+        colunas_esperadas = ['ORIGEM', 'DESTINO', 'Motivo', 'Frequência', 'Periodo do dia', 'Principal Modal']
+        colunas_faltantes = [col for col in colunas_esperadas if col not in df.columns]
+        if colunas_faltantes:
+            st.error(f"Colunas ausentes no CSV: {colunas_faltantes}")
+            st.stop()
+        return df
+    except Exception as e:
+        st.error(f"Erro ao ler o CSV: {e}")
+        st.stop()
 
-try:
-    df = carregar_dados()
-except Exception as e:
-    st.error(f"Erro ao carregar o CSV: {e}")
-    st.stop()
+df = carregar_dados()
 
 municipios_coords = {
     "São Luís": [-2.53, -44.3],
@@ -45,12 +57,12 @@ municipios_coords = {
 
 # Filtros
 st.sidebar.header("Filtros")
-origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
-destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
-motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()), default=[])
-frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
-periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
-modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
+origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()))
+destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()))
+motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()))
+frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()))
+periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()))
+modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()))
 
 df_filtrado = df.copy()
 if origens:
@@ -67,6 +79,7 @@ if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
 # Mapa
+st.subheader(f"{len(df_filtrado)} Registros Filtrados")
 df_agrupado = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
@@ -79,17 +92,14 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
-st.subheader("236 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
-# Matriz OD com altura ajustável
+# Gráficos de calor
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
-altura = 50 * len(matriz)
-fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
+fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=50 * len(matriz))
 st.plotly_chart(fig, use_container_width=True)
 
-# Heatmaps adicionais
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("Motivo x Frequência")
@@ -106,7 +116,7 @@ with col3:
     heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
 with col4:
-    st.subheader("Motivo x Modal (Principal Modal)")
+    st.subheader("Motivo x Modal")
     heatmap_e = df_filtrado.groupby(["Motivo", "Principal Modal"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_e, text_auto=True, color_continuous_scale="Teal"), use_container_width=True)
 
@@ -121,15 +131,15 @@ st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
     df.to_csv(buffer, index=True)
-    st.download_button(label=f"📥 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
+    st.download_button(label=f"\ud83d\udcc5 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
 
 exportar_csv(matriz, "Matriz_OD")
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
-exportar_csv(heatmap_c, "Matriz_Frequência_x_Periodo")
+exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
 exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
 exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
-# Rodapé
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
+
