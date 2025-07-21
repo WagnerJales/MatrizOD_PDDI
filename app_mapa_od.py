@@ -18,13 +18,10 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("Planilha_Tratada_Final.csv", sep=';')
-
-try:
-    df = carregar_dados()
-except Exception as e:
-    st.error(f"Erro ao carregar o CSV: {e}")
-    st.stop()
+    try        return pd.read_csv("Planilha_Tratada_Final.csv", sep=";", quotechar=\"\"")
+    except Exception as e:
+        st.error(f"Erro ao carregar o CSV: {e}")
+        st.stop()
 
 municipios_coords = {
     "São Luís": [-2.53, -44.3],
