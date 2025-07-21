@@ -19,22 +19,22 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    try:
-        df = pd.read_csv(
-            "Planilha_Tratada_Final.csv",
-            sep=None,
-            engine="python",
-            on_bad_lines="skip"
-        )
-        colunas_esperadas = ['ORIGEM', 'DESTINO', 'Motivo', 'Frequência', 'Periodo do dia', 'Principal Modal']
-        colunas_faltantes = [col for col in colunas_esperadas if col not in df.columns]
-        if colunas_faltantes:
-            st.error(f"Colunas ausentes no CSV: {colunas_faltantes}")
-            st.stop()
-        return df
-    except Exception as e:
-        st.error(f"Erro ao ler o CSV: {e}")
-        st.stop()
+    for sep in [';', ',']:
+        try:
+            df = pd.read_csv(
+                "Planilha_Tratada_Final.csv",
+                sep=sep,
+                engine="python",
+                on_bad_lines="skip"
+            )
+            colunas_esperadas = ['ORIGEM', 'DESTINO', 'Motivo', 'Frequência', 'Periodo do dia', 'Principal Modal']
+            colunas_faltantes = [col for col in colunas_esperadas if col not in df.columns]
+            if not colunas_faltantes:
+                return df
+        except Exception:
+            continue
+    st.error("Falha ao identificar o separador ou estrutura inválida na planilha.")
+    st.stop()
 
 df = carregar_dados()
 
@@ -127,12 +127,12 @@ with col5:
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
 # Exportação
-st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
     df.to_csv(buffer, index=True)
-    st.download_button(label=f"\ud83d\udcc5 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
+    st.download_button(label=f"📥 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
 
+st.header("Exportar Matrizes")
 exportar_csv(matriz, "Matriz_OD")
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
@@ -142,4 +142,3 @@ exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
-
