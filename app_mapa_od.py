@@ -83,7 +83,7 @@ municipios_coords = {
     "Ribamar Fiquene": [-5.491, -46.355],
     "Rosário": [-2.943, -44.254],
     "Santa Inês": [-4.104, -45.278],
-    "Santa Rita": [-2.928, -44.205],
+    "Santa Rita": [-3.1457417436986854, -44.332941569634805],
     "Santo Amaro": [-3.992, -45.356],
     "São Bento": [-5.425, -44.349],
     "São Domingos do Maranhão": [-3.867, -43.371],
