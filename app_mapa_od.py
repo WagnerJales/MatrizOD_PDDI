@@ -84,7 +84,7 @@ municipios_coords = {
     "Rosário": [-2.943, -44.254],
     "Santa Inês": [-4.104, -45.278],
     "Santa Rita": [-3.1457417436986854, -44.332941569634805],
-    "Santo Amaro": [-3.992, -45.356],
+    "Santo Amaro": [-2.5047542734648762, -43.255933552698686],
     "São Bento": [-5.425, -44.349],
     "São Domingos do Maranhão": [-3.867, -43.371],
     "São Domingos do Azeitão": [-5.709, -47.639],
