@@ -3,19 +3,18 @@ import pandas as pd
 
 # Função para carregar os dados com tratamento de erro
 @st.cache_data
-def load_data():
+def carregar_dados():
     try:
-        df = pd.read_excel("PesquisaOD_2.xlsx", sheet_name="RESPOSTAS")
-        return df
+        return pd.read_csv("Planilha_Tratada_Final.csv", sep=";", quotechar='"')
     except FileNotFoundError:
-        st.error("Arquivo 'PesquisaOD_2.xlsx' não encontrado.")
+        st.error("Arquivo 'Planilha_Tratada_Final.csv' não encontrado.")
         return pd.DataFrame()
 
-# Carregamento dos dados
-df = load_data()
+# Carregando os dados
+df = carregar_dados()
 
-# Título do app
-st.title("📍 Pesquisa Origem-Destino - Região Metropolitana")
+# Título do aplicativo
+st.title("📍 Matriz Origem-Destino - Região Metropolitana")
 
 # Verifica se os dados foram carregados corretamente
 if df.empty:
@@ -24,59 +23,38 @@ if df.empty:
 # Filtros na barra lateral
 st.sidebar.header("Filtros")
 
-faixas_etarias = st.sidebar.multiselect(
-    "Faixa Etária",
-    options=df["Qual sua faixa etária?"].dropna().unique()
-)
+origens = st.sidebar.multiselect("Origem", options=df["ORIGEM"].dropna().unique())
+destinos = st.sidebar.multiselect("Destino", options=df["DESTINO"].dropna().unique())
+transportes = st.sidebar.multiselect("Meio de Transporte", options=df["Qual foi o principal meio de transporte que você usou?"].dropna().unique())
 
-generos = st.sidebar.multiselect(
-    "Gênero",
-    options=df["Qual seu gênero?"].dropna().unique()
-)
-
-origens = st.sidebar.multiselect(
-    "Município de Origem",
-    options=df["Qual o município de ORIGEM"].dropna().unique()
-)
-
-destinos = st.sidebar.multiselect(
-    "Município de Destino",
-    options=df["Qual o município de DESTINO"].dropna().unique()
-)
-
-# Aplicando filtros
+# Aplicando os filtros
 df_filtrado = df.copy()
 
-if faixas_etarias:
-    df_filtrado = df_filtrado[df_filtrado["Qual sua faixa etária?"].isin(faixas_etarias)]
-
-if generos:
-    df_filtrado = df_filtrado[df_filtrado["Qual seu gênero?"].isin(generos)]
-
 if origens:
-    df_filtrado = df_filtrado[df_filtrado["Qual o município de ORIGEM"].isin(origens)]
-
+    df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
 if destinos:
-    df_filtrado = df_filtrado[df_filtrado["Qual o município de DESTINO"].isin(destinos)]
+    df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(destinos)]
+if transportes:
+    df_filtrado = df_filtrado[df_filtrado["Qual foi o principal meio de transporte que você usou?"].isin(transportes)]
 
-# Exibir dados filtrados
-st.subheader("📄 Respostas Filtradas")
+# Exibir os dados filtrados
+st.subheader("📄 Dados Filtrados")
 st.dataframe(df_filtrado)
 
-# Estatísticas
+# Estatísticas e Gráficos
 st.subheader("📊 Estatísticas")
 
-st.write(f"**Total de respostas filtradas:** {df_filtrado.shape[0]}")
+st.write(f"**Total de registros filtrados:** {df_filtrado.shape[0]}")
 
-# Gráfico - Meio de transporte
 if not df_filtrado.empty:
-    st.write("**Meio de transporte mais usado**")
+    st.write("**Viagens por município de origem**")
+    st.bar_chart(df_filtrado["ORIGEM"].value_counts())
+
+    st.write("**Viagens por município de destino**")
+    st.bar_chart(df_filtrado["DESTINO"].value_counts())
+
+    st.write("**Meios de transporte utilizados**")
     st.bar_chart(df_filtrado["Qual foi o principal meio de transporte que você usou?"].value_counts())
-
-    st.write("**Motivo da viagem**")
-    st.bar_chart(df_filtrado["Qual o motivo da viagem?"].value_counts())
-
-    st.write("**Tempo de duração das viagens**")
-    st.bar_chart(df_filtrado["Quanto tempo durou a viagem?"].value_counts())
 else:
-    st.info("Nenhum dado disponível com os filtros selecionados.")
+    st.info("Nenhum dado disponível com os filtros aplicados.")
+
