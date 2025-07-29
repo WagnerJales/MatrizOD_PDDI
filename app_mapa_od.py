@@ -18,7 +18,7 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    df = pd.read_excel("PesquisaOD_2.xlsx")
+    df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
     colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
     faltando = [col for col in colunas_esperadas if col not in df.columns]
     if faltando:
