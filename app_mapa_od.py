@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# Função para carregar os dados com tratamento de erro
+# Função para carregar os dados
 @st.cache_data
 def carregar_dados():
     try:
@@ -20,20 +20,33 @@ st.title("📍 Matriz Origem-Destino - Região Metropolitana")
 if df.empty:
     st.stop()
 
-# Filtros na barra lateral
-st.sidebar.header("Filtros")
+# Filtros interativos na barra lateral
+st.sidebar.header("🔎 Filtros")
 
-origens = st.sidebar.multiselect("Origem", options=df["ORIGEM"].dropna().unique())
-destinos = st.sidebar.multiselect("Destino", options=df["DESTINO"].dropna().unique())
-transportes = st.sidebar.multiselect("Meio de Transporte", options=df["Qual foi o principal meio de transporte que você usou?"].dropna().unique())
+origens = st.sidebar.multiselect(
+    "Selecione a Origem",
+    options=df["ORIGEM"].dropna().unique()
+)
 
-# Aplicando os filtros
+destinos = st.sidebar.multiselect(
+    "Selecione o Destino",
+    options=df["DESTINO"].dropna().unique()
+)
+
+transportes = st.sidebar.multiselect(
+    "Meio de Transporte",
+    options=df["Qual foi o principal meio de transporte que você usou?"].dropna().unique()
+)
+
+# Aplicar os filtros ao dataframe
 df_filtrado = df.copy()
 
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
+
 if destinos:
     df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(destinos)]
+
 if transportes:
     df_filtrado = df_filtrado[df_filtrado["Qual foi o principal meio de transporte que você usou?"].isin(transportes)]
 
@@ -41,10 +54,10 @@ if transportes:
 st.subheader("📄 Dados Filtrados")
 st.dataframe(df_filtrado)
 
-# Estatísticas e Gráficos
+# Estatísticas e gráficos
 st.subheader("📊 Estatísticas")
 
-st.write(f"**Total de registros filtrados:** {df_filtrado.shape[0]}")
+st.markdown(f"**Total de registros filtrados:** {df_filtrado.shape[0]}")
 
 if not df_filtrado.empty:
     st.write("**Viagens por município de origem**")
@@ -57,4 +70,3 @@ if not df_filtrado.empty:
     st.bar_chart(df_filtrado["Qual foi o principal meio de transporte que você usou?"].value_counts())
 else:
     st.info("Nenhum dado disponível com os filtros aplicados.")
-
