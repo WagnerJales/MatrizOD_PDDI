@@ -78,7 +78,7 @@ municipios_coords = {
     "Pinheiro": [-2.538, -45.082],
     "Presidente Dutra": [-5.237, -44.372],
     "Presidente Juscelino": [-3.488, -44.652],
-    "Primeira Cruz": [0, 0],
+    "Primeira Cruz": [-2.508889158522334, -43.44017897332363],
     "Raposa": [-2.476, -44.096],
     "Ribamar Fiquene": [-5.491, -46.355],
     "Rosário": [-2.943, -44.254],
