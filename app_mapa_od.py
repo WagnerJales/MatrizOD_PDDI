@@ -1,72 +1,96 @@
 import streamlit as st
 import pandas as pd
+import pydeck as pdk
+import plotly.express as px
 
-# Função para carregar os dados
+st.set_page_config(layout="wide")
+
+# Carregar dados
 @st.cache_data
-def carregar_dados():
-    try:
-        return pd.read_csv("Planilha_Tratada_Final.csv", sep=";", quotechar='"')
-    except FileNotFoundError:
-        st.error("Arquivo 'Planilha_Tratada_Final.csv' não encontrado.")
-        return pd.DataFrame()
+def load_data():
+    df = pd.read_excel("PesquisaOD_2.xlsx", sheet_name="RESPOSTAS")
+    coords = pd.read_csv("coordenadas_municipios.csv")
+    return df, coords
 
-# Carregando os dados
-df = carregar_dados()
+df, coords = load_data()
 
-# Título do aplicativo
-st.title("📍 Matriz Origem-Destino - Região Metropolitana")
+# Criar coluna de contagem
+df["volume"] = 1
 
-# Verifica se os dados foram carregados corretamente
-if df.empty:
-    st.stop()
+# Filtrar e renomear
+df_od = df[["ORIGEM", "DESTINO", "volume"]].groupby(["ORIGEM", "DESTINO"]).count().reset_index()
 
-# Filtros interativos na barra lateral
-st.sidebar.header("🔎 Filtros")
+# Adicionar coordenadas de origem e destino
+coords_dict = coords.set_index("local")[["latitude", "longitude"]].to_dict("index")
 
-origens = st.sidebar.multiselect(
-    "Selecione a Origem",
-    options=df["ORIGEM"].dropna().unique()
+def get_coords(local, tipo):
+    if local in coords_dict:
+        return coords_dict[local]["latitude"] if tipo == "lat" else coords_dict[local]["longitude"]
+    return None
+
+df_od["orig_lat"] = df_od["ORIGEM"].apply(lambda x: get_coords(x, "lat"))
+df_od["orig_lon"] = df_od["ORIGEM"].apply(lambda x: get_coords(x, "lon"))
+df_od["dest_lat"] = df_od["DESTINO"].apply(lambda x: get_coords(x, "lat"))
+df_od["dest_lon"] = df_od["DESTINO"].apply(lambda x: get_coords(x, "lon"))
+
+# Filtros
+st.sidebar.header("Filtros")
+origens = st.sidebar.multiselect("Origem", options=sorted(df_od["ORIGEM"].unique()), default=sorted(df_od["ORIGEM"].unique()))
+destinos = st.sidebar.multiselect("Destino", options=sorted(df_od["DESTINO"].unique()), default=sorted(df_od["DESTINO"].unique()))
+vol_range = st.sidebar.slider("Volume", 1, int(df_od["volume"].max()), (1, int(df_od["volume"].max())))
+
+df_filtrado = df_od[
+    (df_od["ORIGEM"].isin(origens)) &
+    (df_od["DESTINO"].isin(destinos)) &
+    (df_od["volume"] >= vol_range[0]) &
+    (df_od["volume"] <= vol_range[1])
+]
+
+# Camadas para mapa
+od_lines = [
+    {
+        "from_lat": row.orig_lat, "from_lon": row.orig_lon,
+        "to_lat": row.dest_lat, "to_lon": row.dest_lon,
+        "volume": row.volume
+    }
+    for _, row in df_filtrado.iterrows()
+    if pd.notnull(row.orig_lat) and pd.notnull(row.dest_lat)
+]
+
+line_layer = pdk.Layer(
+    "LineLayer",
+    od_lines,
+    get_source_position=["from_lon", "from_lat"],
+    get_target_position=["to_lon", "to_lat"],
+    get_width="volume",
+    get_color="[255, 0, 0, 140]",
+    pickable=True
 )
 
-destinos = st.sidebar.multiselect(
-    "Selecione o Destino",
-    options=df["DESTINO"].dropna().unique()
+view_state = pdk.ViewState(
+    latitude=df_od["orig_lat"].mean(),
+    longitude=df_od["orig_lon"].mean(),
+    zoom=9
 )
 
-transportes = st.sidebar.multiselect(
-    "Meio de Transporte",
-    options=df["Qual foi o principal meio de transporte que você usou?"].dropna().unique()
-)
+# Mapa
+st.title("📍 Matriz Origem-Destino baseada na Pesquisa OD")
 
-# Aplicar os filtros ao dataframe
-df_filtrado = df.copy()
+st.pydeck_chart(pdk.Deck(
+    layers=[line_layer],
+    initial_view_state=view_state,
+    map_style="mapbox://styles/mapbox/light-v9"
+))
 
-if origens:
-    df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
+# Total
+st.markdown(f"""
+<div style='font-size:20px; font-weight:bold; text-align:center; padding: 10px;'>
+    Total de viagens exibidas: {df_filtrado["volume"].sum():,}
+</div>
+""".replace(",", "X").replace(".", ",").replace("X", "."), unsafe_allow_html=True)
 
-if destinos:
-    df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(destinos)]
-
-if transportes:
-    df_filtrado = df_filtrado[df_filtrado["Qual foi o principal meio de transporte que você usou?"].isin(transportes)]
-
-# Exibir os dados filtrados
-st.subheader("📄 Dados Filtrados")
-st.dataframe(df_filtrado)
-
-# Estatísticas e gráficos
-st.subheader("📊 Estatísticas")
-
-st.markdown(f"**Total de registros filtrados:** {df_filtrado.shape[0]}")
-
-if not df_filtrado.empty:
-    st.write("**Viagens por município de origem**")
-    st.bar_chart(df_filtrado["ORIGEM"].value_counts())
-
-    st.write("**Viagens por município de destino**")
-    st.bar_chart(df_filtrado["DESTINO"].value_counts())
-
-    st.write("**Meios de transporte utilizados**")
-    st.bar_chart(df_filtrado["Qual foi o principal meio de transporte que você usou?"].value_counts())
-else:
-    st.info("Nenhum dado disponível com os filtros aplicados.")
+# Gráfico
+st.subheader("Gráfico por Par OD")
+df_filtrado["par"] = df_filtrado["ORIGEM"] + " → " + df_filtrado["DESTINO"]
+fig = px.bar(df_filtrado, x="par", y="volume", labels={"par": "Par OD", "volume": "Viagens"})
+st.plotly_chart(fig, use_container_width=True)
