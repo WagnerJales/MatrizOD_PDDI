@@ -18,12 +18,17 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv("Planilha_Tratada_Final.csv")
+    df = pd.read_excel("/mnt/data/PesquisaOD_2.xlsx")
+    colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
+    faltando = [col for col in colunas_esperadas if col not in df.columns]
+    if faltando:
+        raise ValueError(f"Colunas faltando: {faltando}")
+    return df
 
 try:
     df = carregar_dados()
 except Exception as e:
-    st.error(f"Erro ao carregar o CSV: {e}")
+    st.error(f"Erro ao carregar o Excel: {e}")
     st.stop()
 
 municipios_coords = {
@@ -43,7 +48,6 @@ municipios_coords = {
     "FORA DA RMGSL": [-2.88, -44.53]
 }
 
-# Filtros
 st.sidebar.header("Filtros")
 origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
 destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
@@ -66,7 +70,6 @@ if periodo:
 if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
-# Mapa
 df_agrupado = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
@@ -79,18 +82,14 @@ for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterro
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
-st.subheader("229 Registros realizados entre os dias 10/03/25 e 05/05/25")
-st.subheader("236 Registros realizados entre os dias 10/03/25 e 05/05/25")
 st_folium(mapa, width=1600, height=700)
 
-# Matriz OD com altura ajustável
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)
 fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
 st.plotly_chart(fig, use_container_width=True)
 
-# Heatmaps adicionais
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("Motivo x Frequência")
@@ -117,20 +116,18 @@ with col5:
     heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
-# Exportação
 st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
     df.to_csv(buffer, index=True)
-    st.download_button(label=f"📥 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
+    st.download_button(label=f"\U0001F4E5 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
 
 exportar_csv(matriz, "Matriz_OD")
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
-exportar_csv(heatmap_c, "Matriz_Frequência_x_Periodo")
+exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
 exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
 exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
-# Rodapé
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
