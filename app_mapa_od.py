@@ -175,7 +175,6 @@ matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)
 fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
 st.plotly_chart(fig, use_container_width=True)
-st.markdown("<div style='margin-bottom: -40px'></div>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
 with col1:
