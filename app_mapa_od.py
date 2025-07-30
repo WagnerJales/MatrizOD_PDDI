@@ -150,8 +150,8 @@ for _, row in fluxos.iterrows():
         if dist == 0:
             offset_lat, offset_lon = 0, 0
         else:
-            offset_lat = -offset * dx / dist
-            offset_lon = offset * dy / dist
+offset_lat = offset * dy / dist
+offset_lon = -offset * dx / dist
 
         # Linha de ida
         coords_ida = [
