@@ -14,6 +14,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
@@ -105,8 +106,8 @@ st.sidebar.header("Filtros")
 origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
 destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
 motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()), default=[])
-frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
-periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
+frequencia = st.sidebar.multiselect("Frequ\u00eancia:", sorted(df["Frequ\u00eancia"].dropna().unique()), default=[])
+periodo = st.sidebar.multiselect("Per\u00edodo do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
 df_filtrado = df.copy()
@@ -117,47 +118,53 @@ if destinos:
 if motivo:
     df_filtrado = df_filtrado[df_filtrado["Motivo"].isin(motivo)]
 if frequencia:
-    df_filtrado = df_filtrado[df_filtrado["Frequência"].isin(frequencia)]
+    df_filtrado = df_filtrado[df_filtrado["Frequ\u00eancia"].isin(frequencia)]
 if periodo:
     df_filtrado = df_filtrado[df_filtrado["Periodo do dia"].isin(periodo)]
 if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
-df_agrupado = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
+# Remove deslocamentos onde origem = destino
+df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]]
+fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
+
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
-for _, row in df_agrupado.sort_values("total", ascending=False).head(100).iterrows():
-    origem = row["ORIGEM"]
-    destino = row["DESTINO"]
+
+for _, row in fluxos.iterrows():
+    origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
-        folium.PolyLine(coords, color="red", weight=1 + (row["total"] / 30) * 5,
-                        opacity=0.8, tooltip=f"{origem} → {destino}: {row['total']} deslocamentos").add_to(mapa)
+        inverso = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
+        tem_inverso = not inverso.empty
+        cor = "red" if not tem_inverso else "blue"
+        folium.PolyLine(coords, color=cor, weight=1 + (total / 30) * 5, opacity=0.7,
+                        tooltip=f"{origem} \u2192 {destino}: {total} deslocamentos").add_to(mapa)
+
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
 st_folium(mapa, width=1600, height=700)
 
-st.subheader("Matriz OD (Gráfico Térmico)")
+st.subheader("Matriz OD (Gr\u00e1fico T\u00e9rmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)
 fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
 st.plotly_chart(fig, use_container_width=True)
-st.markdown("<div style='margin-bottom: -40px'></div>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader("Motivo x Frequência")
-    heatmap_a = df_filtrado.groupby(["Motivo", "Frequência"]).size().unstack(fill_value=0)
+    st.subheader("Motivo x Frequ\u00eancia")
+    heatmap_a = df_filtrado.groupby(["Motivo", "Frequ\u00eancia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues"), use_container_width=True)
 with col2:
-    st.subheader("Motivo x Período do Dia")
+    st.subheader("Motivo x Per\u00edodo do Dia")
     heatmap_b = df_filtrado.groupby(["Motivo", "Periodo do dia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens"), use_container_width=True)
 
 col3, col4 = st.columns(2)
 with col3:
-    st.subheader("Frequência x Período do Dia")
-    heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
+    st.subheader("Frequ\u00eancia x Per\u00edodo do Dia")
+    heatmap_c = df_filtrado.groupby(["Frequ\u00eancia", "Periodo do dia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
 with col4:
     st.subheader("Motivo x Modal (Principal Modal)")
@@ -166,8 +173,8 @@ with col4:
 
 col5, col6 = st.columns(2)
 with col5:
-    st.subheader("Modal x Frequência")
-    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
+    st.subheader("Modal x Frequ\u00eancia")
+    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequ\u00eancia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
 st.header("Exportar Matrizes")
