@@ -1,11 +1,12 @@
 import streamlit as st
 import pandas as pd
 import folium
-from folium import PolyLine, Marker
+from folium import Marker
 from streamlit_folium import st_folium
 import plotly.express as px
 import io
 import math
+import numpy as np
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -131,7 +132,20 @@ fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
-# Adiciona deslocamentos com linhas paralelas
+# Função para calcular curva de Bezier
+def bezier_curve(p1, p2, curvature=0.3, num_points=20):
+    p1 = np.array(p1)
+    p2 = np.array(p2)
+    mid = (p1 + p2) / 2
+    delta = p2 - p1
+    perp = np.array([-delta[1], delta[0]])
+    perp = perp / np.linalg.norm(perp)
+    control = mid + curvature * perp
+    t = np.linspace(0, 1, num_points)
+    curve = [(1 - t_)**2 * p1 + 2 * (1 - t_) * t_ * control + t_**2 * p2 for t_ in t]
+    return [(pt[0], pt[1]) for pt in curve]
+
+# Adiciona deslocamentos com curvas Bezier
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
     if origem in municipios_coords and destino in municipios_coords:
@@ -141,34 +155,14 @@ for _, row in fluxos.iterrows():
         inverso = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
         tem_inverso = not inverso.empty
 
-        # Calcular deslocamento perpendicular para separar linhas
-        dx = destino_coord[1] - origem_coord[1]
-        dy = destino_coord[0] - origem_coord[0]
-        dist = math.sqrt(dx**2 + dy**2)
-        offset = 0.02
-
-        if dist == 0:
-            offset_lat, offset_lon = 0, 0
-        else:
-offset_lat = offset * dy / dist
-offset_lon = -offset * dx / dist
-
-        # Linha de ida
-        coords_ida = [
-            [origem_coord[0] + offset_lat, origem_coord[1] + offset_lon],
-            [destino_coord[0] + offset_lat, destino_coord[1] + offset_lon]
-        ]
-        folium.PolyLine(coords_ida, color="red", weight=1 + (total / 30) * 5, opacity=0.7,
+        curva_ida = bezier_curve(origem_coord, destino_coord, curvature=0.3)
+        folium.PolyLine(curva_ida, color="red", weight=1 + (total / 30) * 5, opacity=0.7,
                         tooltip=f"{origem} → {destino}: {total} deslocamentos").add_to(mapa)
 
-        # Linha de volta, se existir
         if tem_inverso:
             total_volta = inverso.iloc[0]["total"]
-            coords_volta = [
-                [destino_coord[0] - offset_lat, destino_coord[1] - offset_lon],
-                [origem_coord[0] - offset_lat, origem_coord[1] - offset_lon]
-            ]
-            folium.PolyLine(coords_volta, color="blue", weight=1 + (total_volta / 30) * 5, opacity=0.7,
+            curva_volta = bezier_curve(destino_coord, origem_coord, curvature=0.3)
+            folium.PolyLine(curva_volta, color="blue", weight=1 + (total_volta / 30) * 5, opacity=0.7,
                             tooltip=f"{destino} → {origem}: {total_volta} deslocamentos").add_to(mapa)
 
 for cidade, coord in municipios_coords.items():
