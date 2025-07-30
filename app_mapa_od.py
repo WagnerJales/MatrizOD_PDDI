@@ -5,6 +5,7 @@ from folium import PolyLine, Marker
 from streamlit_folium import st_folium
 import plotly.express as px
 import io
+import math
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -106,8 +107,8 @@ st.sidebar.header("Filtros")
 origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
 destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()), default=[])
 motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()), default=[])
-frequencia = st.sidebar.multiselect("Frequ\u00eancia:", sorted(df["Frequ\u00eancia"].dropna().unique()), default=[])
-periodo = st.sidebar.multiselect("Per\u00edodo do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
+frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
+periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
 df_filtrado = df.copy()
@@ -118,7 +119,7 @@ if destinos:
 if motivo:
     df_filtrado = df_filtrado[df_filtrado["Motivo"].isin(motivo)]
 if frequencia:
-    df_filtrado = df_filtrado[df_filtrado["Frequ\u00eancia"].isin(frequencia)]
+    df_filtrado = df_filtrado[df_filtrado["Frequência"].isin(frequencia)]
 if periodo:
     df_filtrado = df_filtrado[df_filtrado["Periodo do dia"].isin(periodo)]
 if modal:
@@ -130,22 +131,52 @@ fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
+# Adiciona deslocamentos com linhas paralelas
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
     if origem in municipios_coords and destino in municipios_coords:
-        coords = [municipios_coords[origem], municipios_coords[destino]]
+        origem_coord = municipios_coords[origem]
+        destino_coord = municipios_coords[destino]
+
         inverso = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
         tem_inverso = not inverso.empty
-        cor = "red" if not tem_inverso else "blue"
-        folium.PolyLine(coords, color=cor, weight=1 + (total / 30) * 5, opacity=0.7,
-                        tooltip=f"{origem} \u2192 {destino}: {total} deslocamentos").add_to(mapa)
+
+        # Calcular deslocamento perpendicular para separar linhas
+        dx = destino_coord[1] - origem_coord[1]
+        dy = destino_coord[0] - origem_coord[0]
+        dist = math.sqrt(dx**2 + dy**2)
+        offset = 0.02
+
+        if dist == 0:
+            offset_lat, offset_lon = 0, 0
+        else:
+            offset_lat = -offset * dx / dist
+            offset_lon = offset * dy / dist
+
+        # Linha de ida
+        coords_ida = [
+            [origem_coord[0] + offset_lat, origem_coord[1] + offset_lon],
+            [destino_coord[0] + offset_lat, destino_coord[1] + offset_lon]
+        ]
+        folium.PolyLine(coords_ida, color="red", weight=1 + (total / 30) * 5, opacity=0.7,
+                        tooltip=f"{origem} → {destino}: {total} deslocamentos").add_to(mapa)
+
+        # Linha de volta, se existir
+        if tem_inverso:
+            total_volta = inverso.iloc[0]["total"]
+            coords_volta = [
+                [destino_coord[0] - offset_lat, destino_coord[1] - offset_lon],
+                [origem_coord[0] - offset_lat, origem_coord[1] - offset_lon]
+            ]
+            folium.PolyLine(coords_volta, color="blue", weight=1 + (total_volta / 30) * 5, opacity=0.7,
+                            tooltip=f"{destino} → {origem}: {total_volta} deslocamentos").add_to(mapa)
 
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
 st_folium(mapa, width=1600, height=700)
 
-st.subheader("Matriz OD (Gr\u00e1fico T\u00e9rmico)")
+st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)
 fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
@@ -153,18 +184,18 @@ st.plotly_chart(fig, use_container_width=True)
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader("Motivo x Frequ\u00eancia")
-    heatmap_a = df_filtrado.groupby(["Motivo", "Frequ\u00eancia"]).size().unstack(fill_value=0)
+    st.subheader("Motivo x Frequência")
+    heatmap_a = df_filtrado.groupby(["Motivo", "Frequência"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues"), use_container_width=True)
 with col2:
-    st.subheader("Motivo x Per\u00edodo do Dia")
+    st.subheader("Motivo x Período do Dia")
     heatmap_b = df_filtrado.groupby(["Motivo", "Periodo do dia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens"), use_container_width=True)
 
 col3, col4 = st.columns(2)
 with col3:
-    st.subheader("Frequ\u00eancia x Per\u00edodo do Dia")
-    heatmap_c = df_filtrado.groupby(["Frequ\u00eancia", "Periodo do dia"]).size().unstack(fill_value=0)
+    st.subheader("Frequência x Período do Dia")
+    heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
 with col4:
     st.subheader("Motivo x Modal (Principal Modal)")
@@ -173,8 +204,8 @@ with col4:
 
 col5, col6 = st.columns(2)
 with col5:
-    st.subheader("Modal x Frequ\u00eancia")
-    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequ\u00eancia"]).size().unstack(fill_value=0)
+    st.subheader("Modal x Frequência")
+    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
 st.header("Exportar Matrizes")
