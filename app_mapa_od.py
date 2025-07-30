@@ -159,7 +159,7 @@ for _, row in fluxos.iterrows():
 
         if tem_inverso:
             total_volta = inverso.iloc[0]["total"]
-            curva_volta = bezier_curve(destino_coord, origem_coord, curvature=0.3)
+            curva_volta = bezier_curve(destino_coord, origem_coord, curvature=0.2)
             folium.PolyLine(curva_volta, color="blue", weight=1 + (total_volta / 30) * 5, opacity=0.7,
                             tooltip=f"{destino} → {origem}: {total_volta} deslocamentos").add_to(mapa)
 
