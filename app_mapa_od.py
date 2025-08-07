@@ -91,13 +91,16 @@ if modal:
 # Remove deslocamentos onde origem = destino
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
 
-# Agrupamento somando A→B e B→A
+# Cria um identificador de par ordenado (independente do sentido)
 df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
+
+# Agrupa e soma os deslocamentos nos dois sentidos
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 
-# Mapa
+# Inicializa o mapa
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
+# Desenha as linhas de fluxo
 for _, row in fluxos.iterrows():
     origem, destino = row["par_od"]
     total = row["total"]
@@ -111,17 +114,17 @@ for _, row in fluxos.iterrows():
             tooltip=f"{origem} ↔ {destino}: {total} deslocamentos (ida + volta)"
         ).add_to(mapa)
 
+# Adiciona marcadores dos municípios
 for cidade, coord in municipios_coords.items():
-    folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
+    folium.Marker(
+        location=coord,
+        popup=cidade,
+        tooltip=cidade,
+        icon=folium.Icon(icon="circle")
+    ).add_to(mapa)
 
+# Renderiza o mapa
 st_folium(mapa, width=1600, height=700)
-
-# MATRIZ OD E DEMAIS HEATMAPS
-st.subheader("Matriz OD (Gráfico Térmico)")
-matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
-altura = 50 * len(matriz)
-fig = px.imshow(matriz, text_auto=True, color_continuous_scale="Purples", height=altura)
-st.plotly_chart(fig, use_container_width=True)
 
 col1, col2 = st.columns(2)
 with col1:
