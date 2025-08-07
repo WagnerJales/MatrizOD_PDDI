@@ -165,32 +165,32 @@ def deslocar_coord(coord1, coord2, deslocamento=0.05):
     coord2_deslocada = [coord2[0] + desloc_y, coord2[1] + desloc_x]
     return [coord1_deslocada, coord2_deslocada]
 
+# Agrupa somando os dois sentidos (ida e volta)
+df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
+fluxos = df_od.groupby("par_od").size().reset_index(name="total")
+
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
-# Processa os dados com base no botão
-if inverter_sentido:
-    df_od[["ORIGEM", "DESTINO"]] = df_od[["DESTINO", "ORIGEM"]]
-
-fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
-deslocamento_visual = 0.05
-
-# Usar set para evitar duplicação de sentidos ida/volta
-ligacoes_adicionadas = set()
-
+# Desenha uma linha reta por par OD, somando ida e volta
 for _, row in fluxos.iterrows():
-    origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
-    par = tuple(sorted([origem, destino]))  # Para evitar duplicações de ida/volta
-    if origem in municipios_coords and destino in municipios_coords and par not in ligacoes_adicionadas:
-        coord1 = municipios_coords[origem]
-        coord2 = municipios_coords[destino]
-        coords_deslocadas = deslocar_coord(coord1, coord2, deslocamento=deslocamento_visual)
+    origem, destino = row["par_od"]
+    total = row["total"]
+    if origem in municipios_coords and destino in municipios_coords:
+        coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
-            coords_deslocadas,
-            color="red",
+            coords,
+            color="blue",
             weight=1 + (total / 30) * 5,
             opacity=0.8,
-            tooltip=f"{origem} → {destino}: {total} deslocamentos"
+            tooltip=f"{origem} ↔ {destino}: {total} deslocamentos somados"
         ).add_to(mapa)
+
+# Adiciona marcadores dos municípios
+for cidade, coord in municipios_coords.items():
+    folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
+
+# Renderiza o mapa
+st_folium(mapa, width=1600, height=700)
         ligacoes_adicionadas.add(par)
 
 # Adiciona os marcadores
