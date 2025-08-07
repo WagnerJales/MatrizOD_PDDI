@@ -74,6 +74,8 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
+sentido_selecionado = st.sidebar.radio("Sentido do Fluxo:", ("A-B e B-A (Bidirecional)", "A-B (Origem-Destino)", "B-A (Destino-Origem)"))
+
 df_filtrado = df.copy()
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
@@ -91,11 +93,17 @@ if modal:
 # Remove deslocamentos onde origem = destino
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
 
-# Cria um identificador de par ordenado (independente do sentido)
-df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
+if sentido_selecionado == "A-B (Origem-Destino)":
+    df_od["par_od"] = df_od.apply(lambda row: (row["ORIGEM"], row["DESTINO"]), axis=1)
+elif sentido_selecionado == "B-A (Destino-Origem)":
+    df_od["par_od"] = df_od.apply(lambda row: (row["DESTINO"], row["ORIGEM"]), axis=1)
+else:
+    # Cria um identificador de par ordenado (independente do sentido)
+    df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
 
 # Agrupa e soma os deslocamentos nos dois sentidos
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
+matriz = fluxos.pivot_table(index=pd.MultiIndex.from_tuples(fluxos["par_od"]), values="total", aggfunc="sum").unstack(fill_value=0)
 
 # Mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
@@ -105,13 +113,21 @@ for _, row in fluxos.iterrows():
     destino = row["par_od"][1]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
+        if sentido_selecionado == "A-B e B-A (Bidirecional)":
+            tooltip_text = f"{origem} <-> {destino}: {row["total"]} deslocamentos"
+        elif sentido_selecionado == "A-B (Origem-Destino)":
+            tooltip_text = f"{origem} -> {destino}: {row["total"]} deslocamentos"
+        else:
+            tooltip_text = f"{destino} -> {origem}: {row["total"]} deslocamentos"
+
         folium.PolyLine(
             coords,
             color="purple",
             weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
-            tooltip=f"{origem} <-> {destino}: {row['total']} deslocamentos"
+            tooltip=tooltip_text
         ).add_to(mapa)
+
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
@@ -164,3 +180,56 @@ exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
+for cidade, coord in municipios_coords.items():
+    folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
+
+# Layout com mapa + gráfico da matriz OD
+col1, col2 = st.columns([2, 1])
+with col1:
+    st_folium(mapa, width=1200, height=700)
+
+
+
+col1, col2 = st.columns(2)
+with col1:
+    st.subheader("Motivo x Frequência")
+    heatmap_a = df_filtrado.groupby(["Motivo", "Frequência"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues"), use_container_width=True)
+with col2:
+    st.subheader("Motivo x Período do Dia")
+    heatmap_b = df_filtrado.groupby(["Motivo", "Periodo do dia"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens"), use_container_width=True)
+
+col3, col4 = st.columns(2)
+with col3:
+    st.subheader("Frequência x Período do Dia")
+    heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
+with col4:
+    st.subheader("Motivo x Modal (Principal Modal)")
+    heatmap_e = df_filtrado.groupby(["Motivo", "Principal Modal"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_e, text_auto=True, color_continuous_scale="Teal"), use_container_width=True)
+
+col5, col6 = st.columns(2)
+with col5:
+    st.subheader("Modal x Frequência")
+    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
+
+# EXPORTAÇÃO
+st.header("Exportar Matrizes")
+def exportar_csv(df, nome_arquivo):
+    buffer = io.BytesIO()
+    df.to_csv(buffer, index=True)
+    st.download_button(label=f"\U0001F4E5 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
+
+exportar_csv(matriz, "Matriz_OD")
+exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
+exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
+exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
+exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
+exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
+
+st.markdown("---")
+st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
+
