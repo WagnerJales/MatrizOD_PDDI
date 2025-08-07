@@ -97,34 +97,31 @@ df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DEST
 # Agrupa e soma os deslocamentos nos dois sentidos
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 
-# Inicializa o mapa
-mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
+# Mapa
+mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
 
-# Desenha as linhas de fluxo
-for _, row in fluxos.iterrows():
-    origem, destino = row["par_od"]
-    total = row["total"]
+for _, row in df_agrupado.iterrows():
+    origem = row["ORIGEM 2"]
+    destino = row["DESTINO 2"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
             coords,
-            color="blue",
-            weight=1 + (total / 30) * 5,
+            color="purple",
+            weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
-            tooltip=f"{origem} ↔ {destino}: {total} deslocamentos (ida + volta)"
+            tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
-# Adiciona marcadores dos municípios
 for cidade, coord in municipios_coords.items():
-    folium.Marker(
-        location=coord,
-        popup=cidade,
-        tooltip=cidade,
-        icon=folium.Icon(icon="circle")
-    ).add_to(mapa)
+    folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Renderiza o mapa
-st_folium(mapa, width=1600, height=700)
+# Layout com mapa + gráfico da matriz OD
+col1, col2 = st.columns([2, 1])
+with col1:
+    st_folium(mapa, width=1200, height=700)
+
+
 
 col1, col2 = st.columns(2)
 with col1:
