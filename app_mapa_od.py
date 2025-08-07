@@ -101,8 +101,8 @@ fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
 
 for _, row in df_agrupado.iterrows():
-    origem = row["ORIGEM 2"]
-    destino = row["DESTINO 2"]
+    origem = row["ORIGEM"]
+    destino = row["DESTINO"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
