@@ -100,9 +100,9 @@ fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 # Mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
 
-for _, row in df_agrupado.iterrows():
-    origem = row["ORIGEM"]
-    destino = row["DESTINO"]
+for _, row in fluxos.iterrows():
+    origem = row["par_od"][0]
+    destino = row["par_od"][1]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
@@ -110,9 +110,8 @@ for _, row in df_agrupado.iterrows():
             color="purple",
             weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
-            tooltip=f"{origem} → {destino}: {row['total']} deslocamentos"
+            tooltip=f"{origem} <-> {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
-
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
