@@ -144,24 +144,32 @@ def bezier_curve(p1, p2, curvature=0.3, num_points=20):
     return [(pt[0], pt[1]) for pt in curve]
 
 # Adiciona deslocamentos com curvas Bezier
+pares_processados = set()
+
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
+    par = tuple(sorted((origem, destino)))
+
+    if par in pares_processados:
+        continue
+    pares_processados.add(par)
+
     if origem in municipios_coords and destino in municipios_coords:
         origem_coord = municipios_coords[origem]
         destino_coord = municipios_coords[destino]
-
-        inverso = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
-        tem_inverso = not inverso.empty
 
         curva_ida = bezier_curve(origem_coord, destino_coord, curvature=0.3)
         folium.PolyLine(curva_ida, color="red", weight=1 + (total / 30) * 5, opacity=0.7,
                         tooltip=f"{origem} → {destino}: {total} deslocamentos").add_to(mapa)
 
-        if tem_inverso:
-            total_volta = inverso.iloc[0]["total"]
+        # Desenha volta se existir
+        match = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
+        if not match.empty:
+            total_volta = match.iloc[0]["total"]
             curva_volta = bezier_curve(destino_coord, origem_coord, curvature=0.2)
             folium.PolyLine(curva_volta, color="blue", weight=1 + (total_volta / 30) * 5, opacity=0.7,
                             tooltip=f"{destino} → {origem}: {total_volta} deslocamentos").add_to(mapa)
+
 
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
