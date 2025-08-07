@@ -110,6 +110,8 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
+inverter_sentido = st.sidebar.toggle("Inverter sentido das ligações")
+
 df_filtrado = df.copy()
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
@@ -125,64 +127,25 @@ if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
 # Remove deslocamentos onde origem = destino
-df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]]
+df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
+if inverter_sentido:
+    df_od[["ORIGEM", "DESTINO"]] = df_od[["DESTINO", "ORIGEM"]]
+
 fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
-def bezier_curve(p1, p2, curvature=0.3, num_points=20):
-    p1 = np.array(p1)
-    p2 = np.array(p2)
-    mid = (p1 + p2) / 2
-    delta = p2 - p1
-    perp = np.array([-delta[1], delta[0]])
-    perp = perp / np.linalg.norm(perp)
-    control = mid + curvature * perp
-    t = np.linspace(0, 1, num_points)
-    curve = [(1 - t_)**2 * p1 + 2 * (1 - t_) * t_ * control + t_**2 * p2 for t_ in t]
-    return [(pt[0], pt[1]) for pt in curve]
-
-pares_processados = set()
-
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
-    par = tuple(sorted([origem, destino]))
-
-    if par in pares_processados:
-        continue
-    pares_processados.add(par)
-
     if origem in municipios_coords and destino in municipios_coords:
-        origem_coord = municipios_coords[origem]
-        destino_coord = municipios_coords[destino]
-
-        total_ida = total
-        total_volta = 0
-
-        match = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
-        if not match.empty:
-            total_volta = match.iloc[0]["total"]
-
-        peso_total = total_ida + total_volta
-
-        curva_ida = bezier_curve(origem_coord, destino_coord, curvature=0.3)
+        coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
-            curva_ida,
+            coords,
             color="red",
-            weight=1 + (total_ida / peso_total) * 10,
-            opacity=0.7,
-            tooltip=f"{origem} → {destino}: {total_ida} deslocamentos"
+            weight=1 + (total / 30) * 5,
+            opacity=0.8,
+            tooltip=f"{origem} → {destino}: {total} deslocamentos"
         ).add_to(mapa)
-
-        if total_volta > 0:
-            curva_volta = bezier_curve(destino_coord, origem_coord, curvature=0.2)
-            folium.PolyLine(
-                curva_volta,
-                color="blue",
-                weight=1 + (total_volta / peso_total) * 10,
-                opacity=0.7,
-                tooltip=f"{destino} → {origem}: {total_volta} deslocamentos"
-            ).add_to(mapa)
 
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
