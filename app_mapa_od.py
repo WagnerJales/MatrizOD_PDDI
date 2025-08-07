@@ -6,7 +6,6 @@ from streamlit_folium import st_folium
 import plotly.express as px
 import io
 import math
-import numpy as np
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -41,65 +40,30 @@ except Exception as e:
     st.stop()
 
 municipios_coords = {
-    "Alcântara": [-2.416, -44.437],
-    "Anajatuba": [-3.291, -44.623],
-    "Anapurus": [-3.668, -43.108],
-    "Araguanã": [-2.948, -45.660],
-    "Arari": [-3.448, -44.770],
-    "Axixá": [-2.841, -44.054],
-    "Bacabal": [-4.214, -44.783],
-    "Bacabeira": [-2.969, -44.310],
-    "Bacuri": [-1.701, -45.152],
-    "Barreirinhas": [-2.754, -42.825],
-    "Bequimão": [-2.438, -44.779],
-    "Brejo": [-3.600, -43.010],
-    "Buriti": [-3.547, -44.172],
-    "Cachoeira Grande": [-2.932, -44.056],
-    "Cajari": [-5.464, -44.526],
-    "Cantanhede": [-3.608, -44.370],
-    "Caxias": [-4.861, -43.371],
-    "Codó": [-4.454, -43.874],
-    "Coelho Neto": [-3.453, -43.983],
-    "Coroatá": [-3.308, -44.127],
-    "Guimarães": [-5.793, -44.796],
-    "Humberto de Campos": [-1.756, -44.793],
-    "Icatu": [-2.762, -44.045],
-    "Imperatriz": [-5.518, -47.459],
-    "Itapecuru Mirim": [-3.338, -44.341],
-    "Lago da Pedra": [-4.002, -45.259],
-    "Matinha": [-1.924, -45.167],
-    "Miranda do Norte": [-4.021, -44.773],
-    "Morros": [-2.864469, -44.039238],
-    "Olinda Nova do Maranhão": [-3.036, -45.257],
-    "Paço do Lumiar": [-2.510, -44.069],
-    "Pedreiras": [-4.244, -44.574],
-    "Pedro do Rosário": [-2.946, -44.927],
-    "Penalva": [-4.111, -45.145],
-    "Peritoró": [-4.246, -44.882],
-    "Pinheiro": [-2.538, -45.082],
-    "Presidente Dutra": [-5.237, -44.372],
-    "Presidente Juscelino": [-3.488, -44.652],
-    "Primeira Cruz": [-2.508889158522334, -43.44017897332363],
-    "Raposa": [-2.476, -44.096],
-    "Ribamar Fiquene": [-5.491, -46.355],
-    "Rosário": [-2.943, -44.254],
-    "Santa Inês": [-4.104, -45.278],
-    "Santa Rita": [-3.1457417436986854, -44.332941569634805],
-    "Santo Amaro": [-2.5047542734648762, -43.255933552698686],
-    "São Bento": [-5.425, -44.349],
-    "São Domingos do Maranhão": [-3.867, -43.371],
-    "São Domingos do Azeitão": [-5.709, -47.639],
-    "São José de Ribamar": [-2.545, -44.022],
     "São Luís": [-2.538, -44.282],
-    "São Mateus do Maranhão": [-3.840, -45.326],
-    "São Pedro dos Crentes": [-7.308, -46.682],
-    "São Raimundo das Mangabeiras": [-6.762, -45.366],
-    "São Vicente Ferrer": [-2.893, -44.872],
-    "Satubinha": [-5.502, -45.389],
+    "Paço do Lumiar": [-2.510, -44.069],
+    "Raposa": [-2.476, -44.096],
+    "São José de Ribamar": [-2.545, -44.022],
+    "Santa Rita": [-3.1457417436986854, -44.332941569634805],
+    "Morros": [-2.864469, -44.039238],
+    "Icatu": [-2.762, -44.045],
+    "Rosário": [-2.943, -44.254],
+    "Bacabeira": [-2.969, -44.310],
+    "Itapecuru Mirim": [-3.338, -44.341],
+    "Cantanhede": [-3.608, -44.370],
+    "Codó": [-4.454, -43.874],
     "Timon": [-5.096, -42.837],
-    "Tuntum": [-4.116, -44.722],
+    "Caxias": [-4.861, -43.371],
+    "São Mateus do Maranhão": [-3.840, -45.326],
     "Viana": [-3.232, -44.995],
-    "Vitória do Mearim": [-3.512, -44.942]
+    "Bequimão": [-2.438, -44.779],
+    "Pinheiro": [-2.538, -45.082],
+    "Anajatuba": [-3.291, -44.623],
+    "Alcântara": [-2.416, -44.437],
+    "Humberto de Campos": [-1.756, -44.793],
+    "Barreirinhas": [-2.754, -42.825],
+    "Primeira Cruz": [-2.508889158522334, -43.44017897332363],
+    "Santo Amaro": [-2.5047542734648762, -43.255933552698686],
 }
 
 st.sidebar.header("Filtros")
@@ -109,8 +73,6 @@ motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna(
 frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
-
-inverter_sentido = st.sidebar.toggle("Inverter sentido das ligações")
 
 df_filtrado = df.copy()
 if origens:
@@ -128,50 +90,14 @@ if modal:
 
 # Remove deslocamentos onde origem = destino
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
-if inverter_sentido:
-    df_od[["ORIGEM", "DESTINO"]] = df_od[["DESTINO", "ORIGEM"]]
 
-fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
-
-def deslocar_coord(coord1, coord2, deslocamento=0.05):
-    # Aplica leve deslocamento lateral ortogonal à linha para visualização paralela
-    dx = coord2[1] - coord1[1]
-    dy = coord2[0] - coord1[0]
-    comprimento = math.sqrt(dx**2 + dy**2)
-    if comprimento == 0:
-        return [coord1, coord2]
-    dx /= comprimento
-    dy /= comprimento
-    # Rota 90 graus
-    desloc_x = -dy * deslocamento
-    desloc_y = dx * deslocamento
-    coord1_deslocada = [coord1[0] + desloc_y, coord1[1] + desloc_x]
-    coord2_deslocada = [coord2[0] + desloc_y, coord2[1] + desloc_x]
-    return [coord1_deslocada, coord2_deslocada]
-
-def deslocar_coord(coord1, coord2, deslocamento=0.05):
-    # Aplica leve deslocamento lateral ortogonal à linha para visualização paralela
-    dx = coord2[1] - coord1[1]
-    dy = coord2[0] - coord1[0]
-    comprimento = math.sqrt(dx**2 + dy**2)
-    if comprimento == 0:
-        return [coord1, coord2]
-    dx /= comprimento
-    dy /= comprimento
-    # Rota 90 graus
-    desloc_x = -dy * deslocamento
-    desloc_y = dx * deslocamento
-    coord1_deslocada = [coord1[0] + desloc_y, coord1[1] + desloc_x]
-    coord2_deslocada = [coord2[0] + desloc_y, coord2[1] + desloc_x]
-    return [coord1_deslocada, coord2_deslocada]
-
-# Agrupa somando os dois sentidos (ida e volta)
+# Agrupamento somando A→B e B→A
 df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 
+# Mapa
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
-# Desenha uma linha reta por par OD, somando ida e volta
 for _, row in fluxos.iterrows():
     origem, destino = row["par_od"]
     total = row["total"]
@@ -182,25 +108,15 @@ for _, row in fluxos.iterrows():
             color="blue",
             weight=1 + (total / 30) * 5,
             opacity=0.8,
-            tooltip=f"{origem} ↔ {destino}: {total} deslocamentos somados"
+            tooltip=f"{origem} ↔ {destino}: {total} deslocamentos (ida + volta)"
         ).add_to(mapa)
 
-# Adiciona marcadores dos municípios
-for cidade, coord in municipios_coords.items():
-    folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
-
-# Renderiza o mapa
-st_folium(mapa, width=1600, height=700)
-        ligacoes_adicionadas.add(par)
-
-# Adiciona os marcadores
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
 st_folium(mapa, width=1600, height=700)
 
-
-
+# MATRIZ OD E DEMAIS HEATMAPS
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
 altura = 50 * len(matriz)
@@ -233,6 +149,7 @@ with col5:
     heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
     st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
 
+# EXPORTAÇÃO
 st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
