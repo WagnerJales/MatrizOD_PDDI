@@ -133,24 +133,56 @@ if inverter_sentido:
 
 fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
+def deslocar_coord(coord1, coord2, deslocamento=0.05):
+    # Aplica leve deslocamento lateral ortogonal à linha para visualização paralela
+    dx = coord2[1] - coord1[1]
+    dy = coord2[0] - coord1[0]
+    comprimento = math.sqrt(dx**2 + dy**2)
+    if comprimento == 0:
+        return [coord1, coord2]
+    dx /= comprimento
+    dy /= comprimento
+    # Rota 90 graus
+    desloc_x = -dy * deslocamento
+    desloc_y = dx * deslocamento
+    coord1_deslocada = [coord1[0] + desloc_y, coord1[1] + desloc_x]
+    coord2_deslocada = [coord2[0] + desloc_y, coord2[1] + desloc_x]
+    return [coord1_deslocada, coord2_deslocada]
+
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
+
+# Processa os dados com base no botão
+if inverter_sentido:
+    df_od[["ORIGEM", "DESTINO"]] = df_od[["DESTINO", "ORIGEM"]]
+
+fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
+deslocamento_visual = 0.05
+
+# Usar set para evitar duplicação de sentidos ida/volta
+ligacoes_adicionadas = set()
 
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
-    if origem in municipios_coords and destino in municipios_coords:
-        coords = [municipios_coords[origem], municipios_coords[destino]]
+    par = tuple(sorted([origem, destino]))  # Para evitar duplicações de ida/volta
+    if origem in municipios_coords and destino in municipios_coords and par not in ligacoes_adicionadas:
+        coord1 = municipios_coords[origem]
+        coord2 = municipios_coords[destino]
+        coords_deslocadas = deslocar_coord(coord1, coord2, deslocamento=deslocamento_visual)
         folium.PolyLine(
-            coords,
+            coords_deslocadas,
             color="red",
             weight=1 + (total / 30) * 5,
             opacity=0.8,
             tooltip=f"{origem} → {destino}: {total} deslocamentos"
         ).add_to(mapa)
+        ligacoes_adicionadas.add(par)
 
+# Adiciona os marcadores
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
 
 st_folium(mapa, width=1600, height=700)
+
 
 st.subheader("Matriz OD (Gráfico Térmico)")
 matriz = df_filtrado.groupby(["ORIGEM", "DESTINO"]).size().unstack(fill_value=0)
