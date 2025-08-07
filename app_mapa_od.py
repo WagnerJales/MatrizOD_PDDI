@@ -130,7 +130,6 @@ fluxos = df_od.groupby(["ORIGEM", "DESTINO"]).size().reset_index(name="total")
 
 mapa = folium.Map(location=[-2.53, -43.9], zoom_start=10, tiles="CartoDB positron")
 
-# Função para calcular curva de Bezier
 def bezier_curve(p1, p2, curvature=0.3, num_points=20):
     p1 = np.array(p1)
     p2 = np.array(p2)
@@ -143,14 +142,12 @@ def bezier_curve(p1, p2, curvature=0.3, num_points=20):
     curve = [(1 - t_)**2 * p1 + 2 * (1 - t_) * t_ * control + t_**2 * p2 for t_ in t]
     return [(pt[0], pt[1]) for pt in curve]
 
-# Adiciona deslocamentos com curvas Bezier
 pares_processados = set()
 
 for _, row in fluxos.iterrows():
     origem, destino, total = row["ORIGEM"], row["DESTINO"], row["total"]
     par = tuple(sorted([origem, destino]))
 
-    # Já foi desenhado em ordem reversa? Pula.
     if par in pares_processados:
         continue
     pares_processados.add(par)
@@ -159,7 +156,6 @@ for _, row in fluxos.iterrows():
         origem_coord = municipios_coords[origem]
         destino_coord = municipios_coords[destino]
 
-        # Verifica se o sentido inverso existe
         inverso = fluxos[(fluxos["ORIGEM"] == destino) & (fluxos["DESTINO"] == origem)]
         tem_inverso = not inverso.empty
 
@@ -176,8 +172,6 @@ for _, row in fluxos.iterrows():
             curva = bezier_curve(origem_coord, destino_coord, curvature=0.3)
             folium.PolyLine(curva, color="red", weight=1 + (total / 30) * 5, opacity=0.7,
                             tooltip=f"{origem} → {destino}: {total} deslocamentos").add_to(mapa)
-
-
 
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade, icon=folium.Icon(icon="circle")).add_to(mapa)
