@@ -84,6 +84,44 @@ municipios_rmgsl = [
     "Alcântara"
 ]
 
+coords_municipios_od2 = {
+    # Subzonas de São Luís
+    "São Luís - Bancaga": [-2.557948, -44.331238],
+    "São Luís - Centro": [-2.515687, -44.296435],
+    "São Luís - Cidade Operária": [-2.5705480438203296, -44.20412618522021],
+    "São Luís - Cohab": [-2.541977, -44.212127],
+    "São Luís - Cohama": [-2.5163246962493697, -44.24714652403556],
+    "São Luís - Zona Industrial": [-2.614860861647258, -44.25655944286809],
+
+    # Demais municípios
+    "Paço do Lumiar": [-2.510, -44.069],
+    "Raposa": [-2.476, -44.096],
+    "São José de Ribamar": [-2.545, -44.022],
+    "Santa Rita": [-3.1457417436986854, -44.332941569634805],
+    "Morros": [-2.864469, -44.039238],
+    "Icatu": [-2.762, -44.045],
+    "Rosário": [-2.943, -44.254],
+    "Bacabeira": [-2.969, -44.310],
+    "Itapecuru Mirim": [-3.338, -44.341],
+    "Cantanhede": [-3.608, -44.370],
+    "Codó": [-4.454, -43.874],
+    "Timon": [-5.096, -42.837],
+    "Caxias": [-4.861, -43.371],
+    "São Mateus do Maranhão": [-3.840, -45.326],
+    "Viana": [-3.232, -44.995],
+    "Bequimão": [-2.438, -44.779],
+    "Pinheiro": [-2.538, -45.082],
+    "Anajatuba": [-3.291, -44.623],
+    "Alcântara": [-2.416, -44.437],
+    "Humberto de Campos": [-1.756, -44.793],
+    "Barreirinhas": [-2.754, -42.825],
+    "Primeira Cruz": [-2.508889158522334, -43.44017897332363],
+    "Santo Amaro": [-2.5047542734648762, -43.255933552698686],
+    "Cachoeira Grande": [-2.917, -44.223],
+    "Presidente Juscelino": [-2.918, -44.068]
+}
+
+
 # === Filtros ===
 st.sidebar.header("Filtros")
 origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()), default=[])
@@ -157,6 +195,46 @@ for cidade in municipios_usados:
 
 with st.container():
     st_folium(mapa, width=1600, height=600)
+
+# Mapa 2 - sbuáreas Sao Luis
+st.markdown("---")
+st.subheader("🌐 Mapa OD com colunas específicas de origem/destino (incluindo subzonas de São Luís)")
+
+if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO" in df.columns:
+
+    df_od2 = df[
+        df["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
+        df["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
+    ].copy()
+
+    df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
+    df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
+
+    fluxo_od2 = df_od2.groupby("par_od").size().reset_index(name="total")
+    fluxo_od2[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxo_od2["par_od"].tolist(), index=fluxo_od2.index)
+
+    mapa_od2 = folium.Map(location=[-2.53, -44.3], zoom_start=10, tiles="CartoDB Positron")
+
+    for _, row in fluxo_od2.iterrows():
+        origem, destino = row["ORIGEM"], row["DESTINO"]
+        if origem in coords_municipios_od2 and destino in coords_municipios_od2:
+            coords = [coords_municipios_od2[origem], coords_municipios_od2[destino]]
+            folium.PolyLine(
+                coords,
+                color="darkblue",
+                weight=1 + (row["total"] / 20) * 4,
+                opacity=0.7,
+                tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
+            ).add_to(mapa_od2)
+
+    for nome, coord in coords_municipios_od2.items():
+        folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
+
+    st_folium(mapa_od2, use_container_width=True, height=550)
+
+else:
+    st.warning("As colunas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas na base.")
+
 
 
 # === Heatmaps ===
