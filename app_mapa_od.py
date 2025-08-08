@@ -74,12 +74,7 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
-sentido_selecionado = st.sidebar.selectbox("Sentido do deslocamento:", [
-    "A-B (Origem-Destino)",
-    "B-A (Destino-Origem)",
-    "A-B e B-A (Bidirecional)"
-])
-
+# === Aplicar filtros ===
 df_filtrado = df.copy()
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
@@ -94,42 +89,34 @@ if periodo:
 if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
+# === Eliminar auto-deslocamentos ===
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
 
-# Agrupamento conforme sentido
-if sentido_selecionado == "A-B (Origem-Destino)":
-    df_od["ORIGEM_DESTINO"] = list(zip(df_od["ORIGEM"], df_od["DESTINO"]))
-elif sentido_selecionado == "B-A (Destino-Origem)":
-    df_od["ORIGEM_DESTINO"] = list(zip(df_od["DESTINO"], df_od["ORIGEM"]))
-else:  # Bidirecional (sem sentido)
-    df_od["ORIGEM_DESTINO"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
+# === Agrupamento bidirecional ===
+df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
+fluxos = df_od.groupby("par_od").size().reset_index(name="total")
+fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["par_od"].tolist(), index=fluxos.index)
 
-# Agrupa os fluxos
-fluxos = df_od.groupby("ORIGEM_DESTINO").size().reset_index(name="total")
-fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["ORIGEM_DESTINO"].tolist(), index=fluxos.index)
-
-# Criação da matriz OD
+# === Matriz OD ===
 matriz = fluxos.pivot_table(index="ORIGEM", columns="DESTINO", values="total", fill_value=0)
 
-# === Mapa OD ===
+# === Mapa ===
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
-
 for _, row in fluxos.iterrows():
     origem, destino = row["ORIGEM"], row["DESTINO"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
-        tooltip_text = f"{origem} → {destino}: {row['total']} deslocamentos"
         folium.PolyLine(
             coords,
             color="purple",
             weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
-            tooltip=tooltip_text
+            tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
-# Apenas marcadores relevantes
-municipios_presentes = set(df_filtrado["ORIGEM"]).union(set(df_filtrado["DESTINO"]))
-for cidade in municipios_presentes:
+# === Marcadores apenas usados ===
+municipios_usados = set(df_od["ORIGEM"]).union(set(df_od["DESTINO"]))
+for cidade in municipios_usados:
     if cidade in municipios_coords:
         folium.Marker(location=municipios_coords[cidade], popup=cidade, tooltip=cidade).add_to(mapa)
 
