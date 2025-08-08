@@ -116,6 +116,10 @@ if periodo:
 if modal:
     df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
+# Mostrar quantidade de registros após filtragem
+st.sidebar.markdown("---")
+st.sidebar.markdown(f"**Total de pesquisas:** `{len(df_filtrado):,}`")
+
 # === Eliminar auto-deslocamentos ===
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
 
