@@ -73,8 +73,6 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
-sentido_selecionado = st.sidebar.radio("Sentido do Fluxo:", ("A-B e B-A (Bidirecional)", "A-B (Origem-Destino)", "B-A (Destino-Origem)"))
-
 df_filtrado = df.copy()
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
