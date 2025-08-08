@@ -147,9 +147,9 @@ for cidade in municipios_usados:
     if cidade in municipios_coords and municipios_coords[cidade]:
         folium.Marker(location=municipios_coords[cidade], popup=cidade, tooltip=cidade).add_to(mapa)
 
-col1, col2 = st.columns([2, 1])
-with col1:
+with st.container():
     st_folium(mapa, width=1600, height=600)
+
 
 # === Heatmaps ===
 def gerar_heatmap(df, eixo_x, eixo_y, titulo, cor="Blues"):
