@@ -128,14 +128,14 @@ fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["par_od"].tolist(), index=fl
 matriz = fluxos.pivot_table(index="ORIGEM", columns="DESTINO", values="total", fill_value=0)
 
 # === Mapa interativo ===
-mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
+mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9, tiles="CartoDB Positron")
 for _, row in fluxos.iterrows():
     origem, destino = row["ORIGEM"], row["DESTINO"]
     if origem in municipios_coords and destino in municipios_coords and municipios_coords[origem] and municipios_coords[destino]:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
             coords,
-            color="purple",
+            color="red",
             weight=1 + (row["total"] / 30) * 5,
             opacity=0.8,
             tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
