@@ -149,7 +149,7 @@ for cidade in municipios_usados:
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    st_folium(mapa, width=1200, height=700)
+    st_folium(mapa, width=1600, height=600)
 
 # === Heatmaps ===
 def gerar_heatmap(df, eixo_x, eixo_y, titulo, cor="Blues"):
