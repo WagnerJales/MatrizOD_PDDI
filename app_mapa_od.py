@@ -1,70 +1,69 @@
 import streamlit as st
 import pandas as pd
 import folium
-from folium import PolyLine
 from streamlit_folium import st_folium
+from folium import PolyLine
+import plotly.express as px
 
+# Configuração da página
 st.set_page_config(layout="wide")
 
-# Controle de navegação entre páginas
-if "pagina_atual" not in st.session_state:
-    st.session_state.pagina_atual = "inicial"
-
+# Função para carregar os dados
 @st.cache_data
 def carregar_dados():
-    df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
-    df = df.rename(columns={
-        "Qual o motivo da viagem?": "Motivo",
-        "Com que frequência você faz essa viagem?": "Frequência",
-        "A viagem foi realizada em qual período do dia?": "Periodo do dia",
-        "Qual foi o principal meio de transporte que você usou?": "Principal Modal"
-    })
-    return df
+    try:
+        df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
+        df = df.rename(columns={
+            "Qual o motivo da viagem?": "Motivo",
+            "Com que frequência você faz essa viagem?": "Frequência",
+            "A viagem foi realizada em qual período do dia?": "Periodo do dia",
+            "Qual foi o principal meio de transporte que você usou?": "Principal Modal",
+            "Qual o município de ORIGEM": "Município ORIGEM",
+            "Qual o município de DESTINO": "Município DESTINO",
+        })
+        return df
+    except Exception as e:
+        st.error(f"Erro ao carregar os dados: {e}")
+        st.stop()
 
-try:
-    df = carregar_dados()
-except Exception as e:
-    st.error(f"Erro ao carregar o Excel: {e}")
-    st.stop()
+# Inicializa a página se necessário
+def inicializar_pagina():
+    if "pagina" not in st.session_state:
+        st.session_state.pagina = "inicio"
 
-municipios_rmgsl = [
-    "São Luís", "Paço do Lumiar", "Raposa", "São José de Ribamar",
-    "Santa Rita", "Morros", "Icatu", "Rosário", "Bacabeira",
-    "Cachoeira Grande", "Presidente Juscelino", "Alcântara"
-]
+inicializar_pagina()
 
-municipios_coords = {
-    "São Luís": [-2.538, -44.282], "Paço do Lumiar": [-2.510, -44.069],
-    "Raposa": [-2.476, -44.096], "São José de Ribamar": [-2.545, -44.022],
-    "Santa Rita": [-3.145, -44.332], "Morros": [-2.864, -44.039],
-    "Icatu": [-2.762, -44.045], "Rosário": [-2.943, -44.254],
-    "Bacabeira": [-2.969, -44.310], "Itapecuru Mirim": [-3.338, -44.341],
-    "Cantanhede": [-3.608, -44.370], "Codó": [-4.454, -43.874],
-    "Timon": [-5.096, -42.837], "Caxias": [-4.861, -43.371],
-    "São Mateus do Maranhão": [-3.840, -45.326], "Viana": [-3.232, -44.995],
-    "Bequimão": [-2.438, -44.779], "Pinheiro": [-2.538, -45.082],
-    "Anajatuba": [-3.291, -44.623], "Alcântara": [-2.416, -44.437],
-    "Humberto de Campos": [-1.756, -44.793], "Barreirinhas": [-2.754, -42.825],
-    "Primeira Cruz": [-2.508, -43.440], "Santo Amaro": [-2.504, -43.255],
-    "Cachoeira Grande": [-2.917, -44.223], "Presidente Juscelino": [-2.918, -44.068]
-}
-
-coords_municipios_od2 = {
-    **municipios_coords,
+# Dados dos municípios (visão por subzonas de São Luís)
+coord_subzonas = {
     "São Luís - Bancaga": [-2.557948, -44.331238],
     "São Luís - Centro": [-2.515687, -44.296435],
-    "São Luís - Cidade Operária": [-2.570548, -44.204126],
+    "São Luís - Cidade Operária": [-2.5705480438203296, -44.20412618522021],
     "São Luís - Cohab": [-2.541977, -44.212127],
-    "São Luís - Cohama": [-2.516324, -44.247146],
-    "São Luís - Zona Industrial": [-2.614860, -44.256559]
+    "São Luís - Cohama": [-2.5163246962493697, -44.24714652403556],
+    "São Luís - Zona Industrial": [-2.614860861647258, -44.25655944286809]
 }
 
-# Página Inicial
-if st.session_state.pagina_atual == "inicial":
+# Dados dos municípios (visão tradicional)
+coord_municipios = {
+    "São Luís": [-2.538, -44.282],
+    "Paço do Lumiar": [-2.510, -44.069],
+    "Raposa": [-2.476, -44.096],
+    "São José de Ribamar": [-2.545, -44.022],
+    "Santa Rita": [-3.1457, -44.3329],
+    "Morros": [-2.8644, -44.0392],
+    "Icatu": [-2.762, -44.045],
+    "Rosário": [-2.943, -44.254],
+    "Bacabeira": [-2.969, -44.310],
+    "Alcântara": [-2.416, -44.437],
+    "Cachoeira Grande": [-2.930, -44.220],
+    "Presidente Juscelino": [-2.915, -44.070]
+}
+
+# Página inicial
+if st.session_state.pagina == "inicio":
     st.title("Pesquisa Origem-Destino - RMGSL 2025")
     st.markdown("""
-    Esta aplicação apresenta os resultados da **Pesquisa Origem-Destino** realizada entre os dias
-    **18/07/2025 a 25/07/2025**, com foco na Região Metropolitana da Grande São Luís (RMGSL):
+    Esta aplicação apresenta os resultados da **Pesquisa Origem-Destino** realizada entre os dias **18/07/2025 a 25/07/2025**, com foco na Região Metropolitana da Grande São Luís (RMGSL):
 
     - **São Luís**
     - **Paço do Lumiar**
@@ -74,46 +73,58 @@ if st.session_state.pagina_atual == "inicial":
 
     Você pode visualizar os dados de duas formas:
 
-    - 🔴 **Por município** (visão tradicional)
-    - 🔵 **Subzonas de São Luís** (6 áreas internas)
-    """)
+    <span style='color:red'>●</span> **Por município** (visão tradicional)  
+    <span style='color:navy'>●</span> **Subzonas de São Luís** (6 áreas internas)
+    """, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
     with col1:
         if st.button("🔴 Ver Mapa por Município"):
-            st.session_state.pagina_atual = "municipios"
-            st.experimental_rerun()
+            st.session_state.pagina = "municipios"
+            st.rerun()
     with col2:
-        if st.button("🔵 Ver Mapa com Subzonas de São Luís"):
-            st.session_state.pagina_atual = "subzonas"
-            st.experimental_rerun()
+        if st.button(":large_blue_circle: Ver Mapa com Subzonas de São Luís"):
+            st.session_state.pagina = "subzonas"
+            st.rerun()
 
-# Página 1 – Mapa por Município
-elif st.session_state.pagina_atual == "municipios":
-    st.title("Mapa OD por Município")
-    if st.button("🔙 Voltar à Página Inicial"):
-        st.session_state.pagina_atual = "inicial"
-        st.experimental_rerun()
+# Demais páginas
+else:
+    df = carregar_dados()
 
+    # Definir colunas conforme a página
+    if st.session_state.pagina == "municipios":
+        origem_col = "Município ORIGEM"
+        destino_col = "Município DESTINO"
+        coordenadas = coord_municipios
+        titulo = "Mapa OD por Município"
+    else:
+        origem_col = "ORIGEM"
+        destino_col = "DESTINO"
+        coordenadas = coord_subzonas
+        titulo = "Mapa OD por Subzonas de São Luís"
+
+    st.title(titulo)
+    if st.button("🢞 Voltar à Página Inicial"):
+        st.session_state.pagina = "inicio"
+        st.rerun()
+
+    # Filtros
     st.sidebar.header("Filtros")
-    origens = st.sidebar.multiselect("Origem:", sorted(df["ORIGEM"].dropna().unique()))
-    destinos = st.sidebar.multiselect("Destino:", sorted(df["DESTINO"].dropna().unique()))
-    motivo = st.sidebar.multiselect("Motivo:", sorted(df["Motivo"].dropna().unique()))
-    frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()))
-    periodo = st.sidebar.multiselect("Período:", sorted(df["Periodo do dia"].dropna().unique()))
-    modal = st.sidebar.multiselect("Modal:", sorted(df["Principal Modal"].dropna().unique()))
-    filtro_origem_rmgsl = st.sidebar.checkbox("Somente Origem na RMGSL")
-    filtro_destino_rmgsl = st.sidebar.checkbox("Somente Destino na RMGSL")
+    origens = st.sidebar.multiselect("Origem:", sorted(df[origem_col].dropna().unique()), default=[])
+    destinos = st.sidebar.multiselect("Destino:", sorted(df[destino_col].dropna().unique()), default=[])
+    motivo = st.sidebar.multiselect("Motivo da Viagem:", sorted(df["Motivo"].dropna().unique()), default=[])
+    frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dropna().unique()), default=[])
+    periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
+    modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
+    cor_linha = st.sidebar.color_picker("Cor das linhas OD", value="#FF0000")
+    peso_base = st.sidebar.slider("Espessura base das linhas", 1.0, 10.0, 2.0)
+    peso_fator = st.sidebar.slider("Fator de espessura por volume", 0.01, 1.0, 0.05)
 
     df_filtrado = df.copy()
-    if filtro_origem_rmgsl:
-        df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(municipios_rmgsl)]
-    if filtro_destino_rmgsl:
-        df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(municipios_rmgsl)]
     if origens:
-        df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
+        df_filtrado = df_filtrado[df_filtrado[origem_col].isin(origens)]
     if destinos:
-        df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(destinos)]
+        df_filtrado = df_filtrado[df_filtrado[destino_col].isin(destinos)]
     if motivo:
         df_filtrado = df_filtrado[df_filtrado["Motivo"].isin(motivo)]
     if frequencia:
@@ -123,55 +134,26 @@ elif st.session_state.pagina_atual == "municipios":
     if modal:
         df_filtrado = df_filtrado[df_filtrado["Principal Modal"].isin(modal)]
 
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("**Total de pesquisas filtradas:**")
+    # Contagem
     st.sidebar.markdown(
-        f"<span style='font-size:28px;color:#1f77b4;font-weight:bold'>{len(df_filtrado)}</span>",
+        f"<span style='font-size: 24px; font-weight: bold; color: #4B8BBE;'>Total: {len(df_filtrado):,} registros</span>",
         unsafe_allow_html=True
     )
 
-    df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
-    df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
-    fluxos = df_od.groupby("par_od").size().reset_index(name="total")
-    fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["par_od"].tolist(), index=fluxos.index)
+    # Construir mapa
+    mapa = folium.Map(location=[-2.53, -44.3], zoom_start=10, tiles="CartoDB positron")
 
-    mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9, tiles="CartoDB Positron")
-    for _, row in fluxos.iterrows():
-        o, d = row["ORIGEM"], row["DESTINO"]
-        if o in municipios_coords and d in municipios_coords:
-            coords = [municipios_coords[o], municipios_coords[d]]
-            folium.PolyLine(coords, color="red", weight=1 + row["total"]/30 * 5, opacity=0.8,
-                            tooltip=f"{o} ↔ {d}: {row['total']}").add_to(mapa)
-    st_folium(mapa, use_container_width=True, height=550)
+    # Agregando OD
+    od_agrupado = df_filtrado.groupby([origem_col, destino_col]).size().reset_index(name="count")
 
-# Página 2 – Mapa com Subzonas de São Luís
-elif st.session_state.pagina_atual == "subzonas":
-    st.title("Mapa OD com Subzonas de São Luís")
-    if st.button("🔙 Voltar à Página Inicial"):
-        st.session_state.pagina_atual = "inicial"
-        st.experimental_rerun()
+    for _, row in od_agrupado.iterrows():
+        origem = row[origem_col]
+        destino = row[destino_col]
+        count = row["count"]
 
-    df2 = df.copy()
-    df2 = df2.rename(columns={
-        "Qual o município de ORIGEM": "ORIGEM",
-        "Qual o município de DESTINO": "DESTINO"
-    })
+        if origem in coordenadas and destino in coordenadas and origem != destino:
+            coord_origem = coordenadas[origem]
+            coord_destino = coordenadas[destino]
+            folium.PolyLine([coord_origem, coord_destino], weight=peso_base + count * peso_fator, color=cor_linha, opacity=0.6).add_to(mapa)
 
-    df2 = df2[df2["ORIGEM"].isin(coords_municipios_od2.keys()) & df2["DESTINO"].isin(coords_municipios_od2.keys())]
-    df2 = df2[df2["ORIGEM"] != df2["DESTINO"]]
-    df2["par_od"] = df2.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
-    fluxos2 = df2.groupby("par_od").size().reset_index(name="total")
-    fluxos2[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos2["par_od"].tolist(), index=fluxos2.index)
-
-    mapa2 = folium.Map(location=[-2.53, -44.3], zoom_start=10, tiles="CartoDB Positron")
-    for _, row in fluxos2.iterrows():
-        o, d = row["ORIGEM"], row["DESTINO"]
-        if o in coords_municipios_od2 and d in coords_municipios_od2:
-            coords = [coords_municipios_od2[o], coords_municipios_od2[d]]
-            folium.PolyLine(coords, color="darkblue", weight=1 + row["total"]/20 * 4, opacity=0.7,
-                            tooltip=f"{o} ↔ {d}: {row['total']}").add_to(mapa2)
-    for nome, coord in coords_municipios_od2.items():
-        folium.Marker(location=coord, tooltip=nome).add_to(mapa2)
-
-    st_folium(mapa2, use_container_width=True, height=550)
-
+    st_folium(mapa, width=1000, height=600)
