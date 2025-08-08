@@ -38,6 +38,7 @@ except Exception as e:
     st.error(f"Erro ao carregar o Excel: {e}")
     st.stop()
 
+# Coordenadas dos municípios
 municipios_coords = {
     "São Luís": [-2.538, -44.282],
     "Paço do Lumiar": [-2.510, -44.069],
@@ -63,10 +64,25 @@ municipios_coords = {
     "Barreirinhas": [-2.754, -42.825],
     "Primeira Cruz": [-2.508889158522334, -43.44017897332363],
     "Santo Amaro": [-2.5047542734648762, -43.255933552698686],
-    "Cachoeira Grande": [-2.932077838787942, -44.05357651191786],
-    "Presidente Juscelino": [-2.925727937151404, -44.063944279252134],
-    "Axixá": [-2.8370828917967383, -44.058935576075235]
+    "Cachoeira Grande": None,
+    "Presidente Juscelino": None
 }
+
+# Lista de municípios da RMGSL
+municipios_rmgsl = [
+    "São Luís",
+    "Paço do Lumiar",
+    "Raposa",
+    "São José de Ribamar",
+    "Santa Rita",
+    "Morros",
+    "Icatu",
+    "Rosário",
+    "Bacabeira",
+    "Cachoeira Grande",
+    "Presidente Juscelino",
+    "Alcântara"
+]
 
 # === Filtros ===
 st.sidebar.header("Filtros")
@@ -77,8 +93,16 @@ frequencia = st.sidebar.multiselect("Frequência:", sorted(df["Frequência"].dro
 periodo = st.sidebar.multiselect("Período do dia:", sorted(df["Periodo do dia"].dropna().unique()), default=[])
 modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].dropna().unique()), default=[])
 
+# Filtros adicionais
+filtro_origem_rmgsl = st.sidebar.checkbox("Apenas origens na RMGSL")
+filtro_destino_rmgsl = st.sidebar.checkbox("Apenas destinos na RMGSL")
+
 # === Aplicar filtros ===
 df_filtrado = df.copy()
+if filtro_origem_rmgsl:
+    df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(municipios_rmgsl)]
+if filtro_destino_rmgsl:
+    df_filtrado = df_filtrado[df_filtrado["DESTINO"].isin(municipios_rmgsl)]
 if origens:
     df_filtrado = df_filtrado[df_filtrado["ORIGEM"].isin(origens)]
 if destinos:
@@ -95,7 +119,7 @@ if modal:
 # === Eliminar auto-deslocamentos ===
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
 
-# === Agrupamento bidirecional ===
+# === Agrupar deslocamentos bidirecionais ===
 df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["par_od"].tolist(), index=fluxos.index)
@@ -103,11 +127,11 @@ fluxos[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxos["par_od"].tolist(), index=fl
 # === Matriz OD ===
 matriz = fluxos.pivot_table(index="ORIGEM", columns="DESTINO", values="total", fill_value=0)
 
-# === Mapa ===
+# === Mapa interativo ===
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
 for _, row in fluxos.iterrows():
     origem, destino = row["ORIGEM"], row["DESTINO"]
-    if origem in municipios_coords and destino in municipios_coords:
+    if origem in municipios_coords and destino in municipios_coords and municipios_coords[origem] and municipios_coords[destino]:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         folium.PolyLine(
             coords,
@@ -117,10 +141,10 @@ for _, row in fluxos.iterrows():
             tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
         ).add_to(mapa)
 
-# === Marcadores apenas usados ===
+# Marcadores apenas para municípios usados
 municipios_usados = set(df_od["ORIGEM"]).union(set(df_od["DESTINO"]))
 for cidade in municipios_usados:
-    if cidade in municipios_coords:
+    if cidade in municipios_coords and municipios_coords[cidade]:
         folium.Marker(location=municipios_coords[cidade], popup=cidade, tooltip=cidade).add_to(mapa)
 
 col1, col2 = st.columns([2, 1])
@@ -150,7 +174,7 @@ col5, col6 = st.columns(2)
 with col5:
     heatmap_f = gerar_heatmap(df_filtrado, "Principal Modal", "Frequência", "Modal x Frequência", "Magenta")
 
-# === Exportação ===
+# === Exportação de matrizes ===
 st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
@@ -166,3 +190,4 @@ exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
+
