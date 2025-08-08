@@ -5,7 +5,6 @@ from folium import Marker
 from streamlit_folium import st_folium
 import plotly.express as px
 import io
-import math
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -98,27 +97,22 @@ if sentido_selecionado == "A-B (Origem-Destino)":
 elif sentido_selecionado == "B-A (Destino-Origem)":
     df_od["par_od"] = df_od.apply(lambda row: (row["DESTINO"], row["ORIGEM"]), axis=1)
 else:
-    # Cria um identificador de par ordenado (independente do sentido)
     df_od["par_od"] = df_od.apply(lambda row: tuple(sorted([row["ORIGEM"], row["DESTINO"]])), axis=1)
 
-# Agrupa e soma os deslocamentos nos dois sentidos
 fluxos = df_od.groupby("par_od").size().reset_index(name="total")
 matriz = fluxos.pivot_table(index=pd.MultiIndex.from_tuples(fluxos["par_od"]), values="total", aggfunc="sum").unstack(fill_value=0)
 
-# Mapa
 mapa = folium.Map(location=[-2.53, -44.3], zoom_start=9)
-
 for _, row in fluxos.iterrows():
-    origem = row["par_od"][0]
-    destino = row["par_od"][1]
+    origem, destino = row["par_od"]
     if origem in municipios_coords and destino in municipios_coords:
         coords = [municipios_coords[origem], municipios_coords[destino]]
         if sentido_selecionado == "A-B e B-A (Bidirecional)":
-            tooltip_text = f"{origem} <-> {destino}: {row["total"]} deslocamentos"
+            tooltip_text = f"{origem} <-> {destino}: {row['total']} deslocamentos"
         elif sentido_selecionado == "A-B (Origem-Destino)":
-            tooltip_text = f"{origem} -> {destino}: {row["total"]} deslocamentos"
+            tooltip_text = f"{origem} -> {destino}: {row['total']} deslocamentos"
         else:
-            tooltip_text = f"{destino} -> {origem}: {row["total"]} deslocamentos"
+            tooltip_text = f"{destino} -> {origem}: {row['total']} deslocamentos"
 
         folium.PolyLine(
             coords,
@@ -131,40 +125,32 @@ for _, row in fluxos.iterrows():
 for cidade, coord in municipios_coords.items():
     folium.Marker(location=coord, popup=cidade, tooltip=cidade).add_to(mapa)
 
-# Layout com mapa + gráfico da matriz OD
 col1, col2 = st.columns([2, 1])
 with col1:
     st_folium(mapa, width=1200, height=700)
 
-
+def gerar_heatmap(df, eixo_x, eixo_y, titulo, cor="Blues"):
+    st.subheader(titulo)
+    matriz = df.groupby([eixo_x, eixo_y]).size().unstack(fill_value=0)
+    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale=cor), use_container_width=True)
+    return matriz
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader("Motivo x Frequência")
-    heatmap_a = df_filtrado.groupby(["Motivo", "Frequência"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_a, text_auto=True, color_continuous_scale="Blues"), use_container_width=True)
+    heatmap_a = gerar_heatmap(df_filtrado, "Motivo", "Frequência", "Motivo x Frequência", "Blues")
 with col2:
-    st.subheader("Motivo x Período do Dia")
-    heatmap_b = df_filtrado.groupby(["Motivo", "Periodo do dia"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_b, text_auto=True, color_continuous_scale="Greens"), use_container_width=True)
+    heatmap_b = gerar_heatmap(df_filtrado, "Motivo", "Periodo do dia", "Motivo x Período do Dia", "Greens")
 
 col3, col4 = st.columns(2)
 with col3:
-    st.subheader("Frequência x Período do Dia")
-    heatmap_c = df_filtrado.groupby(["Frequência", "Periodo do dia"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_c, text_auto=True, color_continuous_scale="Oranges"), use_container_width=True)
+    heatmap_c = gerar_heatmap(df_filtrado, "Frequência", "Periodo do dia", "Frequência x Período do Dia", "Oranges")
 with col4:
-    st.subheader("Motivo x Modal (Principal Modal)")
-    heatmap_e = df_filtrado.groupby(["Motivo", "Principal Modal"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_e, text_auto=True, color_continuous_scale="Teal"), use_container_width=True)
+    heatmap_e = gerar_heatmap(df_filtrado, "Motivo", "Principal Modal", "Motivo x Modal (Principal Modal)", "Teal")
 
 col5, col6 = st.columns(2)
 with col5:
-    st.subheader("Modal x Frequência")
-    heatmap_f = df_filtrado.groupby(["Principal Modal", "Frequência"]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(heatmap_f, text_auto=True, color_continuous_scale="Pinkyl"), use_container_width=True)
+    heatmap_f = gerar_heatmap(df_filtrado, "Principal Modal", "Frequência", "Modal x Frequência", "Pinkyl")
 
-# EXPORTAÇÃO
 st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
     buffer = io.BytesIO()
@@ -180,4 +166,3 @@ exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
 
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
-
