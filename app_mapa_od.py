@@ -122,7 +122,7 @@ st.sidebar.markdown("**Total de pesquisas filtradas:**", unsafe_allow_html=True)
 st.sidebar.markdown(
     f"<span style='font-size: 32px; font-weight: bold; color: #4B8BBE;'>{len(df_filtrado):,}</span>",
     unsafe_allow_html=True
-
+)
 
 # === Eliminar auto-deslocamentos ===
 df_od = df_filtrado[df_filtrado["ORIGEM"] != df_filtrado["DESTINO"]].copy()
