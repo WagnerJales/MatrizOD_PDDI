@@ -4,3 +4,7 @@ openpyxl
 folium
 streamlit-folium
 plotly
+geopandas
+shapely
+fiona
+pyproj
