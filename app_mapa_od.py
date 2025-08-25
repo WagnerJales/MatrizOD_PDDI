@@ -280,44 +280,50 @@ st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
 # === SHAPEFILE para QGIS ===
 st.header("Exportar Shapefile para QGIS")
 def gerar_shapefile_zip(fluxos, coords_dict, nome_arquivo="fluxo_od"):
-    linhas = []
-    for _, row in fluxos.iterrows():
-        origem, destino = row["ORIGEM"], row["DESTINO"]
-        if origem in coords_dict and destino in coords_dict:
-            coord_origem = coords_dict[origem]
-            coord_destino = coords_dict[destino]
-            if coord_origem and coord_destino:
-                linha = LineString([
-                    tuple(reversed(coord_origem)),
-                    tuple(reversed(coord_destino))
-                ])
-                linhas.append({
-                    "ORIGEM": origem,
-                    "DESTINO": destino,
-                    "TOTAL": row["total"],
-                    "geometry": linha
-                })
+linhas = []
+for _, row in fluxos.iterrows():
+origem, destino = row["ORIGEM"], row["DESTINO"]
+if origem in coords_dict and destino in coords_dict:
+coord_origem = coords_dict[origem]
+coord_destino = coords_dict[destino]
+if coord_origem and coord_destino:
+linha = LineString([
+tuple(reversed(coord_origem)),
+tuple(reversed(coord_destino))
+])
+linhas.append({
+"ORIGEM": origem,
+"DESTINO": destino,
+"TOTAL": row["total"],
+"geometry": linha
+})
 
-    gdf = gpd.GeoDataFrame(linhas, crs="EPSG:4326")
-    pasta = f"{nome_arquivo}_shp"
-    os.makedirs(pasta, exist_ok=True)
-    caminho_shp = os.path.join(pasta, f"{nome_arquivo}.shp")
-    gdf.to_file(caminho_shp)
 
-    zip_path = f"{nome_arquivo}.zip"
-    with zipfile.ZipFile(zip_path, 'w') as zipf:
-        for file in os.listdir(pasta):
-            zipf.write(os.path.join(pasta, file), arcname=file)
+gdf = gpd.GeoDataFrame(linhas, crs="EPSG:4326")
+pasta = f"{nome_arquivo}_shp"
+os.makedirs(pasta, exist_ok=True)
+caminho_shp = os.path.join(pasta, f"{nome_arquivo}.shp")
+gdf.to_file(caminho_shp)
 
-    return zip_path
 
+zip_path = f"{nome_arquivo}.zip"
+with zipfile.ZipFile(zip_path, 'w') as zipf:
+for file in os.listdir(pasta):
+zipf.write(os.path.join(pasta, file), arcname=file)
+
+
+return zip_path
+
+
+# Verifica se variáveis necessárias existem antes de exportar
+if 'fluxos' in locals() and 'municipios_coords' in locals():
 arquivo_zip = gerar_shapefile_zip(fluxos, municipios_coords)
-
 with open(arquivo_zip, "rb") as f:
-    st.download_button(
-        label="\U0001F4E5 Baixar Shapefile de Fluxos OD",
-        data=f.read(),
-        file_name="fluxo_od.zip",
-        mime="application/zip"
-    )
-
+st.download_button(
+label="\U0001F4E5 Baixar Shapefile de Fluxos OD",
+data=f.read(),
+file_name="fluxo_od.zip",
+mime="application/zip"
+)
+else:
+st.warning("As variáveis de fluxo ou coordenadas não estão disponíveis para exportar o shapefile.")
