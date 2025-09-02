@@ -135,6 +135,7 @@ modal = st.sidebar.multiselect("Principal Modal:", sorted(df["Principal Modal"].
 filtro_origem_rmgsl = st.sidebar.checkbox("Apenas origens na RMGSL")
 filtro_destino_rmgsl = st.sidebar.checkbox("Apenas destinos na RMGSL")
 
+
 # === Aplicar filtros ===
 df_filtrado = df.copy()
 if filtro_origem_rmgsl:
@@ -202,10 +203,10 @@ st.subheader("🌐 Mapa OD com colunas específicas de origem/destino (incluindo
 
 if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO" in df.columns:
 
-    df_od2 = df[
-        df["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
-        df["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
-    ].copy()
+df_od2 = df_filtrado[
+    df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
+    df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
+].copy()
 
     df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
     df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
