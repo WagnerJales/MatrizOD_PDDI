@@ -22,18 +22,18 @@ st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
 @st.cache_data
 def carregar_dados():
-df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
-df = df.rename(columns={
-"Qual o motivo da viagem?": "Motivo",
-"Com que frequência você faz essa viagem?": "Frequência",
-"A viagem foi realizada em qual período do dia?": "Periodo do dia",
-"Qual foi o principal meio de transporte que você usou?": "Principal Modal"
-})
-colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
-faltando = [col for col in colunas_esperadas if col not in df.columns]
-if faltando:
-raise ValueError(f"Colunas faltando: {faltando}")
-return df
+    df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
+    df = df.rename(columns={
+        "Qual o motivo da viagem?": "Motivo",
+        "Com que frequência você faz essa viagem?": "Frequência",
+        "A viagem foi realizada em qual período do dia?": "Periodo do dia",
+        "Qual foi o principal meio de transporte que você usou?": "Principal Modal"
+    })
+    colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
+    faltando = [col for col in colunas_esperadas if col not in df.columns]
+    if faltando:
+        raise ValueError(f"Colunas faltando: {faltando}")
+    return df
 
 
 try:
