@@ -210,12 +210,11 @@ st.markdown("---")
 st.subheader("🌐 Mapa OD com colunas específicas de origem/destino (incluindo subzonas de São Luís)")
 
 if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO" in df.columns:
-
-df_od2 = df_filtrado[
-    df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
-    df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
-].copy()
-
+    df_od2 = df_filtrado[
+        df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
+        df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
+    ].copy()
+    
     df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
     df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
 
@@ -240,11 +239,8 @@ df_od2 = df_filtrado[
         folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
 
     st_folium(mapa_od2, use_container_width=True, height=550)
-
 else:
     st.warning("As colunas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas na base.")
-
-
 
 # === Heatmaps ===
 def gerar_heatmap(df, eixo_x, eixo_y, titulo, cor="Blues"):
