@@ -159,3 +159,54 @@ def exportar_csv(df, nome_arquivo):
 
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
+
+
+
+# === Mapa com subzonas de São Luís ===
+coords_municipios_od2 = {
+    "São Luís - Bancaga": [-2.557948, -44.331238],
+    "São Luís - Centro": [-2.515687, -44.296435],
+    "São Luís - Cidade Operária": [-2.5705480438203296, -44.20412618522021],
+    "São Luís - Cohab": [-2.541977, -44.212127],
+    "São Luís - Cohama": [-2.5163246962493697, -44.24714652403556],
+    "São Luís - Zona Industrial": [-2.614860861647258, -44.25655944286809],
+    "Paço do Lumiar": [-2.510, -44.069],
+    "Raposa": [-2.476, -44.096],
+    "São José de Ribamar": [-2.545, -44.022],
+    "Alcântara": [-2.416, -44.437]
+}
+
+st.subheader("🌐 Mapa OD com subzonas de São Luís")
+
+if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO" in df.columns:
+    df_od2 = df_filtrado[
+        df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
+        df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
+    ].copy()
+
+    df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
+    df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
+
+    fluxo_od2 = df_od2.groupby("par_od").size().reset_index(name="total")
+    fluxo_od2[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxo_od2["par_od"].tolist(), index=fluxo_od2.index)
+
+    mapa_od2 = folium.Map(location=[-2.53, -44.3], zoom_start=11, tiles="CartoDB Positron")
+
+    for _, row in fluxo_od2.iterrows():
+        origem, destino = row["ORIGEM"], row["DESTINO"]
+        if origem in coords_municipios_od2 and destino in coords_municipios_od2:
+            coords = [coords_municipios_od2[origem], coords_municipios_od2[destino]]
+            folium.PolyLine(
+                coords,
+                color="purple",
+                weight=1 + (row["total"] / 15),
+                opacity=0.6,
+                tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
+            ).add_to(mapa_od2)
+
+    for nome, coord in coords_municipios_od2.items():
+        folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
+
+    st_folium(mapa_od2, use_container_width=True, height=550)
+else:
+    st.warning("As colunas de subzonas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas.")
