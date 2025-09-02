@@ -6,37 +6,41 @@ from streamlit_folium import st_folium
 import plotly.express as px
 import io
 
+
 st.set_page_config(layout="wide")
 st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
+<style>
+.block-container {
+padding-top: 1rem;
+}
+</style>
 """, unsafe_allow_html=True)
+
 
 st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
+
 @st.cache_data
 def carregar_dados():
-    df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
-    df = df.rename(columns={
-        "Qual o motivo da viagem?": "Motivo",
-        "Com que frequência você faz essa viagem?": "Frequência",
-        "A viagem foi realizada em qual período do dia?": "Periodo do dia",
-        "Qual foi o principal meio de transporte que você usou?": "Principal Modal"
-    })
-    colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
-    faltando = [col for col in colunas_esperadas if col not in df.columns]
-    if faltando:
-        raise ValueError(f"Colunas faltando: {faltando}")
-    return df
+df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
+df = df.rename(columns={
+"Qual o motivo da viagem?": "Motivo",
+"Com que frequência você faz essa viagem?": "Frequência",
+"A viagem foi realizada em qual período do dia?": "Periodo do dia",
+"Qual foi o principal meio de transporte que você usou?": "Principal Modal"
+})
+colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
+faltando = [col for col in colunas_esperadas if col not in df.columns]
+if faltando:
+raise ValueError(f"Colunas faltando: {faltando}")
+return df
+
 
 try:
-    df = carregar_dados()
+df = carregar_dados()
 except Exception as e:
-    st.error(f"Erro ao carregar o Excel: {e}")
-    st.stop()
+st.error(f"Erro ao carregar o Excel: {e}")
+st.stop()
 
 # Coordenadas dos municípios
 municipios_coords = {
@@ -197,83 +201,75 @@ for cidade in municipios_usados:
 with st.container():
     st_folium(mapa, width=1600, height=600)
 
-# Mapa 2 - sbuáreas Sao Luis
 st.markdown("---")
-st.subheader("🌐 Mapa OD com colunas específicas de origem/destino (incluindo subzonas de São Luís)")
 
-if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO" in df.columns:
 
-df_od2 = df_filtrado[
-    df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
-    df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
-].copy()
+mapa_od2 = folium.Map(location=[-2.53, -44.3], zoom_start=10, tiles="CartoDB Positron")
 
-    df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
-    df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
 
-    fluxo_od2 = df_od2.groupby("par_od").size().reset_index(name="total")
-    fluxo_od2[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxo_od2["par_od"].tolist(), index=fluxo_od2.index)
+for _, row in fluxo_od2.iterrows():
+origem, destino = row["ORIGEM"], row["DESTINO"]
+if origem in coords_municipios_od2 and destino in coords_municipios_od2:
+coords = [coords_municipios_od2[origem], coords_municipios_od2[destino]]
+folium.PolyLine(
+coords,
+color="darkblue",
+weight=1 + (row["total"] / 20) * 4,
+opacity=0.7,
+tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
+).add_to(mapa_od2)
 
-    mapa_od2 = folium.Map(location=[-2.53, -44.3], zoom_start=10, tiles="CartoDB Positron")
 
-    for _, row in fluxo_od2.iterrows():
-        origem, destino = row["ORIGEM"], row["DESTINO"]
-        if origem in coords_municipios_od2 and destino in coords_municipios_od2:
-            coords = [coords_municipios_od2[origem], coords_municipios_od2[destino]]
-            folium.PolyLine(
-                coords,
-                color="darkblue",
-                weight=1 + (row["total"] / 20) * 4,
-                opacity=0.7,
-                tooltip=f"{origem} ↔ {destino}: {row['total']} deslocamentos"
-            ).add_to(mapa_od2)
+for nome, coord in coords_municipios_od2.items():
+folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
 
-    for nome, coord in coords_municipios_od2.items():
-        folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
 
-    st_folium(mapa_od2, use_container_width=True, height=550)
-
+st_folium(mapa_od2, use_container_width=True, height=550)
 else:
-    st.warning("As colunas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas na base.")
-
+st.warning("As colunas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas na base.")
 
 
 # === Heatmaps ===
 def gerar_heatmap(df, eixo_x, eixo_y, titulo, cor="Blues"):
-    st.subheader(titulo)
-    matriz = df.groupby([eixo_x, eixo_y]).size().unstack(fill_value=0)
-    st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale=cor), use_container_width=True)
-    return matriz
+st.subheader(titulo)
+matriz = df.groupby([eixo_x, eixo_y]).size().unstack(fill_value=0)
+st.plotly_chart(px.imshow(matriz, text_auto=True, color_continuous_scale=cor), use_container_width=True)
+return matriz
+
 
 col1, col2 = st.columns(2)
 with col1:
-    heatmap_a = gerar_heatmap(df_filtrado, "Motivo", "Frequência", "Motivo x Frequência", "Blues")
+heatmap_a = gerar_heatmap(df_filtrado, "Motivo", "Frequência", "Motivo x Frequência", "Blues")
 with col2:
-    heatmap_b = gerar_heatmap(df_filtrado, "Motivo", "Periodo do dia", "Motivo x Período do Dia", "Greens")
+heatmap_b = gerar_heatmap(df_filtrado, "Motivo", "Periodo do dia", "Motivo x Período do Dia", "Greens")
+
 
 col3, col4 = st.columns(2)
 with col3:
-    heatmap_c = gerar_heatmap(df_filtrado, "Frequência", "Periodo do dia", "Frequência x Período do Dia", "Oranges")
+heatmap_c = gerar_heatmap(df_filtrado, "Frequência", "Periodo do dia", "Frequência x Período do Dia", "Oranges")
 with col4:
-    heatmap_e = gerar_heatmap(df_filtrado, "Motivo", "Principal Modal", "Motivo x Modal", "Teal")
+heatmap_e = gerar_heatmap(df_filtrado, "Motivo", "Principal Modal", "Motivo x Modal", "Teal")
+
 
 col5, col6 = st.columns(2)
 with col5:
-    heatmap_f = gerar_heatmap(df_filtrado, "Principal Modal", "Frequência", "Modal x Frequência", "Magenta")
+heatmap_f = gerar_heatmap(df_filtrado, "Principal Modal", "Frequência", "Modal x Frequência", "Magenta")
+
 
 # === Exportação de matrizes ===
 st.header("Exportar Matrizes")
 def exportar_csv(df, nome_arquivo):
-    buffer = io.BytesIO()
-    df.to_csv(buffer, index=True)
-    st.download_button(label=f"\U0001F4E5 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
+buffer = io.BytesIO()
+df.to_csv(buffer, index=True)
+st.download_button(label=f"📥 Baixar {nome_arquivo}", data=buffer.getvalue(), file_name=f"{nome_arquivo}.csv", mime="text/csv")
 
-exportar_csv(matriz, "Matriz_OD")
+
 exportar_csv(heatmap_a, "Matriz_Motivo_x_Frequencia")
 exportar_csv(heatmap_b, "Matriz_Motivo_x_Periodo")
 exportar_csv(heatmap_c, "Matriz_Frequencia_x_Periodo")
 exportar_csv(heatmap_e, "Matriz_Motivo_x_Modal")
 exportar_csv(heatmap_f, "Matriz_Modal_x_Frequencia")
+
 
 st.markdown("---")
 st.markdown("Desenvolvido por [Wagner Jales](https://www.wagnerjales.com.br)")
