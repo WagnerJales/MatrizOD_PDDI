@@ -6,37 +6,45 @@ from streamlit_folium import st_folium
 import plotly.express as px
 import io
 
+
 st.set_page_config(layout="wide")
 st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
+<style>
+.block-container {
+padding-top: 1rem;
+}
+</style>
 """, unsafe_allow_html=True)
+
 
 st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
-@st.cache_data
-def carregar_dados():
-    df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
-    df = df.rename(columns={
-        "Qual o motivo da viagem?": "Motivo",
-        "Com que frequência você faz essa viagem?": "Frequência",
-        "A viagem foi realizada em qual período do dia?": "Periodo do dia",
-        "Qual foi o principal meio de transporte que você usou?": "Principal Modal"
-    })
-    colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
-    faltando = [col for col in colunas_esperadas if col not in df.columns]
-    if faltando:
-        raise ValueError(f"Colunas faltando: {faltando}")
-    return df
 
+@st.cache_data
+
+
+def carregar_dados():
 try:
-    df = carregar_dados()
-except Exception as e:
-    st.error(f"Erro ao carregar o Excel: {e}")
-    st.stop()
+df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
+df = df.rename(columns={
+"Qual o motivo da viagem?": "Motivo",
+"Com que frequência você faz essa viagem?": "Frequência",
+"A viagem foi realizada em qual período do dia?": "Periodo do dia",
+"Qual foi o principal meio de transporte que você usou?": "Principal Modal"
+})
+colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
+faltando = [col for col in colunas_esperadas if col not in df.columns]
+if faltando:
+raise ValueError(f"Colunas faltando: {faltando}")
+return df
+except Exception as erro:
+st.error(f"Erro ao carregar dados: {erro}")
+return pd.DataFrame()
+
+
+df = carregar_dados()
+if df.empty:
+st.stop()
 
 # Coordenadas dos municípios
 municipios_coords = {
