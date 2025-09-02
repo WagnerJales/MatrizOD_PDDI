@@ -6,7 +6,6 @@ from streamlit_folium import st_folium
 import plotly.express as px
 import io
 
-
 st.set_page_config(layout="wide")
 st.markdown("""
 <style>
@@ -16,12 +15,9 @@ padding-top: 1rem;
 </style>
 """, unsafe_allow_html=True)
 
-
 st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
 
-
 @st.cache_data
-
 
 def carregar_dados():
 try:
@@ -206,6 +202,51 @@ with st.container():
     st_folium(mapa, width=1600, height=600)
 
 # Mapa 2 - sbuáreas Sao Luis
+import streamlit as st
+import pandas as pd
+import folium
+from folium import Marker, PolyLine
+from streamlit_folium import st_folium
+import plotly.express as px
+import io
+
+st.set_page_config(layout="wide")
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+st.title("Mapa Origem-Destino - RMGSL PDDI (2025)")
+
+@st.cache_data
+
+def carregar_dados():
+    try:
+        df = pd.read_excel("PesquisaOD_2.xlsx", engine="openpyxl")
+        df = df.rename(columns={
+            "Qual o motivo da viagem?": "Motivo",
+            "Com que frequência você faz essa viagem?": "Frequência",
+            "A viagem foi realizada em qual período do dia?": "Periodo do dia",
+            "Qual foi o principal meio de transporte que você usou?": "Principal Modal"
+        })
+        colunas_esperadas = ["ORIGEM", "DESTINO", "Motivo", "Frequência", "Periodo do dia", "Principal Modal"]
+        faltando = [col for col in colunas_esperadas if col not in df.columns]
+        if faltando:
+            raise ValueError(f"Colunas faltando: {faltando}")
+        return df
+    except Exception as erro:
+        st.error(f"Erro ao carregar dados: {erro}")
+        return pd.DataFrame()
+
+df = carregar_dados()
+if df.empty:
+    st.stop()
+
+# ... código omitido para clareza ...
+
 st.markdown("---")
 st.subheader("🌐 Mapa OD com colunas específicas de origem/destino (incluindo subzonas de São Luís)")
 
@@ -214,9 +255,11 @@ if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO
         df_filtrado["Qual o município de ORIGEM"].isin(coords_municipios_od2.keys()) &
         df_filtrado["Qual o município de DESTINO"].isin(coords_municipios_od2.keys())
     ].copy()
-    
+
     df_od2 = df_od2[df_od2["Qual o município de ORIGEM"] != df_od2["Qual o município de DESTINO"]]
-    df_od2["par_od"] = df_od2.apply(lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1)
+    df_od2["par_od"] = df_od2.apply(
+        lambda row: tuple(sorted([row["Qual o município de ORIGEM"], row["Qual o município de DESTINO"]])), axis=1
+    )
 
     fluxo_od2 = df_od2.groupby("par_od").size().reset_index(name="total")
     fluxo_od2[["ORIGEM", "DESTINO"]] = pd.DataFrame(fluxo_od2["par_od"].tolist(), index=fluxo_od2.index)
@@ -239,6 +282,7 @@ if "Qual o município de ORIGEM" in df.columns and "Qual o município de DESTINO
         folium.Marker(location=coord, tooltip=nome).add_to(mapa_od2)
 
     st_folium(mapa_od2, use_container_width=True, height=550)
+
 else:
     st.warning("As colunas 'Qual o município de ORIGEM' e 'Qual o município de DESTINO' não foram encontradas na base.")
 
